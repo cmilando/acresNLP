@@ -1,63 +1,131 @@
 
-import requests
-import pdfplumber
 import re
-import tempfile
 from urllib.parse import urlparse
 import json
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+from collections import Counter
 # from nltk.stem import PorterStemmer, WordNetLemmatizer
 # import spellchecker
 
+file = "/Users/allisonjames/Desktop/blackout/NLP/somerville.json"
 
-#file = "pdf/s1.pdf"
-file = "/Users/allisonjames/Desktop/blackout/NLP/somerville.pdf"
+def load_json_file(filepath):
+    with open(filepath, 'r') as file:
+        data = json.load(file)
+    return data
 
-#file_prefix = gsub
+data = load_json_file(file)
+text = data['ALL TEXT']
 
-pdf = pdfplumber.open(file)
 
-# Loop extracting the table on each page
-page_dict = dict() # initialize with the full size
-
-# pageX = pdf.pages[6]
-
-# #
-# pageX.extract_text()
-
-# pageX.extract_text_lines()
-
-## (1) extract text from each page
-## (2) combine all into a single string
-## (3) remove '\n' and other weird characters
-
-def extract_text_and_combine(pdf):
-    combined_text = ""
-    for page in pdf.pages:
-        combined_text += page.extract_text()
-    combined_text = combined_text.replace('\n', ' ')
-    #combined_text += ''.join([line['text'] for line in text_lines])
-    return combined_text
+#find occurrence of specfic word - most frequent is likely town name (move)
+mystic_towns_list = ["Burlington", "Lexington", "Belmont", "Watertown",
+                     "Arlington", "Winchester", "Woburn", "Reading",
+                     "Stoneham", "Medford", "Somerville", "Cambridge",
+                     "Boston", "Charlestown", "Everett", "Malden", "Melrose",
+                     "Wakefield", "Chelsea", "Revere", "Winthrop", "Wilmington"]
 
 
 
-def find_year(pdf):
-    combined_text = ""
-    for page in pdf.pages:
-        combined_text += page.extract_text()
-        # find the first occurrence of a 4-digit year
-        match = re.search(r'\b\d{4}\b', combined_text)
-        if match:
-            year = match.group()
-            return year
-    return None
+def find_most_common_year(text):
+    """
+    Finds all four-digit numbers in the given text, assumes they are years,
+    and returns the most common one.
+
+    Args:
+    text (str): The text to search for years.
+
+    Returns:
+    int: The most common year found in the text. If no year is found, returns None.
+    """
+    # Find all occurrences of a four-digit number
+    years = re.findall(r'\b\d{4}\b', text)
+    
+    if not years:
+        return None
+    
+    # Use a Counter to find the most common year
+    year_counts = Counter(years)
+    most_common_year = year_counts.most_common(1)[0][0]
+    first_year = years[0]
+    
+    return (most_common_year, first_year)
+
+most_common_year, first_year = find_most_common_year(text)
+print(f"The most common year in the text is: {most_common_year}")
+print(f"The first year found in the text is: {first_year}")
 
 
-text = extract_text_and_combine(pdf)
-year = find_year(pdf)
-#print(text)
-print(year)
+def find_towns(text, target_phrases):
+    """
+    Finds the most common words that occur immediately before and after "city" and "town".
+
+    Args:
+    text (str): The text in which to search for the phrases.
+    target_phrases (list): List of phrases to search for.
+
+    Returns:
+    dict: A dictionary with keys 'before' and 'after' containing the most common words
+          found before and after the target phrases, respectively.
+    """
+    # Combine the phrases into one pattern with word boundaries
+    pattern = r'\b(\w+)\s+(' + '|'.join(map(re.escape, target_phrases)) + r')\s+(\w+)\b'
+    
+    # Find all matches
+    matches = re.findall(pattern, text, re.IGNORECASE)
+    
+    if not matches:
+        return {'before': None, 'after': None}
+    
+    # Split matches into before and after
+    before_words = [match[0] for match in matches]
+    after_words = [match[2] for match in matches]
+    
+    # Count occurrences
+    most_common_before = Counter(before_words).most_common(1)[0][0] if before_words else None
+    most_common_after = Counter(after_words).most_common(1)[0][0] if after_words else None
+    
+    return {'before': most_common_before, 'after': most_common_after}
+
+
+target_phrases = ["city of", "town of"]
+adjacent_words = find_towns(text, target_phrases)
+print(f"Most common word before the phrases: {adjacent_words['before']}")
+print(f"Most common word after the phrases: {adjacent_words['after']}")
+
+
+def find_most_commmon_town(text, towns_list):
+    """
+    Finds the most common town or city name from a predefined list in the given text.
+
+    Args:
+    text (str): The text to search within.
+    towns_list (list): A list of town or city names to look for.
+
+    Returns:
+    str: The most common town or city found in the text, or None if none are found.
+    """
+
+    # Create a regex pattern to find any of the town names, ensuring case-insensitive matching
+    pattern = r'\b(' + '|'.join(map(re.escape, towns_list)) + r')\b'
+    
+    # Find all matches using re.IGNORECASE to make the search case-insensitive
+    matches = re.findall(pattern, text, re.IGNORECASE)
+    
+    if not matches:
+        return None
+    
+    # Count occurrences of each town name
+    town_counts = Counter(matches)
+    most_common_town = town_counts.most_common(1)[0][0]
+    
+    return most_common_town
+
+
+most_common_town = find_most_commmon_town(text, mystic_towns_list)
+print(f"The most common town in the text is: {most_common_town}")
+
 
 def clean_text(text):
     
@@ -67,27 +135,62 @@ def clean_text(text):
     #lowercase
     tokens = [token.lower() for token in tokens]
 
+    #remove N/A
+
     #remove special characters and numbers
     tokens = [re.sub(r'[^a-zA-Z]', '', token) for token in tokens if token.isalpha()]
     
-    #remomve stop words
-    stop_words = set(stopwords.words('english'))
-    tokens = [token for token in tokens if token not in stop_words]
+
+
+    #remove stop words
+    # stop_words = set(stopwords.words('english'))
+    # tokens = [token for token in tokens if token not in stop_words]
 
     cleaned_text = ' '.join(tokens)
     return(cleaned_text)
 
 
+# cleaned_text = clean_text(text)
+# print(cleaned_text)
+
+#second script:
 #see if any words match list of boston towns?
+#creates table of next most common word given sequence of tokens ("city of", "town of") - done
+
+# Split python code into two scripts
+#     script 1 is read text into a json object (done)
+        #test on ~5 pdf's
+#     script 2 is processing the json object
+# write a generalized search function for queries we might want to ask:
+# two arguments: string of any length and n following tokens
+# given a string of any length c(”town”, “members of”) what are the next
+#https://bushare.sharepoint.com/:x:/r/sites/GRP-SPH-EH-ACRES/_layouts/15/doc2.aspx?sourcedoc=%7BC532C339-9BAA-42AA-87C3-C4451B03CB09%7D&file=DRAFT_ACRES%20Aim%201%20Community%20Concerns.xlsx&action=default&mobileredirect=true
 
 
+# from the hazards tab of Bev's sheet
+# probably first pass is just the word itself, maybe some variations
+#  hazard_dict = 
 
-
-
-output = {
-    'URL': file,
-    'REPORT_YEAR': year,
-    'TOWN': "",
-    'ALL TEXT': text
+# this is also on the resources tab, there is a pdf of these
+# 
+# the ideal of this is putting this into ChatGPT and saying which of these words 
+outreach_strat = {
+    "involve": ("roundtable"),
+    "collaborate": ("")
 }
-# json.dumps(output, file_prefix + ".JSON")
+
+# pulling from the 3rd or other pages
+# see the resources tab, also the haxards by site tab
+rep_perspectives = {
+    "city gov": (),
+    "nonprofits": (),
+    "businesses": (),
+    "climate expert": (),
+    "academic/research": (),
+    "health": (),
+    "community members": ()
+}
+
+# TODO:
+# -- insetad of bounding by white space, do regex*
+# -- as part of extract page1, page2, page3, in addition to all-text
