@@ -1,0 +1,7 @@
+{
+     "flood": ["sea level", "rising sea", "coastal", "flood", "precipitation","storm surge","storm tide","stormwater"],
+     "storm": ["hurricane", "wind", "storm","blizzard","nor’easter","tropical storm","warm air","cold air"]
+     "air quality": ["air quality","pollution","pollutant","asthma","PM2.5","ozone","particulate","smog","respiratory illness"]
+     "heat": ["extreme heat","heat wave","air condition","cooling center","air temperature"]
+     "chemical": ["chemical exposure","toxic","soil","combined sewer overflow"]
+ }
