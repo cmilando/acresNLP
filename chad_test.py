@@ -8,7 +8,7 @@ from collections import Counter
 # from nltk.stem import PorterStemmer, WordNetLemmatizer
 # import spellchecker
 
-file = "/Users/allisonjames/Desktop/blackout/NLP/somerville.json"
+file = "/Users/allisonjames/Desktop/blackout/NLP/somerville5.json"
 
 def load_json_file(filepath):
     with open(filepath, 'r') as file:
@@ -17,6 +17,7 @@ def load_json_file(filepath):
 
 data = load_json_file(file)
 text = data['ALL TEXT']
+page_text = data['TEXT BY PAGE'] #also include text per page
 
 
 #find occurrence of specfic word - most frequent is likely town name (move)
@@ -95,7 +96,7 @@ print(f"Most common word before the phrases: {adjacent_words['before']}")
 print(f"Most common word after the phrases: {adjacent_words['after']}")
 
 
-def find_most_commmon_town(text, towns_list):
+def find_most_common_town(text, towns_list):
     """
     Finds the most common town or city name from a predefined list in the given text.
 
@@ -123,8 +124,50 @@ def find_most_commmon_town(text, towns_list):
     return most_common_town
 
 
-most_common_town = find_most_commmon_town(text, mystic_towns_list)
+most_common_town = find_most_common_town(text, mystic_towns_list)
 print(f"The most common town in the text is: {most_common_town}")
+
+def count_keyword_occurrences(text, keywords):
+    """
+    Counts occurrences of each keyword in the given text.
+
+    Args:
+    text (str): The text to search within.
+    keywords (list): A list of keywords or phrases to search for.
+
+    Returns:
+    dict: A dictionary with keywords as keys and their counts as values.
+    """
+    # Escape keywords for use in regex and join them into a single pattern
+    pattern = '|'.join(re.escape(keyword) for keyword in keywords)
+
+    # Use regex to find all occurrences of the pattern
+    matches = re.findall(pattern, text, re.IGNORECASE)
+
+    # Count each match using a Counter
+    counts = Counter(matches)
+
+    # Convert the counter to a dictionary where keys are the keywords and values are the counts
+    # Normalize keys to match input keywords case-insensitively
+    keyword_counts = {keyword: counts.get(keyword.lower(), 0) + counts.get(keyword.upper(), 0) + counts.get(keyword.capitalize(), 0) for keyword in keywords}
+
+    return keyword_counts
+
+with open('/Users/allisonjames/Desktop/bu/acresNLP/hazards.json', 'r') as file:
+    hazard_data = json.load(file)
+    flood_keywords = hazard_data['flood']
+    storm_keywords = hazard_data['storm']
+    heat_keywords = hazard_data['heat']
+    air_pollution_keywords = hazard_data['air pollution']
+    indoor_air_qual_keywords = hazard_data['indoor air quality']
+    chemical_hazard_keywords = hazard_data['chemical hazards']
+    precipitation_keywords = hazard_data['extreme precipitation']
+    fire_keywords = hazard_data['fire']
+
+flood_counts = count_keyword_occurrences(text, flood_keywords)
+storm_counts = count_keyword_occurrences(text, storm_keywords)
+print(flood_counts)
+print(storm_counts)
 
 
 def clean_text(text):
@@ -153,44 +196,46 @@ def clean_text(text):
 # cleaned_text = clean_text(text)
 # print(cleaned_text)
 
-#second script:
-#see if any words match list of boston towns?
-#creates table of next most common word given sequence of tokens ("city of", "town of") - done
 
-# Split python code into two scripts
-#     script 1 is read text into a json object (done)
-        #test on ~5 pdf's
-#     script 2 is processing the json object
-# write a generalized search function for queries we might want to ask:
+# write a generalized search function for queries we might want to ask: (done)
 # two arguments: string of any length and n following tokens
 # given a string of any length c(”town”, “members of”) what are the next
 #https://bushare.sharepoint.com/:x:/r/sites/GRP-SPH-EH-ACRES/_layouts/15/doc2.aspx?sourcedoc=%7BC532C339-9BAA-42AA-87C3-C4451B03CB09%7D&file=DRAFT_ACRES%20Aim%201%20Community%20Concerns.xlsx&action=default&mobileredirect=true
 
 
-# from the hazards tab of Bev's sheet
-# probably first pass is just the word itself, maybe some variations
-#  hazard_dict = 
 
-# this is also on the resources tab, there is a pdf of these
-# 
-# the ideal of this is putting this into ChatGPT and saying which of these words 
 outreach_strat = {
-    "involve": ("roundtable"),
-    "collaborate": ("")
+    "involve": ("involve", "roundtable", "workshops","focus groups","community forums","town hall meetings","participatory planning", "stakeholder engagement", "community-driven","engagement sessions", "volunteer involvement"),
+    "collaborate": ("collaborate", "partnerships","joint initiatives","coalition building","community partnerships","multi-stakeholder collaboration","collaborative efforts","public-private partnerships","cooperative projects","interagency cooperation","cross-sector collaboration"),
+    "inform": ("inform", "public awareness campaigns","educational seminars", "newsletters","press releases","information sessions","community briefings","public announcements","social media updates","fact sheets","awareness raising"),
+    "consult": ("public consultations", "feedback sessions", "community surveys", "public hearings","opinion polling","consultative meetings","focus group discussions","stakeholder interviews","community input","advisory boards")
 }
 
 # pulling from the 3rd or other pages
-# see the resources tab, also the haxards by site tab
+# see the resources tab, also the hazards by site tab
 rep_perspectives = {
-    "city gov": (),
-    "nonprofits": (),
-    "businesses": (),
-    "climate expert": (),
-    "academic/research": (),
-    "health": (),
-    "community members": ()
+    "city gov": ("government", "municipal policies", "urban development", "public services", "city planning", "infrastructure", 
+        "zoning laws", "local government", "civic engagement", "public safety", "transportation policies", 
+        "regulatory frameworks", "city council", "municipal budget", "public welfare"),
+    "nonprofits": ("nonprofit", "social services", "advocacy", "community outreach", "charitable activities", "fundraising", 
+        "volunteer programs", "NGO", "humanitarian efforts", "non-profit organizations", "civil society", 
+        "social justice", "community development", "grants"),
+    "businesses": ("business","corporate responsibility", "industry standards", "business development", "sustainability practices", 
+        "private sector", "innovation", "entrepreneurship", "corporate partnerships", "economic growth", 
+        "small businesses", "market trends", "commerce", "consumer demand"),
+    "climate expert": ("expert", "climate change", "global warming", "carbon emissions", "sustainability", "environmental impact", 
+        "renewable energy", "climate policy", "mitigation strategies", "adaptation", "eco-friendly", 
+        "green technology", "biodiversity", "conservation"),
+    "academic/research": ("academic", "research", "scholarly articles", "research findings", "academic journals", "studies", "data analysis", 
+        "theoretical frameworks", "educational institutions", "research grants", "scientific inquiry", 
+        "experimental results", "peer review", "academic conferences"),
+    "health": ("public health", "healthcare services", "medical research", "disease prevention", "health education", 
+        "patient care", "healthcare policy", "wellness", "mental health", "epidemiology", "health disparities", 
+        "health systems", "medical ethics"),
+    "community members": ("community member", "residents", "local issues", "community needs", "public opinion", "grassroots", "neighborhood associations", 
+        "local culture", "community engagement", "citizen feedback", "town hall", "community events", "public forums", 
+        "resident concerns")
 }
 
 # TODO:
-# -- insetad of bounding by white space, do regex*
-# -- as part of extract page1, page2, page3, in addition to all-text
+# -- instead of bounding by white space, do regex*
