@@ -10,6 +10,7 @@ library(gridExtra)
 
 #### create dataframe of hazard counts and proportions by town ####
 
+#adjust based on your computer
 my_dir <- "/Users/allisonjames/Desktop/blackout/NLP"
 setwd(my_dir)
 
@@ -50,8 +51,11 @@ hazard_data <-  combined_table %>%
 
 towns_to_include <- c("REVERE", "SOMERVILLE", "EVERETT")
 
-ma_towns <- read_sf("/Users/allisonjames/Library/CloudStorage/
-                    OneDrive-BostonUniversity/02_Blackouts/Viz/towns_fixed.shp")
+#adjust based on your computer
+sf_url <- "/Users/allisonjames/Library/CloudStorage/
+                    OneDrive-BostonUniversity/02_Blackouts/Viz/towns_fixed.shp"
+
+ma_towns <- read_sf(sf_url)
 
 hazard_towns <- ma_towns %>% 
   filter(TOWN20 %in% towns_to_include)
@@ -131,13 +135,12 @@ labels <- c("Flood", "Storm", "Heat", "Air pollution", "Indoor air quality",
             "Chemical hazards", "Extreme precipitation", "Fire")
   
 legend_pie <- ggplot(hazard_data, aes(x = "", y = proportion, fill = hazard_type)) +
-  geom_bar(stat = "identity", width = 0.3) +
+  geom_bar(stat = "identity", width = 0.3, color = "black", linewidth = 0.3) +
   coord_polar("y", start = 0) +
   theme_void() +
   theme(legend.position = "bottom") +
   scale_fill_manual(name = "Hazard Type", labels = labels,
                     values = rainbow(length(labels)))
-
 
 #duplicate the base map before adding new elements to it
 base_map2 <- base_map
