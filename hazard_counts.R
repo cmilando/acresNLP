@@ -3,9 +3,12 @@ library(tidyverse)
 library(ggforce)
 library(janitor)
 library(sf)
+library(gtable)
+library(grid)
+library(gridExtra)
 
 
-#create dataframe of hazard counts and proportions by town
+#### create dataframe of hazard counts and proportions by town ####
 
 my_dir <- "/Users/allisonjames/Desktop/blackout/NLP"
 setwd(my_dir)
@@ -43,11 +46,12 @@ hazard_data <-  combined_table %>%
   
 
 
-#load in town polygons (but just somerville, revere, everett)
+#### load in and filter town polygons ####
 
 towns_to_include <- c("REVERE", "SOMERVILLE", "EVERETT")
 
-ma_towns <- read_sf("/Users/allisonjames/Library/CloudStorage/OneDrive-BostonUniversity/02_Blackouts/Viz/towns_fixed.shp")
+ma_towns <- read_sf("/Users/allisonjames/Library/CloudStorage/
+                    OneDrive-BostonUniversity/02_Blackouts/Viz/towns_fixed.shp")
 
 hazard_towns <- ma_towns %>% 
   filter(TOWN20 %in% towns_to_include)
@@ -69,7 +73,7 @@ hazard_data <- hazard_data %>%
   ungroup()
 
 
-#create base map 
+#### create base map ####
 
 base_map <- hazard_towns %>% 
   ggplot() + 
@@ -88,31 +92,78 @@ base_map <- hazard_towns %>%
 base_map
 
 
-#separately create pie charts
+#### separately create pie charts ####
 
-add_pie <- function(proportions){
+add_pie <- function(town_data, town_name){
   
-  slices <- proportions
+  
   labels <- c("Flood", "Storm", "Heat", "Air pollution", "Indoor air quality",
               "Chemical hazards", "Extreme precipitation", "Fire")
-  pie(slices, labels = labels, radius = 1, cex = 0.7, 
-      col = rainbow(length(labels))
-  )
+  
+  #the pie charts are bar charts made circular with polar coordinaites
+  pie <- town_data %>% 
+    ggplot(aes(x = "", y = proportion, fill = hazard_type)) + 
+    geom_bar(stat = "identity", aes(width = 0.3)) + 
+    coord_polar("y", start = 0) +
+    theme_void() + 
+    ggtitle(town_name) + 
+    theme(plot.title = element_text(hjust = 0.5, vjust = -2)) +
+    theme(legend.position = "none") +
+    scale_fill_manual(name = "Hazard Type", labels = labels,
+                      values = rainbow(length(labels)))
+  
+  return(pie)
   
 }
 
+#create a pie chart for each town
 unique_towns <- unique(hazard_data$town_name)
 for (town in unique_towns) {
   town_data <- hazard_data %>% filter(town_name == town)
-  pie_chart <- add_pie(town_data$proportion)
+  pie_chart <- add_pie(town_data, town)
   pie_charts[[town]] <- pie_chart
 }
 
-#combine
 
 
-add_pie(somerville_data$proportion)
+#create a overall legend for the pie charts by creating a generic pie
+labels <- c("Flood", "Storm", "Heat", "Air pollution", "Indoor air quality",
+            "Chemical hazards", "Extreme precipitation", "Fire")
+  
+legend_pie <- ggplot(hazard_data, aes(x = "", y = proportion, fill = hazard_type)) +
+  geom_bar(stat = "identity", width = 0.3) +
+  coord_polar("y", start = 0) +
+  theme_void() +
+  theme(legend.position = "bottom") +
+  scale_fill_manual(name = "Hazard Type", labels = labels,
+                    values = rainbow(length(labels)))
 
 
+#duplicate the base map before adding new elements to it
+base_map2 <- base_map
 
+
+#### combine the base map and the pie charts ####
+
+for (town in unique_towns) {
+  town_data <- hazard_data %>% filter(town_name == town)
+  base_map2 <- base_map2 +
+    annotation_custom(
+      grob = ggplotGrob(pie_charts[[town]]),
+      xmin = town_data$x[1] - 0.02,
+      xmax = town_data$x[1] + 0.02,
+      ymin = town_data$y[1] - 0.02,
+      ymax = town_data$y[1] + 0.02
+    )
+}
+
+legend <- gtable_filter(ggplotGrob(legend_pie),
+                        "guide-box")
+  
+
+base_map2
+
+
+grid.newpage()
+grid.draw(arrangeGrob(base_map2, legend, ncol = 1, heights = c(9, 1)))
 
