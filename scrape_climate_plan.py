@@ -5,7 +5,7 @@ from urllib.parse import urlparse
 import json
 import os
 
-file = "/Users/allisonjames/Desktop/blackout/NLP/somerville.pdf"
+file = "/Users/allisonjames/Desktop/blackout/NLP/revere6.pdf"
 file_prefix = os.path.splitext(file)[0]
 
 pdf = pdfplumber.open(file)

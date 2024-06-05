@@ -6,17 +6,18 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from collections import Counter
 import spacy
+import os
 # from nltk.stem import PorterStemmer, WordNetLemmatizer
 # import spellchecker
 
-file = "/Users/allisonjames/Desktop/blackout/NLP/somerville.json"
+file_name = "/Users/allisonjames/Desktop/blackout/NLP/revere6.json"
 
 def load_json_file(filepath):
     with open(filepath, 'r') as file:
         data = json.load(file)
     return data
 
-data = load_json_file(file)
+data = load_json_file(file_name)
 text = data['ALL TEXT']
 page_text = data['TEXT BY PAGE'] #also include text per page
 
@@ -55,8 +56,8 @@ def find_most_common_year(text):
     return (most_common_year, first_year)
 
 most_common_year, first_year = find_most_common_year(text)
-print(f"The most common year in the text is: {most_common_year}")
-print(f"The first year found in the text is: {first_year}")
+# print(f"The most common year in the text is: {most_common_year}")
+# print(f"The first year found in the text is: {first_year}")
 
 
 def find_towns(text, target_phrases):
@@ -93,8 +94,8 @@ def find_towns(text, target_phrases):
 
 target_phrases = ["city of", "town of"]
 adjacent_words = find_towns(text, target_phrases)
-print(f"Most common word before the phrases: {adjacent_words['before']}")
-print(f"Most common word after the phrases: {adjacent_words['after']}")
+# print(f"Most common word before the phrases: {adjacent_words['before']}")
+# print(f"Most common word after the phrases: {adjacent_words['after']}")
 
 
 def find_most_common_town(text, towns_list):
@@ -130,54 +131,70 @@ print(f"The most common town in the text is: {most_common_town}")
 
 
 #compare frequency of keys, not values (so sum up the frequency of keys and iterature through values in category)
-def count_keyword_occurrences(text, keywords): 
+def count_keyword_occurrences(text, categories): 
     """
-    Counts occurrences of each keyword in the given text.
+    Counts occurrences of words in each given category.
 
     Args:
     text (str): The text to search within.
-    keywords (list): A list of keywords or phrases to search for.
+    categories (dict): A dictionary where keys are category names and values are lists of words or phrases in each category.
 
     Returns:
-    dict: A dictionary with keywords as keys and their counts as values.
+    dict: A dictionary with category names as keys and the sum of word counts in each category as values.
     """
-    # Escape keywords for use in regex and join them into a single pattern
-    pattern = '|'.join(re.escape(keyword) for keyword in keywords)
+    # Initialize an empty dictionary to store counts for each category
+    category_counts = {category: {} for category in categories}
+    category_pcts = {category: {} for category in categories}
+    total_sum = 0
 
-    # Use regex to find all occurrences of the pattern
-    matches = re.findall(pattern, text, re.IGNORECASE)
+    # Iterate over each category
+    for category, keywords in categories.items():
+        # Escape keywords for use in regex and join them into a single pattern
+        pattern = '|'.join(re.escape(keyword) for keyword in keywords)
 
-    # Count each match using a Counter
-    counts = Counter(matches)
+        # Use regex to find all occurrences of the pattern
+        matches = re.findall(pattern, text, re.IGNORECASE)
 
-    # Convert the counter to a dictionary where keys are the keywords and values are the counts
-    # Normalize keys to match input keywords case-insensitively
-    keyword_counts = {keyword: counts.get(keyword.lower(), 0) + counts.get(keyword.upper(), 0) + counts.get(keyword.capitalize(), 0) for keyword in keywords}
+        # Count occurrences of words in the category
+        keyword_counts = Counter(matches)
 
-    key_sums = {key:0 for key in keywords}
+        # Count occurrences of words in the category
+        category_counts[category] = sum(keyword_counts.values())
+        total_sum += sum(keyword_counts.values())
 
-    for key in keywords:
-        this_key = keyword_counts.get(key)
-        this_sum = sum([this_key[k] for k in this_key])
-        key_sums[key] = sums
+    for category, keywords in categories.items():
+        # print(category_counts[category])
+        category_pcts[category] = round(category_counts[category] / total_sum * 100, ndigits = 1)
+        
 
-    return key_sums
+    return category_counts, category_pcts
 
 with open('/Users/allisonjames/Desktop/bu/acresNLP/hazards.json', 'r') as file:
     hazard_data = json.load(file)
-    flood_keywords = hazard_data['flood']
-    storm_keywords = hazard_data['storm']
-    heat_keywords = hazard_data['heat']
-    air_pollution_keywords = hazard_data['air pollution']
-    indoor_air_qual_keywords = hazard_data['indoor air quality']
-    chemical_hazard_keywords = hazard_data['chemical hazards']
-    precipitation_keywords = hazard_data['extreme precipitation']
-    fire_keywords = hazard_data['fire']
+    
 
-flood_counts = count_keyword_occurrences(text, flood_keywords)
-storm_counts = count_keyword_occurrences(text, storm_keywords)
-print(flood_counts)
-print(storm_counts)
+hazard_counts, hazard_pcts = count_keyword_occurrences(text, hazard_data)
+print(hazard_counts)
+print(hazard_pcts)
+
+### generate table of hazard frequencies for this pdf
+town_name = "Revere"
+total_words = len(text.split())
+total_pages = len(page_text)
+print(total_words, total_pages)
+
+#output
+headers = ["Town Name", "Total Words", "Total Pages"] + [f"{cat} Count" for cat in hazard_data.keys()] + [f"{cat} %" for cat in hazard_data.keys()]
+data = [town_name, total_words, total_pages] + [hazard_counts[cat] for cat in hazard_data.keys()] + [hazard_pcts[cat] for cat in hazard_data.keys()]
+
+tsv_output = "\t".join(headers) + "\n" + "\t".join(map(str, data))
+
+print(file)
+file_prefix = os.path.splitext(file_name)[0]
+output_file = file_prefix + ".tsv"
+with open(output_file, 'w') as f:
+    f.write(tsv_output)
+print(f"TSV output has been saved to {output_file}")
 
 
 
@@ -228,10 +245,8 @@ outreach_strat = { #probably fine
                 "community input","advisory boards")
 }
 
-
-
-
-
+outreach_counts = count_keyword_occurrences(text, outreach_strat)
+#print(outreach_counts)
 
 rep_perspectives = {  #needs human edits
     "city gov": ("government", "municipal policies", "urban development", "public services", "city planning", "infrastructure", 
@@ -257,12 +272,13 @@ rep_perspectives = {  #needs human edits
         "resident concerns")
 }
 
+perspective_counts = count_keyword_occurrences(text, rep_perspectives)
+#print(perspective_counts)
+
+
 #sites of concern = {frequency table of ALL proper nouns}
 #words that are capitalized but not after a period
 #should be its own function
-
-
-
 def count_proper_nouns(text):
 #ffilter out numbers
 
@@ -290,7 +306,12 @@ def count_proper_nouns(text):
 # proper_noun_table = count_proper_nouns(text)
 # print(proper_noun_table)
 
+#TODO: take in single pdf and export tab-separated table that contains hazards frequencies
+#total words/pages, % and n frequencies for hazard category
+#do first pass for Somerville and Everett's best 2-3 pdf's
+#compare within and between towns
 
+#Lets make a PMF map of what people care aboutjust hazards
+#across documents within the same town are there consistencies
+#across towns are there differences
 
-
-# TOD0: make counter sum up categories rather than specific words
