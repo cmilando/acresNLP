@@ -1,7 +1,7 @@
 {
-     "flood": ["sea level rise", "rising sea", "coastal flooding", "flood", "inundation", "water levels", "storm surge", "high tide", "overflow", "floodwater", "flood plain", "flood risk", "flash flood", "riverine flooding"],
+     "flood": ["sea level rise", "rising sea", "coastal flooding", "flood", "inundation", "water levels", "storm surge", "high tide", "overflow", "floodwater", "flood plain", "flood risk", "flash flood", "riverine flooding", "precipitation-related flooding", "precipitation-based flooding"],
      "storm": ["hurricane", "wind", "storm", "cyclone", "typhoon", "gale", "storm damage", "severe weather", "thunderstorm", "tornado", "windstorm", "wind speed", "extreme weather"],
-     "heat": ["heat wave", "high temperature", "heat stress", "thermal stress", "extreme heat", "hot weather", "temperature rise", "scorching temperatures", "heat-related illnesses"],
+     "heat": ["heat wave", "high temperature", "heat stress", "thermal stress", "extreme heat", "hot weather", "temperature rise", "scorching temperatures", "heat-related illnesses", "vector borne diseases",  "heat increase", "urban heat island", "UHI", "hot spot", "heat illness"],
      "air pollution": ["smog", "air quality", "particulate matter", "PM2.5", "PM10", "NO2", "nitrogen dioxide", "sulfur dioxide", "SO2", "ozone", "VOCs", "volatile organic compounds", "airborne pollutants", "industrial pollution", "vehicle emissions", "exhaust fumes"],
      "indoor air quality": ["mold", "asbestos", "radon", "carbon monoxide", "indoor pollution", "ventilation", "airborne particulates", "indoor allergens", "HVAC", "building sickness", "indoor VOCs", "formaldehyde"],
      "chemical hazards": ["toxic waste", "hazardous materials", "chemical spill", "industrial waste", "contaminants", "biohazard", "radiation", "leakage", "pesticides", "herbicides", "heavy metals", "chemical exposure", "pollutants"],

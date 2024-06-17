@@ -192,9 +192,9 @@ tsv_output = "\t".join(headers) + "\n" + "\t".join(map(str, data))
 print(file)
 file_prefix = os.path.splitext(file_name)[0]
 output_file = file_prefix + ".tsv"
-with open(output_file, 'w') as f:
-    f.write(tsv_output)
-print(f"TSV output has been saved to {output_file}")
+# with open(output_file, 'w') as f:
+#     f.write(tsv_output)
+# print(f"TSV output has been saved to {output_file}")
 
 
 
@@ -306,12 +306,19 @@ def count_proper_nouns(text):
 # proper_noun_table = count_proper_nouns(text)
 # print(proper_noun_table)
 
-#TODO: take in single pdf and export tab-separated table that contains hazards frequencies
-#total words/pages, % and n frequencies for hazard category
-#do first pass for Somerville and Everett's best 2-3 pdf's
-#compare within and between towns
 
-#Lets make a PMF map of what people care aboutjust hazards
-#across documents within the same town are there consistencies
-#across towns are there differences
+# the somerville one mainly accurate - focused on flooding and precipitation/storm
+# could use a bit more heat-related terms
+# mention water pollution a lot more than air pollution
+# mentions pm2.5 as not being a concern due to improved regulations
+#chunk for air pollution is from a paragraph about ozone
 
+#revere also mainly accurate - though could use more extreme precipitaiton language
+# mostly discusses flood, but more types of storms than somerville
+# same with everett
+
+#aim 2 mentioned that communities are in interested in inland flooding- make sure included
+
+#TODO: add these to dictionary and re-run code in R
+#add plural/multiple forms etc
+#brainstorm 
