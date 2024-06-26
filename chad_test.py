@@ -10,7 +10,7 @@ import os
 # from nltk.stem import PorterStemmer, WordNetLemmatizer
 # import spellchecker
 
-file_name = "/Users/allisonjames/Desktop/blackout/NLP/revere6.json"
+file_name = "/Users/allisonjames/Desktop/blackout/NLP/chelsea.json"
 
 def load_json_file(filepath):
     with open(filepath, 'r') as file:
@@ -29,9 +29,9 @@ mystic_towns_list = ["Burlington", "Lexington", "Belmont", "Watertown",
                      "Boston", "Charlestown", "Everett", "Malden", "Melrose",
                      "Wakefield", "Chelsea", "Revere", "Winthrop", "Wilmington"]
 
+current_year = 2024
 
-
-def find_most_common_year(text):
+def find_most_common_year(text, current_year):
     """
     Finds all four-digit numbers in the given text, assumes they are years,
     and returns the most common one.
@@ -45,19 +45,22 @@ def find_most_common_year(text):
     # Find all occurrences of a four-digit number
     years = re.findall(r'\b\d{4}\b', text)
     
-    if not years:
-        return None
+    # Filter out years that are in the future
+    valid_years = [int(year) for year in years if int(year) <= current_year]
+    
+    if not valid_years:
+        return None, None
     
     # Use a Counter to find the most common year
-    year_counts = Counter(years)
+    year_counts = Counter(valid_years)
     most_common_year = year_counts.most_common(1)[0][0]
     first_year = years[0]
     
     return (most_common_year, first_year)
 
-most_common_year, first_year = find_most_common_year(text)
-# print(f"The most common year in the text is: {most_common_year}")
-# print(f"The first year found in the text is: {first_year}")
+most_common_year, first_year = find_most_common_year(text, current_year)
+print(f"The most common year in the text is: {most_common_year}")
+print(f"The first year found in the text is: {first_year}")
 
 
 def find_towns(text, target_phrases):
@@ -178,7 +181,7 @@ print(hazard_counts)
 print(hazard_pcts)
 
 ### generate table of hazard frequencies for this pdf
-town_name = "Revere"
+town_name = "Chelsea"
 total_words = len(text.split())
 total_pages = len(page_text)
 print(total_words, total_pages)
@@ -228,7 +231,7 @@ def clean_text(text):
 #https://bushare.sharepoint.com/:x:/r/sites/GRP-SPH-EH-ACRES/_layouts/15/doc2.aspx?sourcedoc=%7BC532C339-9BAA-42AA-87C3-C4451B03CB09%7D&file=DRAFT_ACRES%20Aim%201%20Community%20Concerns.xlsx&action=default&mobileredirect=true
 
 
-
+#TODO: make singular
 outreach_strat = { #probably fine
 #https://intosaijournal.org/journal-entry/inform-consult-involve-collaborate-empower/
     "involve": ("involve", "roundtable", "workshops","focus groups","community forums","town hall meetings",

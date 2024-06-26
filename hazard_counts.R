@@ -26,12 +26,13 @@ revere2 <- create_df("revere2.tsv")
 revere6 <- create_df("revere6.tsv")
 everett2 <- create_df("everett2.tsv")
 everett5 <- create_df("everett5.tsv")
+chelsea <- create_df("chelsea.tsv")
 
-combined_table <- rbind(somerville, somerville5, revere2, revere6,
+combined_table2 <- rbind(somerville, somerville5, revere2, revere6,
                         everett2, everett5)
 
 combined_table <- rbind(somerville, revere2,
-                        everett2)
+                        everett2, chelsea)
 combined_table <- combined_table %>% clean_names()
 combined_table$town_name <- toupper(combined_table$town_name)
 
@@ -49,7 +50,7 @@ hazard_data <-  combined_table %>%
 
 #### load in and filter town polygons ####
 
-towns_to_include <- c("REVERE", "SOMERVILLE", "EVERETT")
+towns_to_include <- c("REVERE", "SOMERVILLE", "EVERETT", "CHELSEA")
 
 #adjust based on your computer
 sf_url <- "/Users/allisonjames/Library/CloudStorage/OneDrive-BostonUniversity/02_Blackouts/Viz/towns_fixed.shp"
@@ -112,8 +113,8 @@ add_pie <- function(town_data, town_name){
     ggtitle(town_name) + 
     theme(plot.title = element_text(hjust = 0.5, vjust = -2)) +
     theme(legend.position = "none") +
-    scale_fill_manual(name = "Hazard Type", labels = labels,
-                      values = rainbow(length(labels)))
+    scale_fill_brewer(name = "Hazard Type", labels = labels,
+                      palette = "Set2")
   
   return(pie)
   
@@ -139,8 +140,8 @@ legend_pie <- ggplot(hazard_data, aes(x = "", y = proportion, fill = hazard_type
   coord_polar("y", start = 0) +
   theme_void() +
   theme(legend.position = "bottom") +
-  scale_fill_manual(name = "Hazard Type", labels = labels,
-                    values = rainbow(length(labels)))
+  scale_fill_brewer(name = "Hazard Type", labels = labels, 
+                    palette = "Set2")
 
 #duplicate the base map before adding new elements to it
 base_map2 <- base_map
@@ -174,9 +175,9 @@ grid.draw(arrangeGrob(base_map2, legend, ncol = 1, heights = c(9, 1)))
 
 
 # todo:
-#   qualitative scan of the relevant lit
-#   correlation matrix between categories (document-term matrix)
-    # text broken into separate pages
+
 #   keep code tidy
-
-
+#  change palette of pie charts (qual)
+# download that other somerville pdf
+# scrape just the top ~10 for each town (and rename where appropriate)
+# table (columns are pdf's, rows are percentages by hazard)
