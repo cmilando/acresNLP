@@ -1,0 +1,42 @@
+## A real basic outreach strategy search (we'll see what we get!)
+
+outreach_strat = { 
+    "involve": ("involve"),
+    "collaborate": ("collaborate","collaboration"),
+    "inform": ("inform"),
+    "consult": ("consult", "consultation") 
+}
+
+
+## A more general approach to documenting community engagement
+
+community_engagement_1 = {
+	"workshop" = {"workshop", "workshops"},
+	"mapping" = {"community mapping", "participatory mapping"},
+	"focus_group" = {"focus group"},
+	"interview" = {"interview"},
+	"survey" = {"survey", "opinion poll", "poll", "questionnaire"},
+	"community_meeting" = {"town hall", "forum", "public hearing"},
+	"small_group_meeting" = {"roundtable", "round table","working group", "work group", "feedback session", "listening session"},
+	"information" = {"report distribution", "share report"}
+	}
+
+## A more granular approach
+	
+community_engagement_2 = {
+	"workshop" = {"workshop", "workshops"},
+	"mapping" = {"community mapping", "participatory mapping"},
+	"focus_group" = {"focus group"},
+	"interview" = {"interview"},
+	"survey" = {"survey", "opinion poll", "poll", "questionnaire"},
+	"town_hall" = {"town hall"},
+	"forum" = {"forum"},
+	"public_hearing" = {"public hearing", "community hearing"},
+	"community_meeting" = {"community meeting", "public meeting"}
+	"roundtable" = {"roundtable", "round table"},
+	"working_group" = {"working group", "work group"},
+	"feedback_session" = {"feedback session"},
+	"listening_session" = {"listening session"}
+	"information" = {"report distribution", "share report"}
+	}
+	
