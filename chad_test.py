@@ -231,8 +231,8 @@ def clean_text(text):
 #https://bushare.sharepoint.com/:x:/r/sites/GRP-SPH-EH-ACRES/_layouts/15/doc2.aspx?sourcedoc=%7BC532C339-9BAA-42AA-87C3-C4451B03CB09%7D&file=DRAFT_ACRES%20Aim%201%20Community%20Concerns.xlsx&action=default&mobileredirect=true
 
 
-#TODO: make singular
-outreach_strat = { #probably fine
+# create more specific categories based on individual terms (roundtable, focus groups, etc.)
+outreach_strat = { 
 #https://intosaijournal.org/journal-entry/inform-consult-involve-collaborate-empower/
     "involve": ("involve", "roundtable", "workshops","focus groups","community forums","town hall meetings",
                 "participatory planning", "stakeholder engagement", "community-driven","engagement sessions", 
@@ -251,31 +251,27 @@ outreach_strat = { #probably fine
 outreach_counts = count_keyword_occurrences(text, outreach_strat)
 #print(outreach_counts)
 
-rep_perspectives = {  #needs human edits
-    "city gov": ("government", "municipal policies", "urban development", "public services", "city planning", "infrastructure", 
-        "zoning laws", "local government", "civic engagement", "public safety", "transportation policies", 
-        "regulatory frameworks", "city council", "municipal budget", "public welfare"),
-    "nonprofits": ("nonprofit", "social services", "advocacy", "community outreach", "charitable activities", "fundraising", 
-        "volunteer programs", "NGO", "humanitarian efforts", "non-profit organizations", "civil society", 
-        "social justice", "community development", "grants"),
-    "businesses": ("business","corporate responsibility", "industry standards", "business development", "sustainability practices", 
-        "private sector", "innovation", "entrepreneurship", "corporate partnerships", "economic growth", 
-        "small businesses", "market trends", "commerce", "consumer demand"),
-    "climate expert": ("expert", "climate change", "global warming", "carbon emissions", "sustainability", "environmental impact", 
-        "renewable energy", "climate policy", "mitigation strategies", "adaptation", "eco-friendly", 
-        "green technology", "biodiversity", "conservation"),
-    "academic/research": ("academic", "research", "scholarly articles", "research findings", "academic journals", "studies", "data analysis", 
-        "theoretical frameworks", "educational institutions", "research grants", "scientific inquiry", 
-        "experimental results", "peer review", "academic conferences"),
-    "health": ("public health", "healthcare services", "medical research", "disease prevention", "health education", 
-        "patient care", "healthcare policy", "wellness", "mental health", "epidemiology", "health disparities", 
-        "health systems", "medical ethics"),
-    "community members": ("community member", "residents", "local issues", "community needs", "public opinion", "grassroots", "neighborhood associations", 
-        "local culture", "community engagement", "citizen feedback", "town hall", "community events", "public forums", 
-        "resident concerns")
-}
+# rep_perspectives = {  #needs human edits
+#     "city gov": ("government", "municipal", "city of"),
+#     "nonprofits": ("nonprofit", "charity", "fundraising", "volunteer programs", "NGO", "humanitarian efforts", "non-profit organizations"),
+#     "businesses": ("business","corporate responsibility", "industry standards", "business development", "sustainability practices", 
+#         "private sector", "innovation", "entrepreneurship", "corporate partnerships", "economic growth", 
+#         "small businesses", "market trends", "commerce", "consumer demand"),
+#     "climate expert": ("expert", "climate change", "global warming", "carbon emissions", "sustainability", "environmental impact", 
+#         "renewable energy", "climate policy", "mitigation strategies", "adaptation", "eco-friendly", 
+#         "green technology", "biodiversity", "conservation"),
+#     "academic/research": ("academic", "research", "scholarly articles", "research findings", "academic journals", "studies", "data analysis", 
+#         "theoretical frameworks", "educational institutions", "research grants", "scientific inquiry", 
+#         "experimental results", "peer review", "academic conferences"),
+#     "health": ("public health", "healthcare services", "medical research", "disease prevention", "health education", 
+#         "patient care", "healthcare policy", "wellness", "mental health", "epidemiology", "health disparities", 
+#         "health systems", "medical ethics"),
+#     "community members": ("community member", "residents", "local issues", "community needs", "public opinion", "grassroots", "neighborhood associations", 
+#         "local culture", "community engagement", "citizen feedback", "town hall", "community events", "public forums", 
+#         "resident concerns")
+# }
 
-perspective_counts = count_keyword_occurrences(text, rep_perspectives)
+# perspective_counts = count_keyword_occurrences(text, rep_perspectives)
 #print(perspective_counts)
 
 
@@ -310,18 +306,3 @@ def count_proper_nouns(text):
 # print(proper_noun_table)
 
 
-# the somerville one mainly accurate - focused on flooding and precipitation/storm
-# could use a bit more heat-related terms
-# mention water pollution a lot more than air pollution
-# mentions pm2.5 as not being a concern due to improved regulations
-#chunk for air pollution is from a paragraph about ozone
-
-#revere also mainly accurate - though could use more extreme precipitaiton language
-# mostly discusses flood, but more types of storms than somerville
-# same with everett
-
-#aim 2 mentioned that communities are in interested in inland flooding- make sure included
-
-#TODO: add these to dictionary and re-run code in R
-#add plural/multiple forms etc
-#brainstorm 

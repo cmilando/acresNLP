@@ -107,7 +107,8 @@ add_pie <- function(town_data, town_name){
   #the pie charts are bar charts made circular with polar coordinaites
   pie <- town_data %>% 
     ggplot(aes(x = "", y = proportion, fill = hazard_type)) + 
-    geom_bar(stat = "identity", aes(width = 0.3)) + 
+    geom_bar(stat = "identity", width = 0.3,
+             color = "black") + 
     coord_polar("y", start = 0) +
     theme_void() + 
     ggtitle(town_name) + 
@@ -178,6 +179,7 @@ grid.draw(arrangeGrob(base_map2, legend, ncol = 1, heights = c(9, 1)))
 
 #   keep code tidy
 #  change palette of pie charts (qual)
-# download that other somerville pdf
 # scrape just the top ~10 for each town (and rename where appropriate)
 # table (columns are pdf's, rows are percentages by hazard)
+# experiment with ggrepel or manual adjustments
+# fix legend...

@@ -22,7 +22,7 @@ def extract_text_and_combine(pdf):
     combined_text = combined_text.replace('\n', ' ')
     return combined_text, pages_text
 
-town_name = "everetturl6"
+town_names = "somervilleurl"
 file_prefix = "/Users/allisonjames/Desktop/bu/acresNLP/scraped_plans/"
 # def process_pdf_from_url(url):
 #     response = requests.get(url)
@@ -46,7 +46,7 @@ file_prefix = "/Users/allisonjames/Desktop/bu/acresNLP/scraped_plans/"
 #     else:
 #         print(f"Failed to download the PDF. Status code: {response.status_code}")
 
-def process_pdf_from_url(url):
+def process_pdf_from_url(url, town_name):
 
     # create request object
     req = urllib.request.Request(url)
@@ -89,5 +89,24 @@ def process_pdf_from_url(url):
 
 
 
-url = "https://www.mapc.org/wp-content/uploads/2019/04/FINAL-Chelsea-MVP-Report.6.26.18.pdf"
-process_pdf_from_url(url)
+url_list = ["https://www.somervillema.gov/sites/default/files/6-13-2017_Somerville%20CCVA%20Final%20Report.pdf", 
+            "https://www.umb.edu/media/umassboston/content-assets/documents/Report-Learning-From-MVP-Greater-Boston-2022-05-24.pdf", 
+            "https://www.cambridgema.gov/-/media/Files/CDD/Climate/vulnerabilityassessment/finalreport_ccvapart2_mar2017_final2_web.pdf",
+            "https://secondnature.org/wp-content/uploads/Tufts-Summary-of-Findings.pdf",
+            "https://s3.amazonaws.com/somervillema-live/s3fs-public/somerville-climate-forward-plan.pdf",
+            "http://www.somervision2040.com/wp-content/uploads/sites/3/2020/01/SomerVision.pdf",
+            "https://noharm-uscanada.org/sites/default/files/Resilience%202.0%20Boston%20-%20Healthcare%27s%20Role%20in%20Anchoring%20Community%20Resilience.pdf",
+            "http://www.somervision2040.com/wp-content/uploads/sites/3/2021/10/SomerVision-2040-Adopted.pdf",
+            "https://cms5.revize.com/revize/chelseama/Document_Center/Departments/Housing%20&%20Community%20Development/Environment%20and%20Climate%20Resilience/North%20Suffolk%20Office%20of%20Resilience%20and%20Sustainability/chelsea_hazard_mitigation_plan_2022_update_-_adopted_07-08-22.pdf",
+            "https://www.antioch.edu/wp-content/uploads/2018/12/Moser_CV_Nov2020.pdf"]
+
+
+
+## create list of url's to iterate through
+for u in url_list:
+    town_name = town_names + str(url_list.index(u)+1)
+    process_pdf_from_url(u, town_name)
+    
+
+
+# make sure pdf's saved too
