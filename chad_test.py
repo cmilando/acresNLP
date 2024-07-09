@@ -10,26 +10,32 @@ import os
 # from nltk.stem import PorterStemmer, WordNetLemmatizer
 # import spellchecker
 
-file_name = "/Users/allisonjames/Desktop/blackout/NLP/chelsea.json"
-
-def load_json_file(filepath):
-    with open(filepath, 'r') as file:
-        data = json.load(file)
-    return data
-
-data = load_json_file(file_name)
-text = data['ALL TEXT']
-page_text = data['TEXT BY PAGE'] #also include text per page
-
-
-#find occurrence of specfic word - most frequent is likely town name (move)
+## MODIFY ACCORDINGLY
+file_path = "/Users/allisonjames/Desktop/bu/acresNLP"
+file_name = "everetturl1"
+town_name = "Everett"
+current_year = 2024
+# used to find occurrence of towns - most frequent is likely the relevant town 
 mystic_towns_list = ["Burlington", "Lexington", "Belmont", "Watertown",
                      "Arlington", "Winchester", "Woburn", "Reading",
                      "Stoneham", "Medford", "Somerville", "Cambridge",
                      "Boston", "Charlestown", "Everett", "Malden", "Melrose",
                      "Wakefield", "Chelsea", "Revere", "Winthrop", "Wilmington"]
 
-current_year = 2024
+
+
+
+# load in a file created by scrape_from_url.py
+def load_json_file(filepath):
+    with open(filepath, 'r') as file:
+        data = json.load(file)
+    return data
+
+data = load_json_file(file_path + "/scraped_plans/" + file_name + ".json")
+text = data['ALL TEXT']
+page_text = data['TEXT BY PAGE'] #also include text per page
+
+
 
 def find_most_common_year(text, current_year):
     """
@@ -51,7 +57,6 @@ def find_most_common_year(text, current_year):
     if not valid_years:
         return None, None
     
-    # Use a Counter to find the most common year
     year_counts = Counter(valid_years)
     most_common_year = year_counts.most_common(1)[0][0]
     first_year = years[0]
@@ -75,10 +80,9 @@ def find_towns(text, target_phrases):
     dict: A dictionary with keys 'before' and 'after' containing the most common words
           found before and after the target phrases, respectively.
     """
-    # Combine the phrases into one pattern with word boundaries
+    # creates a pattern of a word before or afer the target phrases
     pattern = r'\b(\w+)\s+(' + '|'.join(map(re.escape, target_phrases)) + r')\s+(\w+)\b'
     
-    # Find all matches
     matches = re.findall(pattern, text, re.IGNORECASE)
     
     if not matches:
@@ -88,7 +92,6 @@ def find_towns(text, target_phrases):
     before_words = [match[0] for match in matches]
     after_words = [match[2] for match in matches]
     
-    # Count occurrences
     most_common_before = Counter(before_words).most_common(1)[0][0] if before_words else None
     most_common_after = Counter(after_words).most_common(1)[0][0] if after_words else None
     
@@ -116,13 +119,11 @@ def find_most_common_town(text, towns_list):
     # Create a regex pattern to find any of the town names, ensuring case-insensitive matching
     pattern = r'\b(' + '|'.join(map(re.escape, towns_list)) + r')\b'
     
-    # Find all matches using re.IGNORECASE to make the search case-insensitive
     matches = re.findall(pattern, text, re.IGNORECASE)
     
     if not matches:
         return None
     
-    # Count occurrences of each town name
     town_counts = Counter(matches)
     most_common_town = town_counts.most_common(1)[0][0]
     
@@ -172,6 +173,28 @@ def count_keyword_occurrences(text, categories):
 
     return category_counts, category_pcts
 
+steering_phrases = ["steering committee", "advisory committee", "planning council"]
+
+def steering_committee_pages(pages_text, phrases):
+    # Initialize a dictionary to store pages with "steering committee" or "advisory committee"
+    pages_with_phrases = {}
+
+    for i, p_t in enumerate(pages_text):
+        if any(phrase.lower() in p_t.lower() for phrase in phrases):
+            print(f"Phrase found on page {i+1}")
+            pages_with_phrases[i+1] = p_t
+    
+    return pages_with_phrases
+
+steering_pages = steering_committee_pages(page_text, steering_phrases)
+steering_path = file_path + "/committee_pages/" + file_name + ".json"
+with open(steering_path, 'w') as json_file:
+    json.dump(steering_pages, json_file, ensure_ascii=False, indent=4)
+    print(f"Data has been written to {steering_path}")
+
+
+### generate table of hazard frequencies for this pdf
+
 with open('/Users/allisonjames/Desktop/bu/acresNLP/hazards.json', 'r') as file:
     hazard_data = json.load(file)
     
@@ -180,8 +203,7 @@ hazard_counts, hazard_pcts = count_keyword_occurrences(text, hazard_data)
 print(hazard_counts)
 print(hazard_pcts)
 
-### generate table of hazard frequencies for this pdf
-town_name = "Chelsea"
+
 total_words = len(text.split())
 total_pages = len(page_text)
 print(total_words, total_pages)
@@ -193,62 +215,67 @@ data = [town_name, total_words, total_pages] + [hazard_counts[cat] for cat in ha
 tsv_output = "\t".join(headers) + "\n" + "\t".join(map(str, data))
 
 print(file)
-file_prefix = os.path.splitext(file_name)[0]
-output_file = file_prefix + ".tsv"
-# with open(output_file, 'w') as f:
-#     f.write(tsv_output)
-# print(f"TSV output has been saved to {output_file}")
+output_file = file_path + "/hazard_tables/" + file_name + ".tsv"
+with open(output_file, 'w') as f:
+    f.write(tsv_output)
+print(f"TSV output has been saved to {output_file}")
 
 
 
-def clean_text(text):
-    
-    #tokenize text
-    tokens = word_tokenize(text)
-    
-    #lowercase
-    tokens = [token.lower() for token in tokens]
+## do the same for outreach strategies
 
-    #remove N/A
+#https://intosaijournal.org/journal-entry/inform-consult-involve-collaborate-empower/
 
-    #remove special characters and numbers
-    tokens = [re.sub(r'[^a-zA-Z]', '', token) for token in tokens if token.isalpha()]
-    
+with open('/Users/allisonjames/Desktop/bu/acresNLP/outreach.json', 'r') as file:
+    outreach_data = json.load(file)
+
+outreach_counts, outreach_pcts = count_keyword_occurrences(text, outreach_data)
+print(outreach_counts)
+print(outreach_pcts)
+
+outr_headers = ["Town Name", "Total Words", "Total Pages"] + [f"{cat} Count" for cat in outreach_data.keys()] + [f"{cat} %" for cat in outreach_data.keys()]
+outr_data = [town_name, total_words, total_pages] + [outreach_counts[cat] for cat in outreach_data.keys()] + [outreach_pcts[cat] for cat in outreach_data.keys()]
+
+outr_output = "\t".join(outr_headers) + "\n" + "\t".join(map(str, outr_data))
+
+print(file)
+output_file = file_path + "/outreach_tables/" + file_name + ".tsv"
+with open(output_file, 'w') as f:
+    f.write(outr_output)
+print(f"TSV output has been saved to {output_file}")
 
 
-    #remove stop words
-    # stop_words = set(stopwords.words('english'))
-    # tokens = [token for token in tokens if token not in stop_words]
-
-    cleaned_text = ' '.join(tokens)
-    return(cleaned_text)
 
 
-# cleaned_text = clean_text(text)
-# print(cleaned_text)
+
+
+
+
+###############################################################
+
 
 
 #https://bushare.sharepoint.com/:x:/r/sites/GRP-SPH-EH-ACRES/_layouts/15/doc2.aspx?sourcedoc=%7BC532C339-9BAA-42AA-87C3-C4451B03CB09%7D&file=DRAFT_ACRES%20Aim%201%20Community%20Concerns.xlsx&action=default&mobileredirect=true
 
 
 # create more specific categories based on individual terms (roundtable, focus groups, etc.)
-outreach_strat = { 
-#https://intosaijournal.org/journal-entry/inform-consult-involve-collaborate-empower/
-    "involve": ("involve", "roundtable", "workshops","focus groups","community forums","town hall meetings",
-                "participatory planning", "stakeholder engagement", "community-driven","engagement sessions", 
-                "volunteer involvement"),
-    "collaborate": ("collaborate", "partnerships","joint initiatives","coalition building","community partnerships",
-                    "multi-stakeholder collaboration","collaborative efforts","public-private partnerships",
-                    "cooperative projects","interagency cooperation","cross-sector collaboration"),
-    "inform": ("inform", "public awareness campaigns","educational seminars", "newsletters","press releases",
-               "information sessions","community briefings","public announcements","social media updates",
-               "fact sheets","awareness raising"),
-    "consult": ("public consultations", "feedback sessions", "community surveys", "public hearings",
-                "opinion polling","consultative meetings","focus group discussions","stakeholder interviews",
-                "community input","advisory boards")
-}
+# outreach_strat = { 
 
-outreach_counts = count_keyword_occurrences(text, outreach_strat)
+#     "involve": ("involve", "roundtable", "workshops","focus groups","community forums","town hall meetings",
+#                 "participatory planning", "stakeholder engagement", "community-driven","engagement sessions", 
+#                 "volunteer involvement"),
+#     "collaborate": ("collaborate", "partnerships","joint initiatives","coalition building","community partnerships",
+#                     "multi-stakeholder collaboration","collaborative efforts","public-private partnerships",
+#                     "cooperative projects","interagency cooperation","cross-sector collaboration"),
+#     "inform": ("inform", "public awareness campaigns","educational seminars", "newsletters","press releases",
+#                "information sessions","community briefings","public announcements","social media updates",
+#                "fact sheets","awareness raising"),
+#     "consult": ("public consultations", "feedback sessions", "community surveys", "public hearings",
+#                 "opinion polling","consultative meetings","focus group discussions","stakeholder interviews",
+#                 "community input","advisory boards")
+# }
+
+
 #print(outreach_counts)
 
 # rep_perspectives = {  #needs human edits
