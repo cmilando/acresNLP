@@ -37,6 +37,8 @@ page_text = data['TEXT BY PAGE'] #also include text per page
 
 
 
+##### only find 4-years with nothing in front/after ####
+
 def find_most_common_year(text, current_year):
     """
     Finds all four-digit numbers in the given text, assumes they are years,
@@ -52,7 +54,7 @@ def find_most_common_year(text, current_year):
     years = re.findall(r'\b\d{4}\b', text)
     
     # Filter out years that are in the future
-    valid_years = [int(year) for year in years if int(year) <= current_year]
+    valid_years = [int(year) for year in years if 1900 <= int(year) <= current_year] ###### after 1900 #####
     
     if not valid_years:
         return None, None
@@ -194,6 +196,10 @@ with open(steering_path, 'w') as json_file:
 
 
 ### generate table of hazard frequencies for this pdf
+###### also account for chars before and after #####
+#list of words that begin w/ hazards, edit list manually (this new script - take multiple pdf's)
+#can find old links/pdf's with wayback machine
+
 
 with open('/Users/allisonjames/Desktop/bu/acresNLP/hazards.json', 'r') as file:
     hazard_data = json.load(file)
@@ -226,6 +232,11 @@ print(f"TSV output has been saved to {output_file}")
 
 #https://intosaijournal.org/journal-entry/inform-consult-involve-collaborate-empower/
 
+
+
+###### also account for spaces before and after #####
+
+
 with open('/Users/allisonjames/Desktop/bu/acresNLP/outreach.json', 'r') as file:
     outreach_data = json.load(file)
 
@@ -243,8 +254,6 @@ output_file = file_path + "/outreach_tables/" + file_name + ".tsv"
 with open(output_file, 'w') as f:
     f.write(outr_output)
 print(f"TSV output has been saved to {output_file}")
-
-
 
 
 

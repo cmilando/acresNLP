@@ -22,6 +22,9 @@ def extract_text_and_combine(pdf):
     combined_text = combined_text.replace('\n', ' ')
     return combined_text, pages_text
 
+### save pdf's also ###
+
+
 town_names = "somervilleurl"
 file_prefix = "/Users/allisonjames/Desktop/bu/acresNLP/scraped_plans/"
 # def process_pdf_from_url(url):
