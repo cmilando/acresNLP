@@ -65,8 +65,14 @@ def process_pdf_from_url(url, town_name):
         response = urllib.request.urlopen(req)
         pdf_content = response.read()
 
-        # open pdf with pdfplumber
+        # open pdf with pdfplumber and store it in the repository
         pdf = pdfplumber.open(BytesIO(pdf_content))
+        pdf_path = file_prefix + "pdfs/"
+
+        #check if it exists first - if not, then add it
+        with open(pdf, 'wb') as pdf_file:
+            pdf_file.write(pdf_content)
+        print(f"PDF has been saved to {pdf_path}")
 
         #scrape text
         text, pages_text = extract_text_and_combine(pdf)
