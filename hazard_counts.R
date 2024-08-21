@@ -11,7 +11,7 @@ library(gridExtra)
 #### create dataframe of hazard counts and proportions by town ####
 
 #adjust based on your computer
-my_dir <- "/Users/allisonjames/Desktop/blackout/NLP"
+my_dir <- "/Users/allisonjames/Desktop/bu/acresNLP"
 setwd(my_dir)
 
 create_df <- function(filename){
@@ -20,13 +20,111 @@ create_df <- function(filename){
 }
 
 
-somerville <- create_df("somerville.tsv")
-somerville5 <- create_df("somerville5.tsv")
-revere2 <- create_df("revere2.tsv")
-revere6 <- create_df("revere6.tsv")
-everett2 <- create_df("everett2.tsv")
-everett5 <- create_df("everett5.tsv")
-chelsea <- create_df("chelsea.tsv")
+# somerville <- create_df("somerville.tsv")
+# somerville5 <- create_df("somerville5.tsv")
+# revere2 <- create_df("revere2.tsv")
+# revere6 <- create_df("revere6.tsv")
+# everett2 <- create_df("everett2.tsv")
+# everett5 <- create_df("everett5.tsv")
+# chelsea <- create_df("chelsea.tsv")
+
+combined_table <- create_df("combined_output.tsv")
+
+filetotown <- data.frame(town = c("Everett",
+                                  "Everett",
+                                  "Everett",
+                                  "Everett",
+                                  "Everett",
+                                  "Everett",
+                                  "Everett",
+                                  "Everett",
+                                  "Everett",
+                                  "Everett",
+                                  "Revere",
+                                  "Revere",
+                                  "Revere",
+                                  "Revere",
+                                  "Revere",
+                                  "Revere",
+                                  "Revere",
+                                  "Revere",
+                                  "Somerville",
+                                  "Somerville",
+                                  "Somerville",
+                                  "Somerville",
+                                  "Somerville",
+                                  "Somerville",
+                                  "Somerville",
+                                  "Somerville",
+                                  "Somerville"),
+                         filename = c("everetturl1.json",
+                                      "everetturl2.json",
+                                      "everetturl3.json",
+                                      "everetturl4.json",
+                                      "everetturl5.json",
+                                      "everetturl6.json",
+                                      "everetturl7.json",
+                                      "everetturl8.json",
+                                      "everetturl9.json",
+                                      "everetturl10.json",
+                                      "revereurl1.json",
+                                      "revereurl2.json",
+                                      "revereurl3.json",
+                                      "revereurl4.json",
+                                      "revereurl7.json",
+                                      "revereurl8.json",
+                                      "revereurl9.json",
+                                      "revereurl10.json",
+                                      "somervilleurl1.json",
+                                      "somervilleurl2.json",
+                                      "somervilleurl3.json",
+                                      "somervilleurl4.json",
+                                      "somervilleurl5.json",
+                                      "somervilleurl6.json",
+                                      "somervilleurl7.json",
+                                      "somervilleurl8.json",
+                                      "somervilleurl9.json"))
+
+combined_table <- combined_table %>% left_join(
+  filetotown,
+  join_by(`File Name` == filename)
+)
+
+
+combined_table <- combined_table %>% clean_names()
+
+
+hazard_by_town <- combined_table %>% 
+  group_by(town) %>% 
+  summarize(flood_avg = mean(flood_percent),
+            storm_avg = mean(storm_percent),
+            heat_avg = mean(heat_percent),
+            air_pollution_avg = mean(air_pollution_percent),
+            indoor_air_avg = mean(indoor_air_quality_percent),
+            chem_hazard_avg = mean(chemical_hazards_percent),
+            extreme_precip_avg = mean(extreme_precipitation_percent),
+            fire_avg = mean(fire_percent)
+  )
+
+
+
+hazard_by_town %>% 
+  pivot_longer(cols = flood_avg:fire_avg) %>% 
+  ggplot(aes(x = name,
+             y = value,
+             fill = town)) + 
+  geom_col(position = "dodge")+
+  stat_summary(geom = "errorbar", fun.data = mean_se, position = "dodge")
+
+
+#add sd bars
+#do same thing with outreach types
+
+
+
+
+
+
 
 combined_table2 <- rbind(somerville, somerville5, revere2, revere6,
                         everett2, everett5)
