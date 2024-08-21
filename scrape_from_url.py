@@ -25,7 +25,7 @@ def extract_text_and_combine(pdf):
 ### save pdf's also ###
 
 ## REPLACE THIS with the town + "url" that 
-town_names = "cambridgeurl"
+town_names = "medfordurl"
 
 #replace this with the folder that is linked to the github repo.
 folder_path = "/Users/allisonjames/Desktop/bu/acresNLP/"
@@ -100,16 +100,16 @@ with open(folder_path + 'url_lists/' + town_names + '_list' + '.json', 'r') as f
 
 
 ## create list of url's to iterate through
-for u in url_list:
-    town_name = town_names + str(url_list.index(u)+1)
-    process_pdf_from_url(u, town_name)
+# for u in url_list:
+#     town_name = town_names + str(url_list.index(u)+1)
+#     process_pdf_from_url(u, town_name)
     
 
 
 #if there is an error for a PDF throughout and the code stops, you can resume using this chunk.
 #use the index of the PDF that failed (since Python indexing starts at 0)
-# for i in range(73, len(url_list)):
-#     town_name = town_names + str(i + 1)
-#     process_pdf_from_url(url_list[i], town_name)
+for i in range(20, len(url_list)):
+    town_name = town_names + str(i + 1)
+    process_pdf_from_url(url_list[i], town_name)
 
 # make sure pdf's saved too
