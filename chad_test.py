@@ -22,8 +22,9 @@ mystic_towns_list = ["Burlington", "Lexington", "Belmont", "Watertown",
                      "Boston", "Charlestown", "Everett", "Malden", "Melrose",
                      "Wakefield", "Chelsea", "Revere", "Winthrop", "Wilmington"]
 
-
-
+#adjust for the path for where you have the json files
+json_file_path = "/Users/allisonjames/Desktop/bu/acresNLP/scraped_plans/"
+file_path = "/Users/allisonjames/Desktop/bu/acresNLP/"
 
 # load in a file created by scrape_from_url.py
 def load_json_file(filepath):
@@ -63,7 +64,7 @@ def find_most_common_year(text, current_year):
     most_common_year = year_counts.most_common(1)[0][0]
     first_year = years[0]
     
-    return (most_common_year, first_year)
+    return (most_common_year)
 
 # most_common_year, first_year = find_most_common_year(text, current_year)
 # print(f"The most common year in the text is: {most_common_year}")
@@ -134,6 +135,45 @@ def find_most_common_town(text, towns_list):
 
 #most_common_town = find_most_common_town(text, mystic_towns_list)
 #print(f"The most common town in the text is: {most_common_town}")
+
+
+
+def check_relevance(page_text):
+    """
+    Checks if the text is relevant by searching for the presence of 
+    'Massachusetts' and either 'climate' or 'report' within the first 3 pages.
+
+    Args:
+    text (str): The text to search for relevance.
+
+    Returns:
+    int: 1 if the text is relevant, 0 otherwise.
+    """
+
+    first_5_pages_text = " ".join(page_text[:3])
+
+    if re.search(r'massachusetts', first_5_pages_text, re.IGNORECASE) and re.search(r'climate|report|plan', first_5_pages_text, re.IGNORECASE):
+        print(1)
+        return 1
+    else:
+        return 0
+
+
+def ma_url(url):
+    """
+    Checks if the URL contains '.ma', indicating it is a Massachusetts government document.
+
+    Args:
+    url (str): The URL to check.
+
+    Returns:
+    int: 1 if the URL contains '.ma', 0 otherwise.
+    """
+    if ".ma" in url.lower():
+        print("MA url")
+        return 1
+    else:
+        return 0
 
 
 #compare frequency of keys, not values (so sum up the frequency of keys and iterature through values in category)
@@ -287,13 +327,18 @@ def count_keyword_occurrences(text, categories, strict):
 
 
 
+### add # times target town is referenced ###
 
-def process_file(file_path, file_name, hazard_data, engage_data):
+
+def process_file(json_file_path, file_name, hazard_data, engage_data):
     
     #grab chunk of text from json file
-    data = load_json_file(file_path + "/scraped_plans/" + file_name)
+    data = load_json_file(json_file_path + file_name)
+    print(f'Adding data for {file_name}')
+
     text = data['ALL TEXT']
     page_text = data['TEXT BY PAGE']
+    url = data['FILE_NAME']
     total_words = len(text.split())
     total_pages = len(page_text)
     
@@ -303,40 +348,38 @@ def process_file(file_path, file_name, hazard_data, engage_data):
     #grab most common year
     most_common_year = find_most_common_year(text, current_year)
 
+    #check relevance
+    is_ma_url = ma_url(url)
+    is_relevant = check_relevance(page_text)
+
     # create the hazard and community engagement tables (with counts and percentages)
     hazard_counts, hazard_pcts = count_keyword_occurrences(text, hazard_data, False)
     engage_counts, engage_pcts = count_keyword_occurrences(text, engage_data, True)
 
     #create the headers
-    headers = ["File Name", "Most Common Town", "Most Mentioned Year", "Total Words", "Total Pages"]
+    headers = ["File Name", "URL", "Most Common Town", "Most Mentioned Year", "MA URL", "Relevant", "Total Words", "Total Pages"]
     headers += [f"{cat} Count" for cat in hazard_data.keys()] + [f"{cat} %" for cat in hazard_data.keys()]
     headers += [f"{cat} Count" for cat in engage_data.keys()] + [f"{cat} %" for cat in engage_data.keys()]
     
     #add the tables' data
-    data = [file_name, most_common_town, most_common_year, total_words, total_pages]
+    data = [file_name, url, most_common_town, most_common_year, is_ma_url, is_relevant, total_words, total_pages]
     data += [hazard_counts[cat] for cat in hazard_data.keys()] + [hazard_pcts[cat] for cat in hazard_data.keys()]
     data += [engage_counts[cat] for cat in engage_data.keys()] + [engage_pcts[cat] for cat in engage_data.keys()]
 
     return headers, data
 
     
+## adjust this for your computer
 
-file_path = "/Users/allisonjames/Desktop/bu/acresNLP"
-file_names = file_names = [
-    "everetturl1.json", "everetturl2.json", "everetturl3.json", "everetturl4.json", 
-    "everetturl5.json", "everetturl6.json", "everetturl7.json", "everetturl8.json", 
-    "everetturl9.json", "everetturl10.json", "revereurl1.json", "revereurl2.json", 
-    "revereurl3.json", "revereurl4.json", "revereurl7.json", "revereurl8.json", 
-    "revereurl9.json", "revereurl10.json", "somervilleurl1.json", "somervilleurl2.json", 
-    "somervilleurl3.json", "somervilleurl4.json", "somervilleurl5.json", "somervilleurl6.json", 
-    "somervilleurl7.json", "somervilleurl8.json", "somervilleurl9.json"
-]
+file_names = [file for file in os.listdir(json_file_path) if file.endswith('.json')]
+file_names = sorted(file_names)
+print(file_names)
 
 
-with open(file_path + '/hazards.json', 'r') as file:
+with open(file_path + 'hazards.json', 'r') as file:
     hazard_data = json.load(file)
 
-with open(file_path + '/community_engagement_1.json', 'r') as file:
+with open(file_path + 'community_engagement_1.json', 'r') as file:
     engage_data = json.load(file)
 
 
@@ -346,14 +389,14 @@ all_data = []
 
 
 for file_name in file_names:
-    headers, data = process_file(file_path, file_name, hazard_data, engage_data)
+    headers, data = process_file(json_file_path, file_name, hazard_data, engage_data)
     if all_headers is None:
         all_headers = headers
     all_data.append(data)
 
 # Save the combined results into a single TSV file
 combined_output = "\t".join(all_headers) + "\n" + "\n".join("\t".join(map(str, row)) for row in all_data)
-output_file = file_path + "/combined_output.tsv"
+output_file = file_path + "combined_output1.tsv"
 with open(output_file, 'w') as f:
     f.write(combined_output)
 print(f"Combined TSV output has been saved to {output_file}")

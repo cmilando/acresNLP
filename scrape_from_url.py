@@ -25,7 +25,7 @@ def extract_text_and_combine(pdf):
 ### save pdf's also ###
 
 ## REPLACE THIS with the town + "url" that 
-town_names = "medfordurl"
+town_names = "belmonturl"
 
 #replace this with the folder that is linked to the github repo.
 folder_path = "/Users/allisonjames/Desktop/bu/acresNLP/"
@@ -111,5 +111,7 @@ with open(folder_path + 'url_lists/' + town_names + '_list' + '.json', 'r') as f
 for i in range(20, len(url_list)):
     town_name = town_names + str(i + 1)
     process_pdf_from_url(url_list[i], town_name)
+
+
 
 # make sure pdf's saved too

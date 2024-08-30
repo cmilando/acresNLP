@@ -1,4 +1,4 @@
-
+library(readr)
 library(tidyverse)
 library(ggforce)
 library(janitor)
@@ -6,96 +6,54 @@ library(sf)
 library(gtable)
 library(grid)
 library(gridExtra)
+library(tigris)
+library(leaflet)
 
 
 #### create dataframe of hazard counts and proportions by town ####
 
 #adjust based on your computer
-my_dir <- "/Users/allisonjames/Desktop/bu/acresNLP"
-setwd(my_dir)
+my_dir <- "/Users/allisonjames/Desktop/bu/acresNLP/"
 
 create_df <- function(filename){
-  data <- read_tsv(filename)
+  data <- read_delim(filename)
   return(data)
 }
 
 
-# somerville <- create_df("somerville.tsv")
-# somerville5 <- create_df("somerville5.tsv")
-# revere2 <- create_df("revere2.tsv")
-# revere6 <- create_df("revere6.tsv")
-# everett2 <- create_df("everett2.tsv")
-# everett5 <- create_df("everett5.tsv")
-# chelsea <- create_df("chelsea.tsv")
-
-combined_table <- create_df("combined_output.tsv")
-
-filetotown <- data.frame(town = c("Everett",
-                                  "Everett",
-                                  "Everett",
-                                  "Everett",
-                                  "Everett",
-                                  "Everett",
-                                  "Everett",
-                                  "Everett",
-                                  "Everett",
-                                  "Everett",
-                                  "Revere",
-                                  "Revere",
-                                  "Revere",
-                                  "Revere",
-                                  "Revere",
-                                  "Revere",
-                                  "Revere",
-                                  "Revere",
-                                  "Somerville",
-                                  "Somerville",
-                                  "Somerville",
-                                  "Somerville",
-                                  "Somerville",
-                                  "Somerville",
-                                  "Somerville",
-                                  "Somerville",
-                                  "Somerville"),
-                         filename = c("everetturl1.json",
-                                      "everetturl2.json",
-                                      "everetturl3.json",
-                                      "everetturl4.json",
-                                      "everetturl5.json",
-                                      "everetturl6.json",
-                                      "everetturl7.json",
-                                      "everetturl8.json",
-                                      "everetturl9.json",
-                                      "everetturl10.json",
-                                      "revereurl1.json",
-                                      "revereurl2.json",
-                                      "revereurl3.json",
-                                      "revereurl4.json",
-                                      "revereurl7.json",
-                                      "revereurl8.json",
-                                      "revereurl9.json",
-                                      "revereurl10.json",
-                                      "somervilleurl1.json",
-                                      "somervilleurl2.json",
-                                      "somervilleurl3.json",
-                                      "somervilleurl4.json",
-                                      "somervilleurl5.json",
-                                      "somervilleurl6.json",
-                                      "somervilleurl7.json",
-                                      "somervilleurl8.json",
-                                      "somervilleurl9.json"))
-
-combined_table <- combined_table %>% left_join(
-  filetotown,
-  join_by(`File Name` == filename)
-)
-
-
+#combined table missing all arlington/belmont and some chelsea/everett
+combined_table <- create_df(paste0(my_dir, "combined_output1.tsv"))
 combined_table <- combined_table %>% clean_names()
+combined_table$town_name <- gsub("url\\d+|\\d+|\\.json", "",
+                                 combined_table$file_name)
+combined_table$town_name <- toupper(combined_table$town_name)
 
 
-hazard_by_town <- combined_table %>% 
-  group_by(town) %>% 
+combined_table <- combined_table %>% 
+  mutate(towns_match = (town_name == toupper(most_common_town)))
+
+#stoneham is missing from this tablel
+combined_table_relevant <- combined_table %>% 
+  filter(towns_match & relevant)
+
+num_irrelevant <- combined_table %>% 
+  group_by(town_name) %>% 
+  summarize(
+    total_pdfs = n(),
+    total_relevant = sum(relevant),
+    percent_relevant = total_relevant / n(),
+    total_towns_match = sum(towns_match),
+    percent_match = total_towns_match / n(),
+    relevant_and_match = sum(relevant & towns_match)
+    )
+
+#only filter for relevant and matching
+
+
+#90% or over for all towns
+
+hazard_by_town <- combined_table_relevant %>% 
+  group_by(town_name) %>% 
   summarize(flood_avg = mean(flood_percent),
             storm_avg = mean(storm_percent),
             heat_avg = mean(heat_percent),
@@ -107,53 +65,39 @@ hazard_by_town <- combined_table %>%
   )
 
 
-
-hazard_by_town %>% 
-  pivot_longer(cols = flood_avg:fire_avg) %>% 
-  ggplot(aes(x = name,
-             y = value,
-             fill = town)) + 
-  geom_col(position = "dodge")+
-  stat_summary(geom = "errorbar", fun.data = mean_se, position = "dodge")
-
-
+#this figure no longer looks good because there are too many towns
+# hazard_by_town %>%
+#   pivot_longer(cols = flood_avg:fire_avg) %>%
+#   ggplot(aes(x = name,
+#              y = value,
+#              fill = town_name)) +
+#   geom_col(position = "dodge")+
+#   stat_summary(geom = "errorbar", fun.data = mean_se, position = "dodge")
 #add sd bars
 #do same thing with outreach types
 
 
 
-
-
-
-
-combined_table2 <- rbind(somerville, somerville5, revere2, revere6,
-                        everett2, everett5)
-
-combined_table <- rbind(somerville, revere2,
-                        everett2, chelsea)
-combined_table <- combined_table %>% clean_names()
-combined_table$town_name <- toupper(combined_table$town_name)
-
-
-# combined_table_means <- combined_table %>% 
-#   group_by(town_name) %>% 
-#   summarize(across(everything(), mean))
-
-hazard_data <-  combined_table %>% 
+hazard_data <-  hazard_by_town %>% 
   gather(key = "hazard_type", value = "proportion", 
-         flood_percent:fire_percent) %>% 
+         flood_avg:fire_avg) %>% 
   mutate(id = row_number())
   
 
 
 #### load in and filter town polygons ####
 
-towns_to_include <- c("REVERE", "SOMERVILLE", "EVERETT", "CHELSEA")
+towns_to_include <- toupper(c("Burlington", "Lexington", "Belmont", "Watertown",
+                     "Arlington", "Winchester", "Woburn", "Reading",
+                     "Stoneham", "Medford", "Somerville", "Cambridge",
+                     "Boston", "Everett", "Malden", "Melrose",
+                     "Wakefield", "Chelsea", "Revere", "Winthrop", "Wilmington"))
 
-#adjust based on your computer
-sf_url <- "/Users/allisonjames/Library/CloudStorage/OneDrive-BostonUniversity/02_Blackouts/Viz/towns_fixed.shp"
+#adjust based on your computer 
+#(put this in the acresnlp folder - should not be in blackouts)
 
-ma_towns <- read_sf(sf_url)
+
+ma_towns <- read_sf(paste0(my_dir, "towns_fixed.shp"))
 
 hazard_towns <- ma_towns %>% 
   filter(TOWN20 %in% towns_to_include)
@@ -177,21 +121,38 @@ hazard_data <- hazard_data %>%
 
 #### create base map ####
 
+#make background blue to represent water
+ma_outline <- states(cb = T) %>% filter(NAME == "Massachusetts")
+ma_outline_wgs84 <- st_transform(ma_outline, crs = 4326)
+bbox <- st_bbox(hazard_towns)
+bbox_sf <- st_as_sfc(bbox)
+ma_outline_bbox <- st_crop(ma_outline_wgs84, bbox_sf)
+bbox_coords <- st_bbox(ma_outline_bbox)
+
 base_map <- hazard_towns %>% 
   ggplot() + 
+  # geom_sf(data = ma_outline_bbox,
+  #         color = "black",
+  #         fill = "white")+
   geom_sf(mapping = aes(),
           color = "black",
           fill = "white") + 
+  coord_sf(xlim = c(bbox_coords$xmin, bbox_coords$xmax), 
+           ylim = c(bbox_coords$ymin, bbox_coords$ymax), 
+           expand = FALSE) +  # Set plot bounds
   theme_bw() +
   theme(axis.text.x = element_blank(),  # remove x-axis labels
         axis.text.y = element_blank(),  # remove y-axis labels
         axis.ticks.x = element_blank(),  # remove x-axis ticks
         axis.ticks.y = element_blank(),  # remove y-axis ticks
         panel.grid.major = element_blank(),  # remove major grid lines
-        panel.grid.minor = element_blank())
+        panel.grid.minor = element_blank(),
+        panel.background = element_rect(fill = "dodgerblue"))  # set plot background to blue
             
   
 base_map
+
+
 
 
 #### separately create pie charts ####
@@ -209,8 +170,9 @@ add_pie <- function(town_data, town_name){
              color = "black") + 
     coord_polar("y", start = 0) +
     theme_void() + 
-    ggtitle(town_name) + 
-    theme(plot.title = element_text(hjust = 0.5, vjust = -2)) +
+    #ggtitle(town_name) + 
+    #add title to base map with ggrepel??
+    #theme(plot.title = element_text(hjust = 0.5, vjust = -2)) +
     theme(legend.position = "none") +
     scale_fill_brewer(name = "Hazard Type", labels = labels,
                       palette = "Set2")
@@ -264,20 +226,77 @@ legend <- gtable_filter(ggplotGrob(legend_pie),
                         "guide-box")
   
 
-base_map2
+#base_map2
 
-
+#put everything together on a new page
 grid.newpage()
 grid.draw(arrangeGrob(base_map2, legend, ncol = 1, heights = c(9, 1)))
 
 
 
+#### scratch above, use leaflet ####
 
-# todo:
+leaflet_map <- leaflet() %>%
+  # Set initial view with appropriate bounds
+  setView(lng = mean(c(bbox_coords$xmin, bbox_coords$xmax)), 
+          lat = mean(c(bbox_coords$ymin, bbox_coords$ymax)), 
+          zoom = 10) %>%  # Adjust zoom level as needed
+  addTiles()  # Add default OpenStreetMap tiles
 
-#   keep code tidy
-#  change palette of pie charts (qual)
-# scrape just the top ~10 for each town (and rename where appropriate)
-# table (columns are pdf's, rows are percentages by hazard)
-# experiment with ggrepel or manual adjustments
-# fix legend...
+# Add hazard towns
+leaflet_map <- leaflet_map %>%
+  addPolygons(data = hazard_towns,
+              color = "black",
+              fillColor = "white",
+              weight = 1,
+              opacity = 1,
+              fillOpacity = 0.5)
+
+
+leaflet_map
+
+
+
+save_pie_chart <- function(town_data, town_name) {
+  labels <- c("Flood", "Storm", "Heat", "Air pollution", "Indoor air quality",
+              "Chemical hazards", "Extreme precipitation", "Fire")
+  
+  pie <- town_data %>% 
+    ggplot(aes(x = "", y = proportion, fill = hazard_type)) + 
+    geom_bar(stat = "identity", width = 0.3, color = "black") + 
+    coord_polar("y", start = 0) +
+    theme_void() + 
+    theme(legend.position = "none") +
+    scale_fill_brewer(name = "Hazard Type", labels = labels, palette = "Set2")
+  
+  ggsave(filename = paste0("pie_chart_", town_name, ".png"), plot = pie, width = 3, height = 3)
+}
+
+for (town in unique_towns) {
+  town_data <- hazard_data %>% filter(town_name == town)
+  save_pie_chart(town_data, town)
+}
+
+
+for (town in unique_towns) {
+  # Assuming you have latitude and longitude columns in hazard_data
+  town_data <- hazard_data %>% filter(town_name == town)
+  
+  leaflet_map <- leaflet_map %>%
+    addMarkers(lng = town_data$x[1], lat = town_data$y[1], 
+               icon = icons(
+                 iconUrl = paste0("pie_chart_", town, ".png"),
+                 iconWidth = 50, iconHeight = 50  # Adjust size as needed
+               ))
+}
+
+leaflet_map
+
+
+
+
+
+
+
+
+
