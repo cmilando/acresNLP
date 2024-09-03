@@ -123,6 +123,8 @@ hazard_data <- hazard_data %>%
 
 #make background blue to represent water
 ma_outline <- states(cb = T) %>% filter(NAME == "Massachusetts")
+ma_counties <- counties(state = "MA", cb = T)
+ma_counties_no_suffolk <- ma_counties %>% filter(NAME != "Suffolk")
 ma_outline_wgs84 <- st_transform(ma_outline, crs = 4326)
 bbox <- st_bbox(hazard_towns)
 bbox_sf <- st_as_sfc(bbox)
@@ -134,6 +136,9 @@ base_map <- hazard_towns %>%
   # geom_sf(data = ma_outline_bbox,
   #         color = "black",
   #         fill = "white")+
+  geom_sf(data = ma_counties_no_suffolk,
+          color = "black",
+          fill = "grey")+
   geom_sf(mapping = aes(),
           color = "black",
           fill = "white") + 
@@ -151,8 +156,6 @@ base_map <- hazard_towns %>%
             
   
 base_map
-
-
 
 
 #### separately create pie charts ####
@@ -209,18 +212,38 @@ base_map2 <- base_map
 
 
 #### combine the base map and the pie charts ####
+pie_radius <- 0.02
 
 for (town in unique_towns) {
   town_data <- hazard_data %>% filter(town_name == town)
+  
+  x_offset <- 0
+  y_offset <- 0
+  
+  # Conditional adjustments for specific towns
+  if (town == "CAMBRIDGE") {
+    x_offset <- -0.01  # Move slightly to the left
+    y_offset <- -0.01  # Move slightly down
+  } else if (town == "CHELSEA") {
+    x_offset <- 0.01  # Move slightly to the right
+    y_offset <- -0.01  # Move slightly down
+  }
+  
   base_map2 <- base_map2 +
     annotation_custom(
       grob = ggplotGrob(pie_charts[[town]]),
-      xmin = town_data$x[1] - 0.02,
-      xmax = town_data$x[1] + 0.02,
-      ymin = town_data$y[1] - 0.02,
-      ymax = town_data$y[1] + 0.02
+      xmin = town_data$x[1] + x_offset - pie_radius,
+      xmax = town_data$x[1] + x_offset + pie_radius,
+      ymin = town_data$y[1] + y_offset - pie_radius,
+      ymax = town_data$y[1] + y_offset + pie_radius
     )
 }
+
+
+# to adjust: 
+# chelsea (right and down)
+# cambridge (slightly left and down)
+
 
 legend <- gtable_filter(ggplotGrob(legend_pie),
                         "guide-box")
@@ -245,6 +268,12 @@ leaflet_map <- leaflet() %>%
 
 # Add hazard towns
 leaflet_map <- leaflet_map %>%
+  addPolygons(data = st_transform(ma_counties_no_suffolk, crs = 4326),
+              color = "black",
+              fill = "grey",
+              weight = 1,
+              opacity = 1,
+              fillOpacity = 0.5) %>% 
   addPolygons(data = hazard_towns,
               color = "black",
               fillColor = "white",
