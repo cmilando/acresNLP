@@ -222,8 +222,8 @@ for (town in unique_towns) {
   
   # Conditional adjustments for specific towns
   if (town == "CAMBRIDGE") {
-    x_offset <- -0.01  # Move slightly to the left
-    y_offset <- -0.01  # Move slightly down
+    x_offset <- -0.005  # Move slightly to the left
+    y_offset <- -0.005  # Move slightly down
   } else if (town == "CHELSEA") {
     x_offset <- 0.01  # Move slightly to the right
     y_offset <- -0.01  # Move slightly down
