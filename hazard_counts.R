@@ -9,11 +9,30 @@ library(gridExtra)
 library(tigris)
 library(leaflet)
 
+### NOTES
 
+# * STONEHAM HAS NO CLIMATE REPORTS
+# * NOT A LOT OF ADJACENCY IN HAZARDS
+#
+# * 
+# * allison: for both hazards and outreach, for some towns the totals are < 100%
+# * chad: expanding heat search terms and seeing if that changes things, manual search
+
+# Needs:
+# * Map
+# * table of the heatmap with %s and n
+
+# * REVERE AND LEXINGTON DON'T HAVE 100% in relevancy table
+# * WHY ISNT HEAT MORE ** SEARCH TERMS
+#
+# * WHAT ABOUT THE COMMUNITY CONCERNS
+
+# ----------------------------------------------------------------------------
 #### create dataframe of hazard counts and proportions by town ####
 
 #adjust based on your computer
-my_dir <- "/Users/allisonjames/Desktop/bu/acresNLP/"
+# my_dir <- "/Users/allisonjames/Desktop/bu/acresNLP/"
+my_dir <- "/Users/cwm/Documents/GitHub/acresNLP/"
 
 create_df <- function(filename){
   data <- read_delim(filename)
@@ -28,13 +47,12 @@ combined_table$town_name <- gsub("url\\d+|\\d+|\\.json", "",
                                  combined_table$file_name)
 combined_table$town_name <- toupper(combined_table$town_name)
 
+View(combined_table)
 
 combined_table <- combined_table %>% 
   mutate(towns_match = (town_name == toupper(most_common_town)))
 
-#stoneham is missing from this tablel
-combined_table_relevant <- combined_table %>% 
-  filter(towns_match & relevant)
+# stoneham is missing from this table !
 
 num_irrelevant <- combined_table %>% 
   group_by(town_name) %>% 
@@ -47,14 +65,19 @@ num_irrelevant <- combined_table %>%
     relevant_and_match = sum(relevant & towns_match)
     )
 
+View(num_irrelevant)
+
 #only filter for relevant and matching
 
-
+# ----------------------------------------------------------------------------
 #90% or over for all towns
+combined_table_relevant <- combined_table %>% 
+  filter(towns_match & relevant)
 
 hazard_by_town <- combined_table_relevant %>% 
   group_by(town_name) %>% 
-  summarize(flood_avg = mean(flood_percent),
+  summarize(n = n(),
+            flood_avg = mean(flood_percent),
             storm_avg = mean(storm_percent),
             heat_avg = mean(heat_percent),
             air_pollution_avg = mean(air_pollution_percent),
@@ -62,8 +85,20 @@ hazard_by_town <- combined_table_relevant %>%
             chem_hazard_avg = mean(chemical_hazards_percent),
             extreme_precip_avg = mean(extreme_precipitation_percent),
             fire_avg = mean(fire_percent)
-  )
+  ) %>%
+  mutate(mod_sum = rowSums(across(flood_avg:fire_avg)))
 
+## LOOK AT REVERE AND LEXINGTON
+
+hazard_by_town
+
+hazard_by_town %>%
+  pivot_longer(cols = flood_avg:fire_avg) %>%
+  ggplot() +
+    geom_tile(aes(x = reorder(name, value), 
+                  y = town_name, fill = value),
+              color = 'white') +
+  scale_fill_binned(type = 'viridis')
 
 #this figure no longer looks good because there are too many towns
 # hazard_by_town %>%
@@ -78,13 +113,47 @@ hazard_by_town <- combined_table_relevant %>%
 
 
 
-hazard_data <-  hazard_by_town %>% 
-  gather(key = "hazard_type", value = "proportion", 
-         flood_avg:fire_avg) %>% 
-  mutate(id = row_number())
-  
+# hazard_data <-  hazard_by_town %>% 
+#   gather(key = "hazard_type", value = "proportion", 
+#          flood_avg:fire_avg) %>% 
+#   mutate(id = row_number())
+#   
+
+# ----------------------------------------------------------------------------
+#90% or over for all towns
+combined_table_relevant <- combined_table %>% 
+  filter(towns_match & relevant)
+
+colnames(combined_table_relevant)
+
+outreach_by_town <- combined_table_relevant %>% 
+  group_by(town_name) %>% 
+  summarize(n = n(),
+            workshop_avg = mean(workshop_percent),
+            mapping_avg = mean(mapping_percent),
+            focus_group_avg = mean(focus_group_percent),
+            interview_avg = mean(interview_percent),
+            survey_avg = mean(survey_percent),
+            community_meeting_avg = mean(community_meeting_percent),
+            small_group_meeting_avg = mean(small_group_meeting_percent),
+            information_avg = mean(information_percent)
+  ) %>%
+  mutate(mod_sum = rowSums(across(workshop_avg:information_avg)))
+
+## LOOK AT REVERE AND LEXINGTON
+View(outreach_by_town)
+outreach_by_town$mod_sum
+
+outreach_by_town %>%
+  pivot_longer(cols = workshop_avg:information_avg) %>%
+  ggplot() +
+  geom_tile(aes(x = reorder(name, value), 
+                y = town_name, fill = value),
+            color = 'white') +
+  scale_fill_binned(type = 'viridis')
 
 
+# ----------------------------------------------------------------------------
 #### load in and filter town polygons ####
 
 towns_to_include <- toupper(c("Burlington", "Lexington", "Belmont", "Watertown",
@@ -96,12 +165,78 @@ towns_to_include <- toupper(c("Burlington", "Lexington", "Belmont", "Watertown",
 #adjust based on your computer 
 #(put this in the acresnlp folder - should not be in blackouts)
 
+#make background blue to represent water
+ma_outline <- states(cb = T) %>% filter(NAME == "Massachusetts")
+ma_counties <- counties(state = "MA", cb = T)
+ma_counties_no_suffolk <- ma_counties %>% filter(NAME != "Suffolk")
+ma_outline_wgs84 <- st_transform(ma_outline, crs = 4326)
+bbox <- st_bbox(hazard_towns)
+bbox_sf <- st_as_sfc(bbox)
+ma_outline_bbox <- st_crop(ma_outline_wgs84, bbox_sf)
+bbox_coords <- st_bbox(ma_outline_bbox)
+
 
 ma_towns <- read_sf(paste0(my_dir, "towns_fixed.shp"))
 
-hazard_towns <- ma_towns %>% 
+ACRES_towns_plot <- ma_towns %>% 
   filter(TOWN20 %in% towns_to_include)
 
+####
+ACRES_hazard_towns_plot <- ACRES_towns_plot %>%
+  left_join(hazard_by_town %>% pivot_longer(cols = flood_avg:fire_avg), 
+            by = join_by(TOWN20 == town_name))
+
+library(ggpubr)
+library(lemon)
+
+hazard_name_map = c(
+  "air_pollution_avg" = 'Air Pollution',
+  'chem_hazard_avg' = 'Chemical Hazards',
+  'extreme_precip_avg' = 'Extreme Precip.',
+  'fire_avg' = 'Fire',
+  'flood_avg' = 'Flood',
+  'heat_avg' = 'Heat',
+  'indoor_air_avg' = 'Indoor Air',
+  'storm_avg' = 'Storm'
+)
+
+ACRES_hazard_towns_plot$haz_name_plot = hazard_name_map[ACRES_hazard_towns_plot$name]
+
+ggplot(ACRES_hazard_towns_plot %>%
+              filter(!is.na(value))) + theme_classic2() +
+  geom_sf(data = ma_counties_no_suffolk,
+          color = "black", linetype = '11',
+          fill = "grey") +
+  geom_sf(aes(fill = value)) +
+  coord_sf(xlim = c(bbox_coords$xmin - 0.01, bbox_coords$xmax + 0.01), 
+           ylim = c(bbox_coords$ymin - 0.01, bbox_coords$ymax + 0.01), 
+           expand = FALSE) +  # Set plot bounds
+  scale_fill_binned(type = 'viridis',
+                    name = 'Average per-document\nproportion of\nhazard words\nreferencing hazard X\n') +
+  facet_rep_wrap(~haz_name_plot, nrow = 2, repeat.tick.labels = 'x') +
+  xlab(NULL) + ylab(NULL) +
+  theme(strip.background = element_blank(),
+        strip.text = element_text(size = 12),
+        panel.background = element_rect(color = 'black'),
+        axis.text = element_blank(),
+        axis.ticks = element_blank()) 
+
+ggsave(device = 'png', dpi = 600, file = 'fig1.png',
+       width = 8, height = 6)
+
+####
+ACRES_outreach_towns_plot <- ACRES_towns_plot %>%
+  left_join(outreach_by_town %>% pivot_longer(cols = workshop_avg:information_avg), 
+            by = join_by(TOWN20 == town_name))
+
+ggplot(ACRES_outreach_towns_plot) +
+  geom_sf(aes(fill = value)) +
+  scale_fill_binned(type = 'viridis',
+                    name = 'Percent\nof documents\nreferencing\nhazard X') + 
+  facet_wrap(~name, nrow = 2)
+
+
+# ----------------------------------------------------------------------------
 hazard_towns$centroid <- st_centroid(hazard_towns$geometry)
 centroids_coords <- st_coordinates(hazard_towns$centroid)
 hazard_towns <- hazard_towns %>%
