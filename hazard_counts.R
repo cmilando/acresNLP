@@ -49,6 +49,7 @@ combined_table$town_name <- toupper(combined_table$town_name)
 
 View(combined_table)
 
+##
 combined_table <- combined_table %>% 
   mutate(towns_match = (town_name == toupper(most_common_town)))
 
@@ -73,6 +74,11 @@ View(num_irrelevant)
 #90% or over for all towns
 combined_table_relevant <- combined_table %>% 
   filter(towns_match & relevant)
+
+write_tsv(combined_table_relevant, 'combined_table_relevant.tsv')
+
+dim(combined_table)
+dim(combined_table_relevant)
 
 hazard_by_town <- combined_table_relevant %>% 
   group_by(town_name) %>% 
