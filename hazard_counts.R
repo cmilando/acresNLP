@@ -55,18 +55,49 @@ combined_table <- combined_table %>%
 
 # stoneham is missing from this table !
 
-num_irrelevant <- combined_table %>% 
-  group_by(town_name) %>% 
+# ----------------------------------------------------------------------------
+# ma.url omitted
+combined_table %>%
   summarize(
     total_pdfs = n(),
-    total_relevant = sum(relevant),
-    percent_relevant = total_relevant / n(),
-    total_towns_match = sum(towns_match),
-    percent_match = total_towns_match / n(),
-    relevant_and_match = sum(relevant & towns_match)
-    )
+    total_org_url = sum(org_url),
+    total_has_mass = sum(has_mass),
+    total_has_climate = sum(has_climate),
+    total_towns_match = sum(towns_match)
+  )
 
-View(num_irrelevant)
+pass_checks <- combined_table %>%
+  filter(org_url ==1,
+         has_mass == 1,
+         has_climate ==1,
+         towns_match == T) %>%
+  group_by(town_name) %>% tally()
+
+sum(pass_checks$n)  
+
+pass_checks <- combined_table %>%
+  filter(
+    org_url ==1,
+    has_mass == 1,
+    has_climate ==1,
+    towns_match == T) 
+
+View(pass_checks)
+
+write_tsv(pass_checks, 'pass_checks.tsv')
+
+# num_irrelevant <- combined_table %>% 
+#   group_by(town_name) %>% 
+#   summarize(
+#     total_pdfs = n(),
+#     total_relevant = sum(relevant),
+#     percent_relevant = total_relevant / n(),
+#     total_towns_match = sum(towns_match),
+#     percent_match = total_towns_match / n(),
+#     relevant_and_match = sum(relevant & towns_match)
+#     )
+# 
+# View(num_irrelevant)
 
 #only filter for relevant and matching
 

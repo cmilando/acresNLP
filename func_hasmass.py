@@ -15,10 +15,8 @@ def has_massachusetts(page_text):
 
     first_5_pages_text = " ".join(page_text[:4])
 
-    if re.search(r'massachusetts', first_5_pages_text, re.IGNORECASE) and re.search(r'climate|report|plan',
-                                                                                    first_5_pages_text, re.IGNORECASE):
-        print(1)
+    if re.search(r'massachusetts', first_5_pages_text, re.IGNORECASE) :
+        # print(1)
         return 1
     else:
         return 0
-    

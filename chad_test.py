@@ -1,6 +1,7 @@
 import json
 import os
 import func_hasmass
+import func_hasclimate
 import func_checkurl
 import func_commonyear
 import func_commontown
@@ -34,16 +35,18 @@ def process_file(this_json_file_path, f_name, hazard_dict, engage_dict):
     is_org_url = func_checkurl.org_url(url)
 
     # check
-    is_relevant = func_hasmass.has_massachusetts(page_text)
+    has_mass = func_hasmass.has_massachusetts(page_text)
+    has_climate = func_hasclimate.has_climate(page_text)
 
     # create the hazard and community engagement tables (with counts and percentages)
     hazard_counts, hazard_pcts = func_countkeywords.count_keyword_occurrences(text, hazard_dict, False)
     engage_counts, engage_pcts = func_countkeywords.count_keyword_occurrences(text, engage_dict, True)
 
     # create the headers
-    f_headers = ["File Name", "URL", "Most Common Town",
-                 "Most Mentioned Year", "MA url", "ORG url"
-                 "Has Mass",
+    f_headers = ["File Name", "URL",
+                 "Most Common Town", "Most Mentioned Year",
+                 "MA url", "ORG url"
+                 "Has Mass", "Has climate",
                  "Total Words",
                  "Total Pages"]
     f_headers += ([f"{cat} Count" for cat in hazard_dict.keys()] +
@@ -52,9 +55,11 @@ def process_file(this_json_file_path, f_name, hazard_dict, engage_dict):
                   [f"{cat} %" for cat in engage_dict.keys()])
 
     # add the tables' data
-    this_pdf_data = [f_name, url, most_common_town, most_common_year, is_ma_url,
-                     is_org_url,
-                     is_relevant, total_words, total_pages]
+    this_pdf_data = [f_name, url,
+                     most_common_town, most_common_year,
+                     is_ma_url, is_org_url,
+                     has_mass, has_climate,
+                     total_words, total_pages]
 
     this_pdf_data += [hazard_counts[cat] for
                       cat in hazard_dict.keys()] + [hazard_pcts[cat] for
