@@ -1,22 +1,35 @@
 import re
+from collections import Counter
 
 
-def has_massachusetts(page_text):
+def has_massachusetts(text):
     """
-    Checks if the text is relevant by searching for the presence of
-    'Massachusetts' and either 'climate' or 'report' within the first 3 pages.
+    Checks if 'Massachusetts' is the most common state mentioned in the provided text.
 
     Args:
-    text (str): The text to search for relevance.
+    page_text (str): The text to search for state mentions.
+    states_file_path (str): Path to the text file containing the list of US states.
 
     Returns:
-    int: 1 if the text is relevant, 0 otherwise.
+    int: 1 if Massachusetts is the most common state, 0 otherwise.
     """
+    states_file_path = 'all_states.txt'
 
-    first_5_pages_text = " ".join(page_text[:4])
+    # Read the list of states from the file
+    with open(states_file_path, 'r') as file:
+        states = [line.strip().lower() for line in file.readlines()]
 
-    if re.search(r'massachusetts', first_5_pages_text, re.IGNORECASE) :
-        # print(1)
-        return 1
-    else:
-        return 0
+    # Create a regex pattern to find any of the town names, ensuring case-insensitive matching
+    pattern = r'\b(' + '|'.join(map(re.escape, states)) + r')\b'
+
+    matches = re.findall(pattern, text.lower(), re.IGNORECASE)
+
+    if not matches:
+        return None
+
+    state_counts = Counter(matches)
+    most_common_state = state_counts.most_common(1)[0][0]
+
+    # Check if Massachusetts is the most common state
+    return most_common_state
+

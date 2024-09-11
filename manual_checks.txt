@@ -1,0 +1,113 @@
+CM	EXCLUDE	Not Massachusetts	TRUE	ARLINGTON	TRUE	arlingtonurl42.json
+CM	INCLUDE		TRUE	ARLINGTON	TRUE	arlingtonurl45.json
+CM	EXCLUDE	Not ACRES town	TRUE	ARLINGTON	TRUE	arlingtonurl59.json
+CM	EXCLUDE	Not town-specific	TRUE	ARLINGTON	TRUE	arlingtonurl7.json
+CM	EXCLUDE	Not ACRES town	TRUE	BELMONT	TRUE	belmonturl2.json
+CM	INCLUDE		TRUE	BOSTON	TRUE	bostonurl10.json
+CM	INCLUDE		TRUE	BOSTON	TRUE	bostonurl11.json
+CM	INCLUDE		TRUE	BOSTON	TRUE	bostonurl13.json
+CM	INCLUDE		TRUE	BOSTON	TRUE	bostonurl14.json
+CM	INCLUDE		TRUE	BOSTON	TRUE	bostonurl17.json
+CM	INCLUDE		TRUE	BOSTON	TRUE	bostonurl18.json
+CM	INCLUDE		TRUE	BOSTON	TRUE	bostonurl2.json
+CM	EXCLUDE	Not town-specific	TRUE	BOSTON	TRUE	bostonurl20.json
+CM	INCLUDE		TRUE	BOSTON	TRUE	bostonurl21.json
+CM	INCLUDE		TRUE	BOSTON	TRUE	bostonurl22.json
+CM	EXCLUDE	Not town-specific	TRUE	BOSTON	TRUE	bostonurl23.json
+CM	INCLUDE		TRUE	BOSTON	TRUE	bostonurl24.json
+CM	EXCLUDE	Off-topic	TRUE	BOSTON	TRUE	bostonurl26.json
+CM	INCLUDE		TRUE	BOSTON	TRUE	bostonurl27.json
+CM	EXCLUDE	About birds	TRUE	BOSTON	TRUE	bostonurl28.json
+CM	INCLUDE		TRUE	BOSTON	TRUE	bostonurl30.json
+CM	EXCLUDE	Not town-specific	TRUE	BOSTON	TRUE	bostonurl34.json
+CM	EXCLUDE	Not Massachusetts	TRUE	BOSTON	TRUE	bostonurl35.json
+CM	EXCLUDE	Not town-specific	TRUE	BOSTON	TRUE	bostonurl36.json
+CM	EXCLUDE	Not town-specific	TRUE	BOSTON	TRUE	bostonurl37.json
+CM	INCLUDE		TRUE	BOSTON	TRUE	bostonurl38.json
+CM	EXCLUDE	Not Massachusetts	TRUE	BOSTON	TRUE	bostonurl39.json
+CM	INCLUDE		TRUE	BOSTON	TRUE	bostonurl4.json
+CM	EXCLUDE	Not town-specific	TRUE	BOSTON	TRUE	bostonurl41.json
+CM	EXCLUDE	Not Massachusetts	TRUE	BOSTON	TRUE	bostonurl42.json
+CM	EXCLUDE	Industry	TRUE	BOSTON	TRUE	bostonurl45.json
+CM	EXCLUDE	Not town-specific	TRUE	BOSTON	TRUE	bostonurl46.json
+CM	EXCLUDE	Not town-specific	TRUE	BOSTON	TRUE	bostonurl47.json
+CM	EXCLUDE	Good, but not town specific	TRUE	BOSTON	TRUE	bostonurl5.json
+CM	EXCLUDE	Industry	TRUE	BOSTON	TRUE	bostonurl53.json
+CM	INCLUDE		TRUE	BOSTON	TRUE	bostonurl55.json
+CM	EXCLUDE	Off-topic	TRUE	BOSTON	TRUE	bostonurl56.json
+CM	EXCLUDE	Not Massachusetts	TRUE	BOSTON	TRUE	bostonurl65.json
+CM	INCLUDE		TRUE	BOSTON	TRUE	bostonurl67.json
+CM	EXCLUDE	Off-topic	TRUE	BOSTON	TRUE	bostonurl68.json
+CM	INCLUDE		TRUE	BOSTON	TRUE	bostonurl69.json
+CM	EXCLUDE	Industry	TRUE	BOSTON	TRUE	bostonurl7.json
+CM	EXCLUDE	Not town-specific	TRUE	BOSTON	TRUE	bostonurl70.json
+CM	INCLUDE		TRUE	BOSTON	TRUE	bostonurl72.json
+CM	EXCLUDE	State-wide, not towns	TRUE	BOSTON	TRUE	bostonurl74.json
+CM	EXCLUDE	Industry	TRUE	BOSTON	TRUE	bostonurl75.json
+CM	EXCLUDE	Not ACRES	TRUE	BOSTON	TRUE	bostonurl77.json
+CM	EXCLUDE	Not town-specific	TRUE	BOSTON	TRUE	bostonurl8.json
+CM	EXCLUDE	Off-topic	TRUE	BOSTON	TRUE	bostonurl84.json
+CM	EXCLUDE	Off-topic	TRUE	BOSTON	TRUE	bostonurl85.json
+CM	INCLUDE		TRUE	BOSTON	TRUE	bostonurl86.json
+CM	EXCLUDE	Off-topic	TRUE	BOSTON	TRUE	bostonurl87.json
+CM	EXCLUDE	Off-topic	TRUE	BOSTON	TRUE	bostonurl88.json
+NC	EXCLUDE	Not ACRES town	TRUE	BURLINGTON	TRUE	burlingtonurl14.json
+NC	EXCLUDE	Not ACRES town	TRUE	BURLINGTON	TRUE	burlingtonurl20.json
+NC	EXCLUDE	Not ACRES town	TRUE	BURLINGTON	TRUE	burlingtonurl34.json
+NC	EXCLUDE	Not ACRES town	TRUE	BURLINGTON	TRUE	burlingtonurl47.json
+NC	INCLUDE		TRUE	CAMBRIDGE	TRUE	cambridgeurl11.json
+NC	EXCLUDE	Not ACRES town	TRUE	CAMBRIDGE	TRUE	cambridgeurl14.json
+NC	EXCLUDE	Not ACRES town, all Northeast	TRUE	CAMBRIDGE	TRUE	cambridgeurl23.json
+NC	EXCLUDE	Not ACRES town	TRUE	CAMBRIDGE	TRUE	cambridgeurl24.json
+NC	EXCLUDE	Not ACRES town	TRUE	CAMBRIDGE	TRUE	cambridgeurl28.json
+NC	EXCLUDE	Off-topic	TRUE	CAMBRIDGE	TRUE	cambridgeurl31.json
+NC	EXCLUDE	Off-topic	TRUE	CAMBRIDGE	TRUE	cambridgeurl35.json
+NC	EXCLUDE	Not ACRES town	TRUE	CAMBRIDGE	TRUE	cambridgeurl37.json
+NC	EXCLUDE	Not ACRES town	TRUE	CAMBRIDGE	TRUE	cambridgeurl42.json
+NC	EXCLUDE	Not ACRES town	TRUE	CAMBRIDGE	TRUE	cambridgeurl48.json
+NC	EXCLUDE	Not ACRES town	TRUE	CAMBRIDGE	TRUE	cambridgeurl53.json
+NC	EXCLUDE	Off-topic	TRUE	CAMBRIDGE	TRUE	cambridgeurl54.json
+NC	EXCLUDE	Off-topic	TRUE	CAMBRIDGE	TRUE	cambridgeurl6.json
+NC	EXCLUDE	Not ACRES town	TRUE	CAMBRIDGE	TRUE	cambridgeurl9.json
+NC	INCLUDE		TRUE	CHELSEA	TRUE	chelseaurl1.json
+NC	EXCLUDE	Not ACRES town, all MA	TRUE	CHELSEA	TRUE	chelseaurl13.json
+NC	INCLUDE		TRUE	CHELSEA	TRUE	chelseaurl3.json
+NC	INCLUDE		TRUE	CHELSEA	TRUE	chelseaurl42.json
+NC	EXCLUDE	Not ACRES town	TRUE	CHELSEA	TRUE	chelseaurl58.json
+NC	EXCLUDE	Not ACRES town	TRUE	CHELSEA	TRUE	chelseaurl80.json
+NC	INCLUDE		TRUE	LEXINGTON	TRUE	lexingtonurl1.json
+NC	INCLUDE		TRUE	LEXINGTON	TRUE	lexingtonurl25.json
+NC	EXCLUDE	Not ACRES town	TRUE	LEXINGTON	TRUE	lexingtonurl3.json
+NC	EXCLUDE	Off-topic	TRUE	LEXINGTON	TRUE	lexingtonurl46.json
+NC	EXCLUDE	Not ACRES town	TRUE	LEXINGTON	TRUE	lexingtonurl60.json
+NC	EXCLUDE	Not ACRES town, all MA	TRUE	MALDEN	TRUE	maldenurl2.json
+NC	EXCLUDE	Off-topic	TRUE	MALDEN	TRUE	maldenurl28.json
+NC	EXCLUDE	Not ACRES town, all MA	TRUE	MALDEN	TRUE	maldenurl6.json
+NC	EXCLUDE	Not ACRES town	TRUE	MEDFORD	TRUE	medfordurl21.json
+NC	EXCLUDE	Not ACRES town, fish	TRUE	MELROSE	TRUE	melroseurl16.json
+NC	EXCLUDE	Not ACRES town, off-topic	TRUE	READING	TRUE	readingurl23.json
+NC	EXCLUDE	Not ACRES town	TRUE	READING	TRUE	readingurl46.json
+NC	EXCLUDE	Not ACRES town	TRUE	READING	TRUE	readingurl6.json
+NC	INCLUDE		TRUE	REVERE	TRUE	revereurl19.json
+NC	INCLUDE		TRUE	REVERE	TRUE	revereurl2.json
+NC	EXCLUDE	Not ACRES town, birds	TRUE	REVERE	TRUE	revereurl27.json
+NC	EXCLUDE	Off-topic	TRUE	REVERE	TRUE	revereurl32.json
+NC	EXCLUDE	Off-topic	TRUE	REVERE	TRUE	revereurl34.json
+NC	INCLUDE		TRUE	REVERE	TRUE	revereurl4.json
+NC	INCLUDE		TRUE	REVERE	TRUE	revereurl5.json
+NC	INCLUDE		TRUE	SOMERVILLE	TRUE	somervilleurl10.json
+NC	EXCLUDE	Not ACRES town	TRUE	SOMERVILLE	TRUE	somervilleurl20.json
+NC	EXCLUDE	Not ACRES town	TRUE	SOMERVILLE	TRUE	somervilleurl21.json
+NC	EXCLUDE	Off-topic	TRUE	SOMERVILLE	TRUE	somervilleurl3.json
+NC	EXCLUDE	CV	TRUE	WAKEFIELD	TRUE	wakefieldurl21.json
+NC	EXCLUDE	Not town specific	TRUE	WAKEFIELD	TRUE	wakefieldurl23.json
+NC	INCLUDE		TRUE	WAKEFIELD	TRUE	wakefieldurl3.json
+NC	EXCLUDE	Not ACRES town	TRUE	WILMINGTON	TRUE	wilmingtonurl34.json
+NC	EXCLUDE	Off-topic	TRUE	WINCHESTER	TRUE	winchesterurl34.json
+NC	EXCLUDE	Not town specific	TRUE	WINCHESTER	TRUE	winchesterurl4.json
+NC	EXCLUDE	Not ACRES town	TRUE	WINTHROP	TRUE	winthropurl11.json
+NC	INCLUDE		TRUE	WINTHROP	TRUE	winthropurl2.json
+NC	EXCLUDE	Not ACRES town	TRUE	WINTHROP	TRUE	winthropurl34.json
+NC	INCLUDE		TRUE	WINTHROP	TRUE	winthropurl6.json
+NC	EXCLUDE	Not ACRES town	TRUE	WINTHROP	TRUE	winthropurl8.json
+NC	EXCLUDE	Not ACRES town	TRUE	WOBURN	TRUE	woburnurl13.json

@@ -41,48 +41,58 @@ create_df <- function(filename){
 
 
 #combined table missing all arlington/belmont and some chelsea/everett
-combined_table <- create_df(paste0(my_dir, "combined_output1.tsv"))
+combined_table <- create_df(paste0(my_dir, "combined_output_v2.tsv"))
 combined_table <- combined_table %>% clean_names()
 combined_table$town_name <- gsub("url\\d+|\\d+|\\.json", "",
                                  combined_table$file_name)
 combined_table$town_name <- toupper(combined_table$town_name)
 
-View(combined_table)
+#View(combined_table)
+
+mystic_towns_list = c("Burlington", "Lexington", "Belmont", "Watertown",
+                     "Arlington", "Winchester", "Woburn", "Reading",
+                     "Stoneham", "Medford", "Somerville", "Cambridge",
+                     "Boston", "Charlestown", "Everett", "Malden", "Melrose",
+                     "Wakefield", "Chelsea", "Revere", "Winthrop", "Wilmington")
 
 ##
 combined_table <- combined_table %>% 
-  mutate(towns_match = (town_name == toupper(most_common_town)))
+  mutate(is_ACRES_town = (most_common_town %in% tolower(mystic_towns_list)),
+         is_MASS = (most_common_state == 'massachusetts'))
 
-# stoneham is missing from this table !
+combined_table <- combined_table %>%
+  mutate(pass_checks2 = (
+    is_ACRES_town == T &
+    is_MASS == T &
+    has_climate == 1 &
+    has_community == 1
+  ))
+
+combined_table
+
+table(combined_table$most_common_town, combined_table$pass_checks2)
+table(combined_table$pass_checks2)
+
+mancx <- read.csv("manual_checks.csv", header = F)
+head(mancx)
+
+combined_table <- combined_table %>% left_join(mancx, by = join_by(file_name == V7))
+
+dim(combined_table)
+data.frame(head(combined_table))
+
+write_tsv(combined_table, 'combined_table_v2.tsv')
 
 # ----------------------------------------------------------------------------
 # ma.url omitted
-combined_table %>%
-  summarize(
-    total_pdfs = n(),
-    total_org_url = sum(org_url),
-    total_has_mass = sum(has_mass),
-    total_has_climate = sum(has_climate),
-    total_towns_match = sum(towns_match)
-  )
+
 
 pass_checks <- combined_table %>%
-  filter(org_url ==1,
-         has_mass == 1,
-         has_climate ==1,
-         towns_match == T) %>%
-  group_by(town_name) %>% tally()
+  filter(pass_checks2) %>%
+  group_by(most_common_town) %>% tally()
 
-sum(pass_checks$n)  
+pass_checks
 
-pass_checks <- combined_table %>%
-  filter(
-    org_url ==1,
-    has_mass == 1,
-    has_climate ==1,
-    towns_match == T) 
-
-View(pass_checks)
 
 write_tsv(pass_checks, 'pass_checks.tsv')
 
@@ -104,15 +114,15 @@ write_tsv(pass_checks, 'pass_checks.tsv')
 # ----------------------------------------------------------------------------
 #90% or over for all towns
 combined_table_relevant <- combined_table %>% 
-  filter(towns_match & relevant)
+  filter(pass_checks2)
 
-write_tsv(combined_table_relevant, 'combined_table_relevant.tsv')
+#write_tsv(combined_table_relevant, 'combined_table_relevant.tsv')
 
 dim(combined_table)
 dim(combined_table_relevant)
 
 hazard_by_town <- combined_table_relevant %>% 
-  group_by(town_name) %>% 
+  group_by(most_common_town) %>% 
   summarize(n = n(),
             flood_avg = mean(flood_percent),
             storm_avg = mean(storm_percent),
@@ -133,7 +143,7 @@ hazard_by_town %>%
   pivot_longer(cols = flood_avg:fire_avg) %>%
   ggplot() +
     geom_tile(aes(x = reorder(name, value), 
-                  y = town_name, fill = value),
+                  y = most_common_town, fill = value),
               color = 'white') +
   scale_fill_binned(type = 'viridis')
 
@@ -158,13 +168,13 @@ hazard_by_town %>%
 
 # ----------------------------------------------------------------------------
 #90% or over for all towns
-combined_table_relevant <- combined_table %>% 
-  filter(towns_match & relevant)
-
-colnames(combined_table_relevant)
+# combined_table_relevant <- combined_table %>% 
+#   filter(towns_match & relevant)
+# 
+# colnames(combined_table_relevant)
 
 outreach_by_town <- combined_table_relevant %>% 
-  group_by(town_name) %>% 
+  group_by(most_common_town) %>% 
   summarize(n = n(),
             workshop_avg = mean(workshop_percent),
             mapping_avg = mean(mapping_percent),
@@ -185,7 +195,7 @@ outreach_by_town %>%
   pivot_longer(cols = workshop_avg:information_avg) %>%
   ggplot() +
   geom_tile(aes(x = reorder(name, value), 
-                y = town_name, fill = value),
+                y = most_common_town, fill = value),
             color = 'white') +
   scale_fill_binned(type = 'viridis')
 
@@ -201,27 +211,41 @@ towns_to_include <- toupper(c("Burlington", "Lexington", "Belmont", "Watertown",
 
 #adjust based on your computer 
 #(put this in the acresnlp folder - should not be in blackouts)
+ma_towns <- read_sf(paste0(my_dir, "towns_fixed.shp"))
+ACRES_towns_plot <- ma_towns %>% 
+  filter(TOWN20 %in% towns_to_include)
+# hazard_towns$centroid <- st_centroid(hazard_towns$geometry)
+# centroids_coords <- st_coordinates(hazard_towns$centroid)
+# hazard_towns <- hazard_towns %>%
+#   mutate(x = centroids_coords[,1], y = centroids_coords[,2])
+
+#adjust based on your computer 
+#(put this in the acresnlp folder - should not be in blackouts)
 
 #make background blue to represent water
 ma_outline <- states(cb = T) %>% filter(NAME == "Massachusetts")
 ma_counties <- counties(state = "MA", cb = T)
 ma_counties_no_suffolk <- ma_counties %>% filter(NAME != "Suffolk")
 ma_outline_wgs84 <- st_transform(ma_outline, crs = 4326)
-bbox <- st_bbox(hazard_towns)
+
+bbox <- st_bbox(ACRES_towns_plot)
 bbox_sf <- st_as_sfc(bbox)
 ma_outline_bbox <- st_crop(ma_outline_wgs84, bbox_sf)
 bbox_coords <- st_bbox(ma_outline_bbox)
 
 
-ma_towns <- read_sf(paste0(my_dir, "towns_fixed.shp"))
+#ma_towns <- read_sf(paste0(my_dir, "towns_fixed.shp"))
 
-ACRES_towns_plot <- ma_towns %>% 
-  filter(TOWN20 %in% towns_to_include)
+
 
 ####
 ACRES_hazard_towns_plot <- ACRES_towns_plot %>%
-  left_join(hazard_by_town %>% pivot_longer(cols = flood_avg:fire_avg), 
-            by = join_by(TOWN20 == town_name))
+  left_join(hazard_by_town %>% pivot_longer(cols = flood_avg:fire_avg) %>%
+              mutate(most_common_town = toupper(most_common_town)), 
+            by = join_by(TOWN20 == most_common_town))
+
+hazard_by_town %>% pivot_longer(cols = flood_avg:fire_avg) %>%
+  mutate(most_common_town = toupper(most_common_town))
 
 library(ggpubr)
 library(lemon)
@@ -238,6 +262,8 @@ hazard_name_map = c(
 )
 
 ACRES_hazard_towns_plot$haz_name_plot = hazard_name_map[ACRES_hazard_towns_plot$name]
+
+ACRES_hazard_towns_plot$value
 
 ggplot(ACRES_hazard_towns_plot %>%
               filter(!is.na(value))) + theme_classic2() +
