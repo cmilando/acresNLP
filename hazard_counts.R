@@ -41,7 +41,7 @@ create_df <- function(filename){
 
 
 #combined table missing all arlington/belmont and some chelsea/everett
-combined_table <- create_df(paste0(my_dir, "combined_output_v2.tsv"))
+combined_table <- create_df(paste0(my_dir, "combined_output_v3.tsv"))
 combined_table <- combined_table %>% clean_names()
 combined_table$town_name <- gsub("url\\d+|\\d+|\\.json", "",
                                  combined_table$file_name)
@@ -59,6 +59,12 @@ mystic_towns_list = c("Burlington", "Lexington", "Belmont", "Watertown",
 combined_table <- combined_table %>% 
   mutate(is_ACRES_town = (most_common_town %in% tolower(mystic_towns_list)),
          is_MASS = (most_common_state == 'massachusetts'))
+
+# duplicated
+combined_table$duplicated = duplicated(combined_table$first100words)
+
+write_tsv(combined_table[, c('file_name', 'duplicated')] %>%
+            arrange(file_name), 'duplicated.tsv')
 
 combined_table <- combined_table %>%
   mutate(pass_checks2 = (

@@ -52,7 +52,7 @@ def process_file(this_json_file_path, f_name, hazard_dict, engage_dict):
                      most_common_town, most_common_year,
                      # is_ma_url, is_org_url,
                      has_mass, has_climate, has_community,
-                     total_words, total_pages]
+                     total_words, total_pages, text[:99]]
 
     this_pdf_data += [hazard_counts[cat] for
                       cat in hazard_dict.keys()] + [hazard_pcts[cat] for
@@ -113,7 +113,8 @@ if __name__ == "__main__":
                  # "MA url", "ORG url",
                  "Most Common State", "Has climate", "Has community",
                  "Total Words",
-                 "Total Pages"]
+                 "Total Pages",
+                 "First100Words"]
 
     f_headers += ([f"{cat} Count" for cat in hazard_data.keys()] +
                   [f"{cat} %" for cat in hazard_data.keys()])
@@ -123,7 +124,7 @@ if __name__ == "__main__":
 
     # Save the combined results into a single TSV file
     combined_output = "\t".join(f_headers) + "\n" + "\n".join("\t".join(map(str, row)) for row in all_data)
-    output_file = file_path + "combined_output_v2.tsv"
+    output_file = file_path + "combined_output_v3.tsv"
 
     with open(output_file, 'w') as f:
         f.write(combined_output)
