@@ -31,8 +31,8 @@ library(leaflet)
 #### create dataframe of hazard counts and proportions by town ####
 
 #adjust based on your computer
-my_dir <- "/Users/alliej/Library/CloudStorage/OneDrive-BostonUniversity/ACRES NLP/acresNLP/"
-#my_dir <- "/Users/cwm/Documents/GitHub/acresNLP/"
+#my_dir <- "/Users/alliej/Library/CloudStorage/OneDrive-BostonUniversity/ACRES NLP/acresNLP/"
+my_dir <- "/Users/cwm/Documents/GitHub/acresNLP/"
 
 create_df <- function(filename){
   data <- read_delim(filename)
@@ -79,10 +79,12 @@ combined_table
 
 table(combined_table$most_common_town, combined_table$pass_checks2)
 table(combined_table$pass_checks2)
-mancx <- read.csv(paste0(my_dir, "manual_checks.csv"), header = F)
+
+mancx <- read.csv(paste0(my_dir, "manual_checks_2.csv"), header = T,
+                  sep = "|")[,c('Manual.Check', "file_name")]
 head(mancx)
 
-combined_table <- combined_table %>% left_join(mancx, by = join_by(file_name == V7))
+combined_table <- combined_table %>% left_join(mancx)
 
 dim(combined_table)
 data.frame(head(combined_table))
@@ -92,6 +94,15 @@ write_tsv(combined_table, 'combined_table_v3.tsv')
 # ----------------------------------------------------------------------------
 # ma.url omitted
 
+combined_table <- combined_table %>%
+  mutate(pass_checks2 = (
+    Manual.Check == 'INCLUDE' &
+    duplicated == F &
+      is_ACRES_town == T &
+      is_MASS == T &
+      has_climate == 1 &
+      has_community == 1
+  ))
 
 pass_checks <- combined_table %>%
   filter(pass_checks2) %>%
@@ -141,17 +152,20 @@ hazard_by_town <- combined_table_relevant %>%
   ) %>%
   mutate(mod_sum = rowSums(across(flood_avg:fire_avg)))
 
+hazard_by_town$mod_sum
+
 ## LOOK AT REVERE AND LEXINGTON
 
 hazard_by_town
 
 hazard_by_town %>%
   pivot_longer(cols = flood_avg:fire_avg) %>%
+  mutate(value = ifelse(value == 0, NA, value)) %>%
   ggplot() +
-    geom_tile(aes(x = reorder(name, value), 
+    geom_tile(aes(x = reorder(name, value, na.rm = T), 
                   y = most_common_town, fill = value),
               color = 'white') +
-  scale_fill_binned(type = 'viridis')
+  scale_fill_binned(type = 'viridis', breaks = c(seq(20, 80, by = 20)))
 
 #this figure no longer looks good because there are too many towns
 # hazard_by_town %>%
@@ -194,16 +208,18 @@ outreach_by_town <- combined_table_relevant %>%
   mutate(mod_sum = rowSums(across(workshop_avg:information_avg)))
 
 ## LOOK AT REVERE AND LEXINGTON
-View(outreach_by_town)
+##View(outreach_by_town)
 outreach_by_town$mod_sum
 
 outreach_by_town %>%
   pivot_longer(cols = workshop_avg:information_avg) %>%
+  mutate(value = ifelse(value == 0, NA, value)) %>%
   ggplot() +
-  geom_tile(aes(x = reorder(name, value), 
+  geom_tile(aes(x = reorder(name, value, na.rm = T), 
                 y = most_common_town, fill = value),
             color = 'white') +
-  scale_fill_binned(type = 'viridis')
+  scale_fill_binned(type = 'viridis', breaks = c(seq(20, 80, by = 20)))
+
 
 
 # ----------------------------------------------------------------------------
@@ -268,8 +284,9 @@ ACRES_hazard_town_plot$haz_name_plot = hazard_name_map[ACRES_hazard_town_plot$na
 
 ACRES_hazard_town_plot$value
 
-ggplot(ACRES_hazard_town_plot %>%
-              filter(!is.na(value))) + theme_classic2() +
+ggplot(ACRES_hazard_town_plot #%>%
+              #filter(!is.na(value))
+       ) + theme_classic2() +
   geom_sf(data = ma_counties_no_suffolk,
           color = "black", linetype = '11',
           fill = "grey") +

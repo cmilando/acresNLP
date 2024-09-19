@@ -1,0 +1,1160 @@
+Checked by|Manual Check|REASON|pass_checks2|duplicated|file_name
+|||FALSE|FALSE|arlingtonurl1.json
+|||FALSE|FALSE|arlingtonurl10.json
+|||FALSE|FALSE|arlingtonurl11.json
+NC|INCLUDE||TRUE|FALSE|arlingtonurl12.json
+|||FALSE|FALSE|arlingtonurl13.json
+|||FALSE|FALSE|arlingtonurl14.json
+|||FALSE|FALSE|arlingtonurl15.json
+|||FALSE|FALSE|arlingtonurl16.json
+|||FALSE|FALSE|arlingtonurl17.json
+NC|EXCLUDE|Not ACRES town, All MA coast|TRUE|FALSE|arlingtonurl18.json
+|||FALSE|FALSE|arlingtonurl19.json
+NC|INCLUDE||TRUE|FALSE|arlingtonurl2.json
+|||FALSE|FALSE|arlingtonurl20.json
+NC|INCLUDE||TRUE|FALSE|arlingtonurl21.json
+|||FALSE|FALSE|arlingtonurl23.json
+NC|INCLUDE||TRUE|FALSE|arlingtonurl24.json
+|||FALSE|FALSE|arlingtonurl25.json
+|||FALSE|FALSE|arlingtonurl27.json
+|||FALSE|FALSE|arlingtonurl28.json
+NC|INCLUDE||TRUE|FALSE|arlingtonurl29.json
+|||FALSE|FALSE|arlingtonurl3.json
+|||FALSE|FALSE|arlingtonurl30.json
+NC|INCLUDE||TRUE|FALSE|arlingtonurl31.json
+|||FALSE|FALSE|arlingtonurl32.json
+|||FALSE|FALSE|arlingtonurl33.json
+|||FALSE|FALSE|arlingtonurl34.json
+|||FALSE|FALSE|arlingtonurl35.json
+|||FALSE|FALSE|arlingtonurl36.json
+|||FALSE|FALSE|arlingtonurl37.json
+|||FALSE|FALSE|arlingtonurl38.json
+NC|INCLUDE||TRUE|FALSE|arlingtonurl39.json
+|||FALSE|FALSE|arlingtonurl4.json
+|||FALSE|FALSE|arlingtonurl40.json
+CM|EXCLUDE|Not Massachusetts|FALSE|FALSE|arlingtonurl42.json
+|||FALSE|FALSE|arlingtonurl43.json
+CM|INCLUDE||TRUE|FALSE|arlingtonurl45.json
+|||FALSE|FALSE|arlingtonurl46.json
+|||FALSE|FALSE|arlingtonurl47.json
+|||FALSE|FALSE|arlingtonurl48.json
+|||FALSE|FALSE|arlingtonurl49.json
+|||FALSE|FALSE|arlingtonurl5.json
+|||FALSE|FALSE|arlingtonurl50.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|arlingtonurl51.json
+NC|INCLUDE||TRUE|FALSE|arlingtonurl53.json
+|||FALSE|FALSE|arlingtonurl54.json
+NC|INCLUDE|C-HEAT is referenced!|TRUE|FALSE|arlingtonurl55.json
+|||FALSE|FALSE|arlingtonurl56.json
+|||FALSE|FALSE|arlingtonurl57.json
+|||FALSE|FALSE|arlingtonurl58.json
+CM|EXCLUDE|Not ACRES town|FALSE|FALSE|arlingtonurl59.json
+NC|INCLUDE|Cambridge should be the identified town|TRUE|FALSE|arlingtonurl6.json
+|||FALSE|FALSE|arlingtonurl60.json
+|||FALSE|FALSE|arlingtonurl61.json
+|||FALSE|FALSE|arlingtonurl62.json
+|||FALSE|FALSE|arlingtonurl63.json
+|||FALSE|FALSE|arlingtonurl64.json
+|||FALSE|FALSE|arlingtonurl65.json
+|||FALSE|FALSE|arlingtonurl66.json
+|||FALSE|FALSE|arlingtonurl67.json
+|||FALSE|FALSE|arlingtonurl68.json
+|||FALSE|FALSE|arlingtonurl69.json
+CM|EXCLUDE|Not town-specific|FALSE|FALSE|arlingtonurl7.json
+|||FALSE|FALSE|arlingtonurl70.json
+NC|INCLUDE||TRUE|FALSE|arlingtonurl71.json
+|||FALSE|FALSE|arlingtonurl72.json
+|||FALSE|FALSE|arlingtonurl73.json
+|||FALSE|FALSE|arlingtonurl74.json
+|||FALSE|FALSE|arlingtonurl75.json
+|||FALSE|FALSE|arlingtonurl76.json
+|||FALSE|FALSE|arlingtonurl77.json
+|||FALSE|FALSE|arlingtonurl78.json
+|||FALSE|FALSE|arlingtonurl79.json
+NC|INCLUDE||TRUE|FALSE|arlingtonurl8.json
+|||FALSE|FALSE|arlingtonurl80.json
+|||FALSE|FALSE|arlingtonurl81.json
+|||FALSE|FALSE|arlingtonurl82.json
+|||FALSE|FALSE|arlingtonurl83.json
+|||FALSE|FALSE|arlingtonurl84.json
+|||FALSE|FALSE|arlingtonurl85.json
+|||FALSE|FALSE|arlingtonurl86.json
+|||FALSE|FALSE|arlingtonurl87.json
+|||FALSE|FALSE|arlingtonurl88.json
+NC|EXCLUDE|Not specific ACRES community, all of upper mystic|TRUE|FALSE|arlingtonurl9.json
+NC|INCLUDE||TRUE|FALSE|belmonturl1.json
+|||FALSE|FALSE|belmonturl10.json
+|||FALSE|FALSE|belmonturl11.json
+|||FALSE|TRUE|belmonturl12.json
+|||FALSE|FALSE|belmonturl13.json
+|||FALSE|FALSE|belmonturl14.json
+|||FALSE|TRUE|belmonturl15.json
+|||FALSE|FALSE|belmonturl16.json
+|||FALSE|FALSE|belmonturl17.json
+|||FALSE|FALSE|belmonturl19.json
+CM|EXCLUDE|Not ACRES town|FALSE|FALSE|belmonturl2.json
+|||FALSE|FALSE|belmonturl21.json
+|||FALSE|FALSE|belmonturl22.json
+|||FALSE|FALSE|belmonturl23.json
+AJ|INCLUDE||TRUE|FALSE|belmonturl24.json
+AJ|EXCLUDE|it's a CV|TRUE|FALSE|belmonturl25.json
+|||FALSE|FALSE|belmonturl26.json
+|||FALSE|TRUE|belmonturl27.json
+|||FALSE|FALSE|belmonturl28.json
+|||FALSE|FALSE|belmonturl29.json
+AJ|INCLUDE||TRUE|FALSE|belmonturl3.json
+AJ|INCLUDE||TRUE|FALSE|belmonturl30.json
+|||FALSE|FALSE|belmonturl31.json
+|||FALSE|FALSE|belmonturl32.json
+AJ|INCLUDE||TRUE|FALSE|belmonturl33.json
+AJ|INCLUDE||TRUE|FALSE|belmonturl34.json
+|||FALSE|FALSE|belmonturl35.json
+AJ|INCLUDE||TRUE|FALSE|belmonturl36.json
+|||FALSE|FALSE|belmonturl37.json
+AJ|INCLUDE||TRUE|FALSE|belmonturl38.json
+AJ|INCLUDE||TRUE|FALSE|belmonturl39.json
+|||FALSE|FALSE|belmonturl4.json
+AJ|INCLUDE||TRUE|FALSE|belmonturl40.json
+|||FALSE|FALSE|belmonturl41.json
+|||FALSE|FALSE|belmonturl42.json
+|||FALSE|FALSE|belmonturl43.json
+|||FALSE|FALSE|belmonturl44.json
+|||FALSE|FALSE|belmonturl45.json
+AJ|EXCLUDE|All MA|TRUE|FALSE|belmonturl46.json
+AJ|EXCLUDE|relevant section off topic|TRUE|FALSE|belmonturl47.json
+|||FALSE|FALSE|belmonturl48.json
+|||FALSE|FALSE|belmonturl49.json
+|||FALSE|FALSE|belmonturl5.json
+|||FALSE|TRUE|belmonturl50.json
+|||FALSE|FALSE|belmonturl51.json
+|||FALSE|FALSE|belmonturl52.json
+|||FALSE|FALSE|belmonturl53.json
+|||FALSE|FALSE|belmonturl54.json
+|||FALSE|FALSE|belmonturl55.json
+|||FALSE|FALSE|belmonturl56.json
+|||FALSE|FALSE|belmonturl57.json
+|||FALSE|FALSE|belmonturl58.json
+|||FALSE|FALSE|belmonturl59.json
+|||FALSE|FALSE|belmonturl6.json
+|||FALSE|FALSE|belmonturl61.json
+|||FALSE|FALSE|belmonturl62.json
+|||FALSE|FALSE|belmonturl63.json
+|||FALSE|FALSE|belmonturl64.json
+AJ|INCLUDE|link doesnt work but this one does: http://envision.cambridgema.gov/wp-content/uploads/2019/06/201906_EnvisionCambridge-Final-Report.pdf|TRUE|FALSE|belmonturl65.json
+|||FALSE|FALSE|belmonturl66.json
+|||FALSE|FALSE|belmonturl67.json
+|||FALSE|FALSE|belmonturl68.json
+NC|EXCLUDE|Not just ACRES towns|TRUE|FALSE|belmonturl69.json
+NC|INCLUDE||TRUE|FALSE|belmonturl7.json
+|||FALSE|TRUE|belmonturl70.json
+|||FALSE|FALSE|belmonturl72.json
+|||FALSE|FALSE|belmonturl74.json
+|||FALSE|FALSE|belmonturl75.json
+|||FALSE|FALSE|belmonturl76.json
+|||FALSE|FALSE|belmonturl77.json
+|||FALSE|FALSE|belmonturl78.json
+|||FALSE|FALSE|belmonturl79.json
+AJ|EXCLUDE|HOWEVER: this is the same paper as belmonturl69, just a different url|TRUE|TRUE|belmonturl8.json
+AJ|EXCLUDE|off topic|TRUE|FALSE|belmonturl80.json
+|||FALSE|FALSE|belmonturl81.json
+|||FALSE|FALSE|belmonturl82.json
+|||FALSE|FALSE|belmonturl83.json
+|||FALSE|FALSE|belmonturl84.json
+|||FALSE|FALSE|belmonturl9.json
+|||FALSE|FALSE|bostonurl1.json
+CM|INCLUDE||TRUE|FALSE|bostonurl10.json
+CM|INCLUDE||FALSE|FALSE|bostonurl11.json
+NC|INCLUDE||TRUE|FALSE|bostonurl12.json
+CM|INCLUDE||TRUE|FALSE|bostonurl13.json
+CM|EXCLUDE|Industry|FALSE|FALSE|bostonurl14.json
+|||FALSE|TRUE|bostonurl15.json
+|||FALSE|FALSE|bostonurl16.json
+CM|EXCLUDE|Not ACRES town|FALSE|FALSE|bostonurl17.json
+CM|INCLUDE||TRUE|FALSE|bostonurl18.json
+NC|INCLUDE||TRUE|FALSE|bostonurl19.json
+CM|INCLUDE||TRUE|FALSE|bostonurl2.json
+CM|EXCLUDE|Not town-specific|TRUE|FALSE|bostonurl20.json
+CM|INCLUDE||TRUE|FALSE|bostonurl21.json
+CM|INCLUDE||TRUE|FALSE|bostonurl22.json
+CM|EXCLUDE|Not town-specific|TRUE|FALSE|bostonurl23.json
+CM|INCLUDE||TRUE|FALSE|bostonurl24.json
+NC|INCLUDE||TRUE|TRUE|bostonurl25.json
+CM|EXCLUDE|Off-topic|TRUE|FALSE|bostonurl26.json
+CM|INCLUDE||FALSE|FALSE|bostonurl27.json
+CM|EXCLUDE|About birds|TRUE|FALSE|bostonurl28.json
+NC|INCLUDE||TRUE|TRUE|bostonurl29.json
+NC|INCLUDE||TRUE|FALSE|bostonurl3.json
+CM|INCLUDE||FALSE|FALSE|bostonurl30.json
+NC|EXCLUDE|Not town-specific (MBTA)|TRUE|FALSE|bostonurl31.json
+NC|EXCLUDE|Not town-specific (MBTA)|TRUE|FALSE|bostonurl32.json
+|||FALSE|TRUE|bostonurl33.json
+CM|EXCLUDE|Not town-specific|TRUE|FALSE|bostonurl34.json
+CM|EXCLUDE|Not Massachusetts|FALSE|FALSE|bostonurl35.json
+CM|EXCLUDE|Not town-specific|TRUE|FALSE|bostonurl36.json
+CM|EXCLUDE|Not town-specific|TRUE|TRUE|bostonurl37.json
+CM|INCLUDE||TRUE|TRUE|bostonurl38.json
+CM|EXCLUDE|Not Massachusetts|FALSE|TRUE|bostonurl39.json
+CM|INCLUDE||TRUE|TRUE|bostonurl4.json
+NC|INCLUDE||TRUE|FALSE|bostonurl40.json
+CM|EXCLUDE|Not town-specific|TRUE|TRUE|bostonurl41.json
+CM|EXCLUDE|Not Massachusetts|FALSE|FALSE|bostonurl42.json
+NC|INCLUDE||TRUE|FALSE|bostonurl43.json
+|||FALSE|FALSE|bostonurl44.json
+CM|EXCLUDE|Industry|TRUE|FALSE|bostonurl45.json
+CM|EXCLUDE|Not town-specific|FALSE|FALSE|bostonurl46.json
+CM|EXCLUDE|Not town-specific|TRUE|FALSE|bostonurl47.json
+NC|INCLUDE||TRUE|FALSE|bostonurl48.json
+|||FALSE|FALSE|bostonurl49.json
+CM|EXCLUDE|Good, but not town specific|TRUE|FALSE|bostonurl5.json
+|||FALSE|FALSE|bostonurl50.json
+|||FALSE|FALSE|bostonurl51.json
+NC|INCLUDE||TRUE|TRUE|bostonurl52.json
+CM|EXCLUDE|Industry|TRUE|FALSE|bostonurl53.json
+CM|INCLUDE||TRUE|FALSE|bostonurl55.json
+CM|EXCLUDE|Off-topic|TRUE|FALSE|bostonurl56.json
+NC|EXCLUDE|Not ACRES town|TRUE|FALSE|bostonurl57.json
+NC|INCLUDE||TRUE|TRUE|bostonurl59.json
+NC|INCLUDE||TRUE|TRUE|bostonurl6.json
+NC|EXCLUDE|Not ACRES town (Logan airport)|TRUE|FALSE|bostonurl60.json
+|||FALSE|FALSE|bostonurl62.json
+|||FALSE|FALSE|bostonurl63.json
+|||FALSE|FALSE|bostonurl64.json
+CM|EXCLUDE|Not Massachusetts|FALSE|FALSE|bostonurl65.json
+|||FALSE|TRUE|bostonurl66.json
+CM|INCLUDE||TRUE|FALSE|bostonurl67.json
+CM|EXCLUDE|Off-topic|TRUE|FALSE|bostonurl68.json
+CM|INCLUDE||FALSE|TRUE|bostonurl69.json
+CM|EXCLUDE|Industry|TRUE|FALSE|bostonurl7.json
+CM|EXCLUDE|Not town-specific|FALSE|FALSE|bostonurl70.json
+|||FALSE|FALSE|bostonurl71.json
+CM|INCLUDE||TRUE|FALSE|bostonurl72.json
+|||FALSE|FALSE|bostonurl73.json
+CM|EXCLUDE|State-wide, not towns|TRUE|FALSE|bostonurl74.json
+CM|EXCLUDE|Industry|FALSE|FALSE|bostonurl75.json
+|||FALSE|FALSE|bostonurl76.json
+CM|EXCLUDE|Not ACRES|FALSE|FALSE|bostonurl77.json
+NC|EXCLUDE|Off-topic|TRUE|TRUE|bostonurl78.json
+|||FALSE|FALSE|bostonurl79.json
+CM|EXCLUDE|Not town-specific|FALSE|FALSE|bostonurl8.json
+|||FALSE|FALSE|bostonurl80.json
+|||FALSE|FALSE|bostonurl81.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|bostonurl82.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|bostonurl83.json
+CM|EXCLUDE|Off-topic|TRUE|FALSE|bostonurl84.json
+CM|EXCLUDE|Off-topic|FALSE|FALSE|bostonurl85.json
+CM|INCLUDE||TRUE|FALSE|bostonurl86.json
+CM|EXCLUDE|Off-topic|TRUE|FALSE|bostonurl87.json
+CM|EXCLUDE|Off-topic|FALSE|FALSE|bostonurl88.json
+|||FALSE|FALSE|bostonurl89.json
+NC|INCLUDE||TRUE|FALSE|bostonurl9.json
+|||FALSE|FALSE|burlingtonurl1.json
+|||FALSE|TRUE|burlingtonurl11.json
+|||FALSE|FALSE|burlingtonurl12.json
+NC|INCLUDE||TRUE|FALSE|burlingtonurl13.json
+NC|EXCLUDE|Not ACRES town|FALSE|FALSE|burlingtonurl14.json
+|||FALSE|FALSE|burlingtonurl15.json
+|||FALSE|TRUE|burlingtonurl16.json
+|||FALSE|TRUE|burlingtonurl17.json
+NC|INCLUDE||TRUE|TRUE|burlingtonurl18.json
+|||FALSE|FALSE|burlingtonurl19.json
+|||FALSE|FALSE|burlingtonurl2.json
+NC|EXCLUDE|Not ACRES town|TRUE|FALSE|burlingtonurl20.json
+|||FALSE|FALSE|burlingtonurl21.json
+NC|EXCLUDE|Not ACRES town (all East Coast)|TRUE|TRUE|burlingtonurl22.json
+|||FALSE|FALSE|burlingtonurl23.json
+|||FALSE|FALSE|burlingtonurl24.json
+|||FALSE|FALSE|burlingtonurl26.json
+|||FALSE|FALSE|burlingtonurl27.json
+|||FALSE|FALSE|burlingtonurl28.json
+|||FALSE|TRUE|burlingtonurl29.json
+NC|EXCLUDE|Not ACRES town|TRUE|TRUE|burlingtonurl3.json
+|||FALSE|TRUE|burlingtonurl30.json
+|||FALSE|FALSE|burlingtonurl31.json
+|||FALSE|FALSE|burlingtonurl32.json
+|||FALSE|TRUE|burlingtonurl33.json
+NC|EXCLUDE|Not ACRES town|FALSE|FALSE|burlingtonurl34.json
+|||FALSE|FALSE|burlingtonurl35.json
+|||FALSE|FALSE|burlingtonurl36.json
+|||FALSE|TRUE|burlingtonurl37.json
+|||FALSE|FALSE|burlingtonurl38.json
+|||FALSE|TRUE|burlingtonurl4.json
+|||FALSE|FALSE|burlingtonurl40.json
+|||FALSE|FALSE|burlingtonurl41.json
+|||FALSE|FALSE|burlingtonurl42.json
+|||FALSE|FALSE|burlingtonurl43.json
+|||FALSE|FALSE|burlingtonurl44.json
+|||FALSE|FALSE|burlingtonurl45.json
+|||FALSE|FALSE|burlingtonurl46.json
+NC|EXCLUDE|Not ACRES town|FALSE|FALSE|burlingtonurl47.json
+NC|EXCLUDE||TRUE|FALSE|burlingtonurl48.json
+|||FALSE|FALSE|burlingtonurl49.json
+|||FALSE|FALSE|burlingtonurl5.json
+|||FALSE|TRUE|burlingtonurl50.json
+|||FALSE|FALSE|burlingtonurl51.json
+|||FALSE|TRUE|burlingtonurl52.json
+|||FALSE|FALSE|burlingtonurl53.json
+NC|INCLUDE||TRUE|FALSE|burlingtonurl54.json
+|||FALSE|FALSE|burlingtonurl55.json
+|||FALSE|FALSE|burlingtonurl56.json
+|||FALSE|FALSE|burlingtonurl58.json
+|||FALSE|TRUE|burlingtonurl59.json
+|||FALSE|TRUE|burlingtonurl6.json
+|||FALSE|FALSE|burlingtonurl60.json
+|||FALSE|FALSE|burlingtonurl61.json
+|||FALSE|FALSE|burlingtonurl62.json
+|||FALSE|FALSE|burlingtonurl63.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|burlingtonurl64.json
+NC|INCLUDE||TRUE|TRUE|burlingtonurl65.json
+|||FALSE|FALSE|burlingtonurl66.json
+|||FALSE|FALSE|burlingtonurl67.json
+|||FALSE|TRUE|burlingtonurl68.json
+|||FALSE|FALSE|burlingtonurl69.json
+NC|EXCLUDE|Not ACRES town (all MA)|TRUE|FALSE|burlingtonurl7.json
+|||FALSE|FALSE|burlingtonurl70.json
+|||FALSE|FALSE|burlingtonurl71.json
+NC|INCLUDE||TRUE|FALSE|burlingtonurl72.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|burlingtonurl74.json
+|||FALSE|TRUE|burlingtonurl75.json
+|||FALSE|FALSE|burlingtonurl76.json
+|||FALSE|FALSE|burlingtonurl77.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|burlingtonurl78.json
+|||FALSE|TRUE|burlingtonurl79.json
+|||FALSE|FALSE|burlingtonurl8.json
+|||FALSE|FALSE|burlingtonurl80.json
+|||FALSE|FALSE|burlingtonurl81.json
+|||FALSE|FALSE|burlingtonurl82.json
+|||FALSE|FALSE|burlingtonurl83.json
+|||FALSE|FALSE|burlingtonurl84.json
+|||FALSE|FALSE|burlingtonurl9.json
+NC|INCLUDE||TRUE|FALSE|cambridgeurl1.json
+NC|INCLUDE||TRUE|FALSE|cambridgeurl10.json
+NC|INCLUDE||TRUE|FALSE|cambridgeurl11.json
+|||FALSE|FALSE|cambridgeurl12.json
+|||FALSE|FALSE|cambridgeurl13.json
+NC|EXCLUDE|Not ACRES town|FALSE|FALSE|cambridgeurl14.json
+|||FALSE|FALSE|cambridgeurl15.json
+|||FALSE|TRUE|cambridgeurl16.json
+|||FALSE|FALSE|cambridgeurl17.json
+|||FALSE|FALSE|cambridgeurl18.json
+|||FALSE|TRUE|cambridgeurl19.json
+NC|INCLUDE||TRUE|FALSE|cambridgeurl2.json
+|||FALSE|TRUE|cambridgeurl20.json
+|||FALSE|FALSE|cambridgeurl21.json
+|||FALSE|TRUE|cambridgeurl22.json
+NC|EXCLUDE|Not ACRES town, all Northeast|FALSE|TRUE|cambridgeurl23.json
+NC|EXCLUDE|Not ACRES town|FALSE|FALSE|cambridgeurl24.json
+|||FALSE|FALSE|cambridgeurl25.json
+|||FALSE|FALSE|cambridgeurl26.json
+|||FALSE|TRUE|cambridgeurl27.json
+NC|EXCLUDE|Not ACRES town|FALSE|FALSE|cambridgeurl28.json
+|||FALSE|TRUE|cambridgeurl29.json
+NC|INCLUDE||TRUE|FALSE|cambridgeurl3.json
+NC|EXCLUDE|Not ACRES town - just MIT|TRUE|FALSE|cambridgeurl30.json
+NC|EXCLUDE|Off-topic|FALSE|FALSE|cambridgeurl31.json
+|||FALSE|FALSE|cambridgeurl32.json
+|||FALSE|FALSE|cambridgeurl33.json
+|||FALSE|FALSE|cambridgeurl34.json
+NC|EXCLUDE|Off-topic|FALSE|FALSE|cambridgeurl35.json
+|||FALSE|FALSE|cambridgeurl36.json
+NC|EXCLUDE|Not ACRES town|FALSE|TRUE|cambridgeurl37.json
+|||FALSE|FALSE|cambridgeurl38.json
+NC|INCLUDE|Technically a financial report but mention|TRUE|FALSE|cambridgeurl39.json
+|||FALSE|FALSE|cambridgeurl4.json
+|||FALSE|FALSE|cambridgeurl40.json
+|||FALSE|TRUE|cambridgeurl41.json
+NC|EXCLUDE|Not ACRES town|FALSE|TRUE|cambridgeurl42.json
+|||FALSE|FALSE|cambridgeurl43.json
+|||FALSE|TRUE|cambridgeurl44.json
+NC|INCLUDE||TRUE|TRUE|cambridgeurl45.json
+|||FALSE|FALSE|cambridgeurl46.json
+|||FALSE|FALSE|cambridgeurl47.json
+NC|EXCLUDE|Not ACRES town|FALSE|TRUE|cambridgeurl48.json
+|||FALSE|TRUE|cambridgeurl49.json
+NC|INCLUDE||TRUE|FALSE|cambridgeurl5.json
+|||FALSE|TRUE|cambridgeurl50.json
+|||FALSE|FALSE|cambridgeurl51.json
+|||FALSE|FALSE|cambridgeurl52.json
+NC|EXCLUDE|Not ACRES town|FALSE|FALSE|cambridgeurl53.json
+NC|EXCLUDE|Off-topic|FALSE|FALSE|cambridgeurl54.json
+|||FALSE|FALSE|cambridgeurl55.json
+|||FALSE|FALSE|cambridgeurl56.json
+|||FALSE|TRUE|cambridgeurl57.json
+NC|INCLUDE|community needs assessment|TRUE|FALSE|cambridgeurl58.json
+|||FALSE|FALSE|cambridgeurl59.json
+NC|EXCLUDE|Off-topic|FALSE|FALSE|cambridgeurl6.json
+|||FALSE|FALSE|cambridgeurl60.json
+NC|EXCLUDE|Off-topic; building permit|TRUE|TRUE|cambridgeurl61.json
+NC|INCLUDE||TRUE|TRUE|cambridgeurl7.json
+|||FALSE|FALSE|cambridgeurl8.json
+NC|EXCLUDE|Not ACRES town|FALSE|FALSE|cambridgeurl9.json
+NC|INCLUDE||FALSE|FALSE|chelseaurl1.json
+NC|INCLUDE||TRUE|TRUE|chelseaurl10.json
+NC|INCLUDE||TRUE|TRUE|chelseaurl11.json
+|||FALSE|TRUE|chelseaurl12.json
+NC|EXCLUDE|Not ACRES town, all MA|FALSE|FALSE|chelseaurl13.json
+|||FALSE|FALSE|chelseaurl14.json
+NC|INCLUDE|Covers all port areas in Boston, including Mystic|TRUE|TRUE|chelseaurl16.json
+NC|INCLUDE||TRUE|TRUE|chelseaurl17.json
+NC|INCLUDE||TRUE|TRUE|chelseaurl18.json
+|||FALSE|TRUE|chelseaurl19.json
+NC|INCLUDE||TRUE|FALSE|chelseaurl2.json
+NC|INCLUDE||TRUE|TRUE|chelseaurl20.json
+NC|INCLUDE||TRUE|FALSE|chelseaurl21.json
+NC|INCLUDE||TRUE|TRUE|chelseaurl22.json
+NC|INCLUDE||TRUE|TRUE|chelseaurl23.json
+|||FALSE|TRUE|chelseaurl24.json
+NC|INCLUDE||TRUE|FALSE|chelseaurl25.json
+NC|EXCLUDE||TRUE|TRUE|chelseaurl26.json
+|||FALSE|TRUE|chelseaurl27.json
+CM|EXCLUDE|Not town-specific|TRUE|TRUE|chelseaurl28.json
+NC|EXCLUDE|off-topic|TRUE|FALSE|chelseaurl29.json
+NC|INCLUDE||TRUE|FALSE|chelseaurl3.json
+|||FALSE|TRUE|chelseaurl30.json
+|||FALSE|FALSE|chelseaurl31.json
+|||FALSE|FALSE|chelseaurl32.json
+NC|INCLDUE||TRUE|TRUE|chelseaurl35.json
+NC|EXCLUDE|Not ACRES town (all East Coast)|TRUE|TRUE|chelseaurl36.json
+NC|EXCLUDE|Not ACRES town (all MA)|TRUE|FALSE|chelseaurl37.json
+|||FALSE|TRUE|chelseaurl38.json
+|||FALSE|FALSE|chelseaurl39.json
+NC|INCLUDE||TRUE|TRUE|chelseaurl4.json
+NC|INCLUDE||TRUE|TRUE|chelseaurl40.json
+NC|EXCLUDE|Off-topic; planning permit|TRUE|TRUE|chelseaurl41.json
+NC|INCLUDE||TRUE|FALSE|chelseaurl42.json
+|||FALSE|TRUE|chelseaurl43.json
+NC|INCLUDE||TRUE|FALSE|chelseaurl45.json
+NC|EXCLUDE|Not ACRES town|TRUE|FALSE|chelseaurl46.json
+|||FALSE|FALSE|chelseaurl47.json
+NC|EXCLUDE|Just MBTA from Newbury to Rockport|TRUE|FALSE|chelseaurl48.json
+NC|EXCLUDE|Off-topic|TRUE|TRUE|chelseaurl49.json
+NC|INCLUDE|Covers general metro area, but funded by Chelsea for city planning|TRUE|FALSE|chelseaurl5.json
+NC|INCLUDE|Technically a budget report but includes climate concerns|TRUE|FALSE|chelseaurl50.json
+|||FALSE|TRUE|chelseaurl51.json
+|||FALSE|TRUE|chelseaurl52.json
+NC|EXCLUDE|Not ACRES town|TRUE|TRUE|chelseaurl53.json
+|||FALSE|TRUE|chelseaurl54.json
+|||FALSE|FALSE|chelseaurl56.json
+|||FALSE|TRUE|chelseaurl57.json
+NC|EXCLUDE|Not ACRES town|FALSE|FALSE|chelseaurl58.json
+|||FALSE|FALSE|chelseaurl59.json
+NC|EXCLUDE|All MA planning document|TRUE|TRUE|chelseaurl6.json
+|||FALSE|FALSE|chelseaurl60.json
+NC|INCLDE||TRUE|FALSE|chelseaurl61.json
+|||FALSE|FALSE|chelseaurl62.json
+|||FALSE|FALSE|chelseaurl63.json
+|||FALSE|TRUE|chelseaurl64.json
+NC|INCLUDE|Relates to COVID-19 but addresses envrionmental concerns as SDOH|TRUE|FALSE|chelseaurl65.json
+NC|INCLUDE||TRUE|TRUE|chelseaurl66.json
+|||FALSE|FALSE|chelseaurl67.json
+NC|EXCLUDE|Not ACRES town (Logan airport)|TRUE|TRUE|chelseaurl68.json
+|||FALSE|FALSE|chelseaurl69.json
+|||FALSE|TRUE|chelseaurl7.json
+NC|INCLUDE||TRUE|FALSE|chelseaurl70.json
+|||FALSE|TRUE|chelseaurl71.json
+|||FALSE|TRUE|chelseaurl72.json
+|||FALSE|TRUE|chelseaurl73.json
+|||FALSE|FALSE|chelseaurl74.json
+|||FALSE|FALSE|chelseaurl75.json
+|||FALSE|FALSE|chelseaurl76.json
+|||FALSE|TRUE|chelseaurl77.json
+|||FALSE|TRUE|chelseaurl78.json
+NC|INCLUDE||TRUE|TRUE|chelseaurl8.json
+NC|EXCLUDE|Not ACRES town|FALSE|FALSE|chelseaurl80.json
+|||FALSE|FALSE|chelseaurl81.json
+|||FALSE|FALSE|chelseaurl82.json
+NC|EXCLUDE|Not ACRES town, all MA|TRUE|FALSE|chelseaurl83.json
+|||FALSE|FALSE|chelseaurl84.json
+NC|INCLUDE||TRUE|TRUE|chelseaurl85.json
+|||FALSE|FALSE|chelseaurl86.json
+NC|EXCLUDE|Not ACRES town, all MA|TRUE|FALSE|chelseaurl87.json
+NC|INCLUDE||TRUE|TRUE|chelseaurl88.json
+|||FALSE|FALSE|chelseaurl89.json
+NC|INCLUDE||TRUE|TRUE|chelseaurl9.json
+|||FALSE|FALSE|chelseaurl90.json
+|||FALSE|FALSE|chelseaurl91.json
+|||FALSE|FALSE|chelseaurl92.json
+|||FALSE|TRUE|chelseaurl93.json
+NC|EXCLUDE|Off-topic|TRUE|TRUE|chelseaurl94.json
+|||FALSE|TRUE|chelseaurl95.json
+NC|INCLUDE||TRUE|TRUE|everetturl1.json
+|||FALSE|TRUE|everetturl10.json
+NC|INCLUDE||TRUE|TRUE|everetturl11.json
+NC|EXCLUDE|Not town-specific; whole MyRWA|TRUE|TRUE|everetturl12.json
+|||FALSE|TRUE|everetturl13.json
+|||FALSE|TRUE|everetturl14.json
+|||FALSE|FALSE|everetturl15.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|everetturl16.json
+|||FALSE|FALSE|everetturl17.json
+|||FALSE|TRUE|everetturl18.json
+|||FALSE|FALSE|everetturl19.json
+NC|INCLUDE||TRUE|TRUE|everetturl2.json
+NC|INCLUDE|Technically a financial report but mention|TRUE|TRUE|everetturl20.json
+NC|EXCLUDE|Not ACRES town (all MA)|TRUE|TRUE|everetturl21.json
+|||FALSE|FALSE|everetturl22.json
+NC|INCLUDE||TRUE|FALSE|everetturl23.json
+|||FALSE|TRUE|everetturl24.json
+|||FALSE|FALSE|everetturl25.json
+NC|EXCLUDE|Not ACRES town (all MA). BUT very interesting in that it compares coastal flooding concerns across coastal communities|TRUE|FALSE|everetturl27.json
+NC|INCLUDE||TRUE|TRUE|everetturl28.json
+NC|INCLUDE||TRUE|TRUE|everetturl29.json
+NC|INCLUDE||TRUE|TRUE|everetturl3.json
+NC|EXCLUDE|Not ACRES town (all East Coast)|TRUE|TRUE|everetturl30.json
+|||FALSE|TRUE|everetturl31.json
+NC|INCLUDE||TRUE|TRUE|everetturl32.json
+|||FALSE|TRUE|everetturl33.json
+|||FALSE|FALSE|everetturl34.json
+|||FALSE|FALSE|everetturl35.json
+|||FALSE|FALSE|everetturl36.json
+|||FALSE|TRUE|everetturl37.json
+NC|INCLUDE||TRUE|TRUE|everetturl38.json
+|||FALSE|FALSE|everetturl39.json
+NC|INCLUDE||TRUE|TRUE|everetturl4.json
+NC|INCLUDE||TRUE|TRUE|everetturl40.json
+|||FALSE|TRUE|everetturl41.json
+|||FALSE|TRUE|everetturl42.json
+|||FALSE|FALSE|everetturl43.json
+|||FALSE|FALSE|everetturl44.json
+|||FALSE|TRUE|everetturl45.json
+|||FALSE|FALSE|everetturl46.json
+|||FALSE|FALSE|everetturl47.json
+|||FALSE|FALSE|everetturl48.json
+NC|EXCLUDE|Focus is beyond just boston; focuses primarily on transit|TRUE|FALSE|everetturl49.json
+|||FALSE|TRUE|everetturl5.json
+|||FALSE|FALSE|everetturl50.json
+|||FALSE|FALSE|everetturl51.json
+|||FALSE|FALSE|everetturl52.json
+|||FALSE|TRUE|everetturl54.json
+NC|EXCLUDE|Not ACRES town (all MA)|TRUE|TRUE|everetturl55.json
+|||FALSE|FALSE|everetturl56.json
+|||FALSE|FALSE|everetturl58.json
+|||FALSE|FALSE|everetturl59.json
+NC|INCLUDE||TRUE|TRUE|everetturl6.json
+|||FALSE|FALSE|everetturl61.json
+NC|EXCLUDE|Not ACRES town (all New England)|TRUE|FALSE|everetturl62.json
+|||FALSE|FALSE|everetturl63.json
+|||FALSE|FALSE|everetturl64.json
+NC|INCLUDE||TRUE|TRUE|everetturl65.json
+|||FALSE|FALSE|everetturl66.json
+|||FALSE|FALSE|everetturl67.json
+|||FALSE|FALSE|everetturl68.json
+NC|EXCLUDE|Not ACRES town (all MA)|TRUE|FALSE|everetturl69.json
+NC|INCLUDE||TRUE|FALSE|everetturl7.json
+NC|EXCLUDE|Not ACRES town (all MA)|TRUE|FALSE|everetturl70.json
+|||FALSE|FALSE|everetturl71.json
+|||FALSE|FALSE|everetturl72.json
+NC|EXCLUDE|Not ACRES town (all coastal MA). Useful resource for us, though!|TRUE|TRUE|everetturl73.json
+|||FALSE|FALSE|everetturl75.json
+|||FALSE|FALSE|everetturl76.json
+NC|EXCLUDE|Not ACRES town (all MA)|TRUE|TRUE|everetturl77.json
+NC|INCLUDE||TRUE|FALSE|everetturl78.json
+NC|INCLUDE||TRUE|TRUE|everetturl8.json
+NC|EXCLUDE|Off-topic; planning permit|TRUE|TRUE|everetturl9.json
+NC|INCLUDE||TRUE|FALSE|lexingtonurl1.json
+|||FALSE|FALSE|lexingtonurl10.json
+|||FALSE|FALSE|lexingtonurl11.json
+|||FALSE|FALSE|lexingtonurl12.json
+|||FALSE|FALSE|lexingtonurl13.json
+|||FALSE|FALSE|lexingtonurl14.json
+|||FALSE|FALSE|lexingtonurl15.json
+|||FALSE|FALSE|lexingtonurl16.json
+|||FALSE|FALSE|lexingtonurl17.json
+NC|INCLUDE||TRUE|FALSE|lexingtonurl18.json
+|||FALSE|FALSE|lexingtonurl19.json
+NC|EXCLUDE|Not ACRES town (UMass community report)|TRUE|FALSE|lexingtonurl2.json
+|||FALSE|FALSE|lexingtonurl20.json
+|||FALSE|FALSE|lexingtonurl21.json
+|||FALSE|TRUE|lexingtonurl22.json
+NC|INCLUDE||TRUE|FALSE|lexingtonurl23.json
+|||FALSE|TRUE|lexingtonurl24.json
+NC|INCLUDE||FALSE|FALSE|lexingtonurl25.json
+|||FALSE|FALSE|lexingtonurl26.json
+|||FALSE|TRUE|lexingtonurl27.json
+|||FALSE|FALSE|lexingtonurl28.json
+NC|EXCLUDE|Off-topic|TRUE|TRUE|lexingtonurl29.json
+NC|EXCLUDE|Not ACRES town|FALSE|FALSE|lexingtonurl3.json
+|||FALSE|FALSE|lexingtonurl30.json
+NC|EXCLUDE|Not ACRES towns|TRUE|FALSE|lexingtonurl31.json
+|||FALSE|FALSE|lexingtonurl32.json
+NC|EXCLUDE|101 towns not limited to ACRES|TRUE|FALSE|lexingtonurl33.json
+NC|EXCLUDE|Includes costs allocated to climate research but not direct plans|TRUE|FALSE|lexingtonurl34.json
+|||FALSE|FALSE|lexingtonurl35.json
+|||FALSE|FALSE|lexingtonurl36.json
+|||FALSE|FALSE|lexingtonurl37.json
+NC|INCLUDE||TRUE|TRUE|lexingtonurl38.json
+|||FALSE|FALSE|lexingtonurl39.json
+NC|INCLUDE||TRUE|TRUE|lexingtonurl4.json
+|||FALSE|FALSE|lexingtonurl40.json
+|||FALSE|FALSE|lexingtonurl41.json
+NC|EXCLUDE|Not ACRES town (all MA)|TRUE|TRUE|lexingtonurl42.json
+NC|INCLUDE||TRUE|FALSE|lexingtonurl43.json
+|||FALSE|TRUE|lexingtonurl44.json
+|||FALSE|FALSE|lexingtonurl45.json
+NC|EXCLUDE|Off-topic|FALSE|FALSE|lexingtonurl46.json
+|||FALSE|FALSE|lexingtonurl47.json
+|||FALSE|FALSE|lexingtonurl48.json
+|||FALSE|FALSE|lexingtonurl49.json
+|||FALSE|FALSE|lexingtonurl5.json
+|||FALSE|FALSE|lexingtonurl50.json
+|||FALSE|FALSE|lexingtonurl51.json
+|||FALSE|FALSE|lexingtonurl52.json
+|||FALSE|FALSE|lexingtonurl53.json
+|||FALSE|FALSE|lexingtonurl54.json
+NC|EXCLUDE|Off-topic; planning permit|TRUE|TRUE|lexingtonurl55.json
+NC|EXCLUDE|Off topic|TRUE|FALSE|lexingtonurl56.json
+|||FALSE|TRUE|lexingtonurl57.json
+|||FALSE|FALSE|lexingtonurl59.json
+NC|EXCLUDE|Not ACRES town|FALSE|FALSE|lexingtonurl60.json
+NC|EXCLUDE|Off topic|TRUE|FALSE|lexingtonurl61.json
+NC|EXCLUDE|Off-topic|TRUE|TRUE|lexingtonurl7.json
+|||FALSE|TRUE|lexingtonurl8.json
+|||FALSE|FALSE|lexingtonurl9.json
+NC|INCLUDE||TRUE|TRUE|maldenurl1.json
+|||FALSE|FALSE|maldenurl10.json
+|||FALSE|TRUE|maldenurl11.json
+NC|EXCLUDE|Not ACRES town (all MA)|TRUE|TRUE|maldenurl12.json
+|||FALSE|TRUE|maldenurl13.json
+|||FALSE|FALSE|maldenurl14.json
+|||FALSE|FALSE|maldenurl15.json
+|||FALSE|FALSE|maldenurl16.json
+|||FALSE|FALSE|maldenurl17.json
+|||FALSE|FALSE|maldenurl18.json
+NC|EXCLUDE|Just MBTA from Newbury to Rockport|TRUE|TRUE|maldenurl19.json
+NC|EXCLUDE|Not ACRES town, all MA|FALSE|FALSE|maldenurl2.json
+NC|EXCLUDE|All MA|TRUE|TRUE|maldenurl20.json
+NC|EXCLUDE|Boston regional transit extends beyond ACRES towns|TRUE|FALSE|maldenurl21.json
+|||FALSE|FALSE|maldenurl22.json
+|||FALSE|FALSE|maldenurl24.json
+NC|INCLUDE||TRUE|FALSE|maldenurl25.json
+NC|EXCLUDE|All MyRWA (should we include these)|TRUE|FALSE|maldenurl26.json
+|||FALSE|FALSE|maldenurl27.json
+NC|EXCLUDE|Off-topic|FALSE|FALSE|maldenurl28.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|maldenurl29.json
+NC|EXCLUDE|Off-topic|TRUE|TRUE|maldenurl3.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|maldenurl30.json
+|||FALSE|FALSE|maldenurl31.json
+|||FALSE|FALSE|maldenurl32.json
+|||FALSE|TRUE|maldenurl33.json
+|||FALSE|FALSE|maldenurl34.json
+|||FALSE|FALSE|maldenurl35.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|maldenurl36.json
+|||FALSE|FALSE|maldenurl37.json
+|||FALSE|FALSE|maldenurl38.json
+|||FALSE|TRUE|maldenurl39.json
+NC|INCLUDE||TRUE|FALSE|maldenurl4.json
+|||FALSE|FALSE|maldenurl40.json
+|||FALSE|FALSE|maldenurl41.json
+|||FALSE|FALSE|maldenurl42.json
+|||FALSE|FALSE|maldenurl43.json
+NC|EXCLUDE|Not just ACRES towns|TRUE|TRUE|maldenurl44.json
+|||FALSE|FALSE|maldenurl45.json
+|||FALSE|TRUE|maldenurl46.json
+|||FALSE|FALSE|maldenurl47.json
+|||FALSE|FALSE|maldenurl48.json
+|||FALSE|FALSE|maldenurl49.json
+NC|INCLUDE||TRUE|TRUE|maldenurl5.json
+|||FALSE|FALSE|maldenurl50.json
+NC|EXCLUDE||TRUE|FALSE|maldenurl51.json
+|||FALSE|FALSE|maldenurl52.json
+|||FALSE|FALSE|maldenurl53.json
+|||FALSE|FALSE|maldenurl54.json
+|||FALSE|FALSE|maldenurl55.json
+|||FALSE|FALSE|maldenurl56.json
+|||FALSE|FALSE|maldenurl57.json
+|||FALSE|FALSE|maldenurl58.json
+|||FALSE|FALSE|maldenurl59.json
+NC|EXCLUDE|Not ACRES town, all MA|FALSE|FALSE|maldenurl6.json
+|||FALSE|FALSE|maldenurl60.json
+|||FALSE|FALSE|maldenurl61.json
+|||FALSE|FALSE|maldenurl62.json
+NC|INCLUDE||TRUE|FALSE|maldenurl7.json
+|||FALSE|FALSE|maldenurl8.json
+NC|INCLUDE||TRUE|TRUE|maldenurl9.json
+|||FALSE|FALSE|medfordurl1.json
+|||FALSE|FALSE|medfordurl10.json
+NC|INCLUDE|Technically a budget report but includes climate concerns|TRUE|TRUE|medfordurl11.json
+|||FALSE|FALSE|medfordurl12.json
+|||FALSE|TRUE|medfordurl13.json
+|||FALSE|FALSE|medfordurl14.json
+|||FALSE|FALSE|medfordurl16.json
+NC|INCLUDE||TRUE|FALSE|medfordurl17.json
+NC|EXCLUDE|All of MA (graphic design is also their passion)|TRUE|TRUE|medfordurl18.json
+|||FALSE|FALSE|medfordurl19.json
+NC|INCLUDE|Boston AND Charlestown listed separately. Should this be for both?|TRUE|FALSE|medfordurl2.json
+NC|EXCLUDE|Not ACRES town|FALSE|FALSE|medfordurl21.json
+|||FALSE|FALSE|medfordurl22.json
+|||FALSE|FALSE|medfordurl23.json
+|||FALSE|FALSE|medfordurl24.json
+|||FALSE|FALSE|medfordurl25.json
+|||FALSE|FALSE|medfordurl27.json
+|||FALSE|FALSE|medfordurl28.json
+|||FALSE|FALSE|medfordurl29.json
+|||FALSE|TRUE|medfordurl3.json
+NC|EXCLUDE|Budget approval for MyRWA|TRUE|FALSE|medfordurl31.json
+NC|EXCLUDE|Budget approval for MyRWA|TRUE|FALSE|medfordurl32.json
+|||FALSE|FALSE|medfordurl33.json
+|||FALSE|FALSE|medfordurl35.json
+|||FALSE|FALSE|medfordurl36.json
+|||FALSE|FALSE|medfordurl37.json
+|||FALSE|FALSE|medfordurl38.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|medfordurl39.json
+NC|INCLUDE||TRUE|TRUE|medfordurl4.json
+|||FALSE|FALSE|medfordurl40.json
+|||FALSE|FALSE|medfordurl41.json
+|||FALSE|FALSE|medfordurl42.json
+NC|INCLUDE||TRUE|FALSE|medfordurl5.json
+|||FALSE|FALSE|medfordurl6.json
+|||FALSE|FALSE|medfordurl7.json
+|||FALSE|FALSE|medfordurl8.json
+|||FALSE|TRUE|melroseurl1.json
+NC|EXCLUDE|All MA, off-topic|TRUE|FALSE|melroseurl10.json
+|||FALSE|TRUE|melroseurl11.json
+NC|EXCLUDE|Off-topic; planning permit|TRUE|TRUE|melroseurl12.json
+NC|EXCLUDE|All MA, off-topic|TRUE|FALSE|melroseurl13.json
+|||FALSE|FALSE|melroseurl14.json
+|||FALSE|FALSE|melroseurl15.json
+NC|EXCLUDE|Not ACRES town, fish|FALSE|FALSE|melroseurl16.json
+|||FALSE|FALSE|melroseurl17.json
+|||FALSE|FALSE|melroseurl18.json
+NC|EXCLUDE|Doesn't highlight an ACRES town|TRUE|FALSE|melroseurl19.json
+NC|INCLUDE||TRUE|TRUE|melroseurl2.json
+|||FALSE|TRUE|melroseurl20.json
+|||FALSE|FALSE|melroseurl21.json
+NC|EXCLUDE||TRUE|FALSE|melroseurl22.json
+|||FALSE|TRUE|melroseurl23.json
+|||FALSE|FALSE|melroseurl24.json
+|||FALSE|FALSE|melroseurl25.json
+|||FALSE|FALSE|melroseurl26.json
+NC|INCLUDE|Sometimes 'boston' is very general and includes non-watershed areas. I suppose we don't need to differentiate as long as it's not "greater metro area" (e.g. MBTA territory)?|TRUE|FALSE|melroseurl27.json
+|||FALSE|FALSE|melroseurl28.json
+|||FALSE|FALSE|melroseurl29.json
+NC|EXCLUDE|All MA|TRUE|FALSE|melroseurl3.json
+|||FALSE|FALSE|melroseurl30.json
+|||FALSE|TRUE|melroseurl32.json
+|||FALSE|FALSE|melroseurl33.json
+|||FALSE|FALSE|melroseurl34.json
+|||FALSE|FALSE|melroseurl35.json
+|||FALSE|FALSE|melroseurl36.json
+|||FALSE|FALSE|melroseurl37.json
+|||FALSE|FALSE|melroseurl38.json
+|||FALSE|FALSE|melroseurl39.json
+|||FALSE|FALSE|melroseurl4.json
+NC|EXCLUDE|All of MyRWA (should we include these??)|TRUE|FALSE|melroseurl40.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|melroseurl41.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|melroseurl42.json
+|||FALSE|FALSE|melroseurl43.json
+|||FALSE|FALSE|melroseurl45.json
+|||FALSE|FALSE|melroseurl46.json
+|||FALSE|FALSE|melroseurl47.json
+|||FALSE|FALSE|melroseurl48.json
+|||FALSE|FALSE|melroseurl49.json
+NC|EXCLUDE|Not ACRES towns|TRUE|FALSE|melroseurl5.json
+NC|INCLUDE||TRUE|FALSE|melroseurl51.json
+|||FALSE|FALSE|melroseurl52.json
+|||FALSE|FALSE|melroseurl53.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|melroseurl54.json
+|||FALSE|FALSE|melroseurl56.json
+|||FALSE|FALSE|melroseurl57.json
+|||FALSE|FALSE|melroseurl58.json
+NC|INCLUDE|Graphic design is their passion|TRUE|FALSE|melroseurl6.json
+|||FALSE|FALSE|melroseurl60.json
+|||FALSE|FALSE|melroseurl7.json
+|||FALSE|FALSE|melroseurl8.json
+|||FALSE|FALSE|melroseurl9.json
+|||FALSE|TRUE|readingurl1.json
+|||FALSE|FALSE|readingurl10.json
+|||FALSE|FALSE|readingurl11.json
+|||FALSE|TRUE|readingurl12.json
+|||FALSE|TRUE|readingurl13.json
+|||FALSE|FALSE|readingurl14.json
+|||FALSE|TRUE|readingurl15.json
+|||FALSE|FALSE|readingurl16.json
+|||FALSE|FALSE|readingurl17.json
+|||FALSE|TRUE|readingurl18.json
+|||FALSE|FALSE|readingurl19.json
+|||FALSE|TRUE|readingurl2.json
+|||FALSE|FALSE|readingurl20.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|readingurl21.json
+|||FALSE|FALSE|readingurl22.json
+NC|EXCLUDE|Not ACRES town, off-topic|FALSE|FALSE|readingurl23.json
+|||FALSE|FALSE|readingurl24.json
+|||FALSE|FALSE|readingurl25.json
+|||FALSE|FALSE|readingurl26.json
+|||FALSE|TRUE|readingurl27.json
+|||FALSE|TRUE|readingurl29.json
+NC|INCLUDE||TRUE|TRUE|readingurl3.json
+|||FALSE|TRUE|readingurl30.json
+|||FALSE|FALSE|readingurl31.json
+|||FALSE|FALSE|readingurl32.json
+|||FALSE|FALSE|readingurl33.json
+|||FALSE|FALSE|readingurl34.json
+|||FALSE|FALSE|readingurl35.json
+|||FALSE|TRUE|readingurl36.json
+|||FALSE|FALSE|readingurl37.json
+|||FALSE|FALSE|readingurl38.json
+|||FALSE|FALSE|readingurl39.json
+|||FALSE|FALSE|readingurl4.json
+|||FALSE|FALSE|readingurl40.json
+|||FALSE|FALSE|readingurl41.json
+|||FALSE|TRUE|readingurl42.json
+|||FALSE|FALSE|readingurl43.json
+|||FALSE|FALSE|readingurl44.json
+|||FALSE|TRUE|readingurl45.json
+NC|EXCLUDE|Not ACRES town|FALSE|FALSE|readingurl46.json
+|||FALSE|FALSE|readingurl48.json
+|||FALSE|FALSE|readingurl49.json
+|||FALSE|FALSE|readingurl5.json
+|||FALSE|FALSE|readingurl50.json
+|||FALSE|FALSE|readingurl51.json
+|||FALSE|FALSE|readingurl52.json
+|||FALSE|FALSE|readingurl53.json
+|||FALSE|FALSE|readingurl54.json
+|||FALSE|FALSE|readingurl56.json
+|||FALSE|FALSE|readingurl57.json
+|||FALSE|FALSE|readingurl58.json
+|||FALSE|FALSE|readingurl59.json
+NC|EXCLUDE|Not ACRES town|FALSE|FALSE|readingurl6.json
+|||FALSE|FALSE|readingurl7.json
+|||FALSE|FALSE|readingurl8.json
+|||FALSE|FALSE|readingurl9.json
+|||FALSE|FALSE|revereurl1.json
+|||FALSE|TRUE|revereurl10.json
+|||FALSE|TRUE|revereurl11.json
+|||FALSE|TRUE|revereurl12.json
+|||FALSE|FALSE|revereurl13.json
+|||FALSE|TRUE|revereurl14.json
+NC|EXCLUDE|Slightly off topic, not MyRWA area|TRUE|FALSE|revereurl15.json
+NC|EXCLUDE|Off-topic|TRUE|TRUE|revereurl16.json
+NC|INCLUDE||TRUE|TRUE|revereurl17.json
+NC|INCLUDE||TRUE|TRUE|revereurl18.json
+NC|INCLUDE||FALSE|FALSE|revereurl19.json
+NC|INCLUDE||TRUE|FALSE|revereurl2.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|revereurl20.json
+|||FALSE|FALSE|revereurl21.json
+|||FALSE|FALSE|revereurl22.json
+|||FALSE|FALSE|revereurl23.json
+|||FALSE|FALSE|revereurl24.json
+NC|EXCLUDE|MBTA, not town-specific|TRUE|FALSE|revereurl25.json
+|||FALSE|FALSE|revereurl26.json
+NC|EXCLUDE|Not ACRES town, birds|FALSE|FALSE|revereurl27.json
+|||FALSE|FALSE|revereurl28.json
+NC|EXCLUDE|Not ACRES town, all MA|TRUE|TRUE|revereurl29.json
+|||FALSE|FALSE|revereurl3.json
+|||FALSE|FALSE|revereurl30.json
+|||FALSE|FALSE|revereurl31.json
+NC|EXCLUDE|Off-topic|FALSE|FALSE|revereurl32.json
+|||FALSE|FALSE|revereurl33.json
+NC|EXCLUDE|Off-topic|FALSE|FALSE|revereurl34.json
+|||FALSE|FALSE|revereurl36.json
+|||FALSE|FALSE|revereurl37.json
+|||FALSE|FALSE|revereurl38.json
+|||FALSE|FALSE|revereurl39.json
+NC|INCLUDE||TRUE|FALSE|revereurl4.json
+|||FALSE|FALSE|revereurl40.json
+|||FALSE|FALSE|revereurl41.json
+|||FALSE|FALSE|revereurl42.json
+|||FALSE|FALSE|revereurl43.json
+NC|INCLUDE||TRUE|FALSE|revereurl5.json
+NC|EXCLUDE|Off-topic; planning permit|TRUE|TRUE|revereurl6.json
+|||FALSE|FALSE|revereurl7.json
+NC|EXCLUDE|Not ACRES town, all MA|TRUE|FALSE|revereurl8.json
+|||FALSE|TRUE|revereurl9.json
+NC|INCLUDE||TRUE|TRUE|somervilleurl1.json
+NC|INCLUDE||TRUE|FALSE|somervilleurl10.json
+|||FALSE|FALSE|somervilleurl11.json
+|||FALSE|FALSE|somervilleurl12.json
+|||FALSE|FALSE|somervilleurl13.json
+NC|INCLUDE||TRUE|TRUE|somervilleurl14.json
+|||FALSE|FALSE|somervilleurl15.json
+|||FALSE|FALSE|somervilleurl16.json
+|||FALSE|FALSE|somervilleurl17.json
+NC|EXCLUDE|Not ACRES town, all MA|TRUE|FALSE|somervilleurl18.json
+|||FALSE|TRUE|somervilleurl19.json
+NC|INCLUDE||TRUE|FALSE|somervilleurl2.json
+NC|EXCLUDE|Not ACRES town|FALSE|FALSE|somervilleurl20.json
+NC|EXCLUDE|Not ACRES town|FALSE|TRUE|somervilleurl21.json
+|||FALSE|FALSE|somervilleurl22.json
+|||FALSE|TRUE|somervilleurl23.json
+|||FALSE|FALSE|somervilleurl24.json
+|||FALSE|FALSE|somervilleurl25.json
+|||FALSE|FALSE|somervilleurl26.json
+NC|EXCLUDE|Not ACRES town, just Tufts|TRUE|FALSE|somervilleurl27.json
+|||FALSE|FALSE|somervilleurl28.json
+NC|EXCLUDE|Not ACRES town, all MA|TRUE|FALSE|somervilleurl29.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|somervilleurl3.json
+|||FALSE|FALSE|somervilleurl30.json
+|||FALSE|FALSE|somervilleurl31.json
+NC|INCLUDE||TRUE|FALSE|somervilleurl4.json
+|||FALSE|FALSE|somervilleurl5.json
+NC|EXCLUDE|Off-topic; planning permit|TRUE|TRUE|somervilleurl6.json
+|||FALSE|TRUE|somervilleurl7.json
+|||FALSE|FALSE|somervilleurl8.json
+|||FALSE|TRUE|somervilleurl9.json
+|||FALSE|FALSE|stonehamurl1.json
+|||FALSE|FALSE|stonehamurl10.json
+|||FALSE|FALSE|stonehamurl11.json
+|||FALSE|FALSE|stonehamurl12.json
+|||FALSE|FALSE|stonehamurl13.json
+|||FALSE|FALSE|stonehamurl14.json
+|||FALSE|FALSE|stonehamurl16.json
+|||FALSE|FALSE|stonehamurl17.json
+|||FALSE|FALSE|stonehamurl18.json
+|||FALSE|FALSE|stonehamurl19.json
+NC|EXCLUDE|Not town-specific|TRUE|FALSE|stonehamurl2.json
+|||FALSE|FALSE|stonehamurl20.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|stonehamurl21.json
+|||FALSE|FALSE|stonehamurl22.json
+|||FALSE|FALSE|stonehamurl23.json
+|||FALSE|FALSE|stonehamurl24.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|stonehamurl25.json
+|||FALSE|FALSE|stonehamurl26.json
+|||FALSE|FALSE|stonehamurl27.json
+|||FALSE|FALSE|stonehamurl28.json
+|||FALSE|FALSE|stonehamurl29.json
+NC|EXCLUDE|Off topic; planning permit|TRUE|FALSE|stonehamurl3.json
+|||FALSE|FALSE|stonehamurl30.json
+NC|INCLUDE||TRUE|FALSE|stonehamurl31.json
+|||FALSE|FALSE|stonehamurl32.json
+|||FALSE|FALSE|stonehamurl33.json
+|||FALSE|FALSE|stonehamurl35.json
+|||FALSE|FALSE|stonehamurl36.json
+|||FALSE|FALSE|stonehamurl37.json
+|||FALSE|FALSE|stonehamurl38.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|stonehamurl4.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|stonehamurl5.json
+|||FALSE|FALSE|stonehamurl6.json
+|||FALSE|FALSE|stonehamurl8.json
+|||FALSE|FALSE|stonehamurl9.json
+|||FALSE|FALSE|wakefieldurl1.json
+|||FALSE|FALSE|wakefieldurl10.json
+|||FALSE|FALSE|wakefieldurl11.json
+|||FALSE|FALSE|wakefieldurl12.json
+|||FALSE|FALSE|wakefieldurl13.json
+|||FALSE|FALSE|wakefieldurl14.json
+NC|EXCLUDE|Off-topic, permitting|TRUE|FALSE|wakefieldurl15.json
+|||FALSE|FALSE|wakefieldurl16.json
+|||FALSE|FALSE|wakefieldurl17.json
+|||FALSE|FALSE|wakefieldurl18.json
+|||FALSE|FALSE|wakefieldurl19.json
+NC|EXCLUDE|Not ACRES town, all MA|TRUE|FALSE|wakefieldurl2.json
+|||FALSE|FALSE|wakefieldurl20.json
+NC|EXCLUDE|CV|FALSE|FALSE|wakefieldurl21.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|wakefieldurl22.json
+NC|EXCLUDE|Not town specific|FALSE|FALSE|wakefieldurl23.json
+|||FALSE|FALSE|wakefieldurl24.json
+|||FALSE|FALSE|wakefieldurl25.json
+|||FALSE|FALSE|wakefieldurl26.json
+|||FALSE|FALSE|wakefieldurl27.json
+|||FALSE|FALSE|wakefieldurl28.json
+|||FALSE|FALSE|wakefieldurl29.json
+NC|INCLUDE||FALSE|TRUE|wakefieldurl3.json
+|||FALSE|FALSE|wakefieldurl30.json
+|||FALSE|FALSE|wakefieldurl31.json
+NC|INCLUDE||TRUE|FALSE|wakefieldurl32.json
+|||FALSE|FALSE|wakefieldurl33.json
+NC|EXCLUDE|Off topic - includes climate considerations but is not produced by the community|TRUE|FALSE|wakefieldurl34.json
+|||FALSE|TRUE|wakefieldurl36.json
+|||FALSE|FALSE|wakefieldurl37.json
+|||FALSE|FALSE|wakefieldurl38.json
+|||FALSE|FALSE|wakefieldurl39.json
+|||FALSE|FALSE|wakefieldurl4.json
+|||FALSE|FALSE|wakefieldurl40.json
+|||FALSE|FALSE|wakefieldurl41.json
+|||FALSE|FALSE|wakefieldurl42.json
+|||FALSE|FALSE|wakefieldurl43.json
+|||FALSE|TRUE|wakefieldurl44.json
+|||FALSE|FALSE|wakefieldurl45.json
+|||FALSE|FALSE|wakefieldurl46.json
+|||FALSE|FALSE|wakefieldurl47.json
+|||FALSE|FALSE|wakefieldurl48.json
+|||FALSE|FALSE|wakefieldurl49.json
+|||FALSE|FALSE|wakefieldurl5.json
+|||FALSE|FALSE|wakefieldurl50.json
+|||FALSE|FALSE|wakefieldurl51.json
+|||FALSE|FALSE|wakefieldurl6.json
+|||FALSE|FALSE|wakefieldurl7.json
+|||FALSE|TRUE|wakefieldurl8.json
+|||FALSE|FALSE|wakefieldurl9.json
+NC|INCLUDE||TRUE|FALSE|watertownurl1.json
+|||FALSE|FALSE|watertownurl10.json
+|||FALSE|FALSE|watertownurl11.json
+|||FALSE|FALSE|watertownurl12.json
+|||FALSE|FALSE|watertownurl13.json
+|||FALSE|FALSE|watertownurl14.json
+|||FALSE|FALSE|watertownurl15.json
+NC|EXCLUDE|Off-topic; planning permit|TRUE|TRUE|watertownurl16.json
+|||FALSE|FALSE|watertownurl17.json
+NC|INCLUDE||TRUE|TRUE|watertownurl18.json
+|||FALSE|FALSE|watertownurl19.json
+|||FALSE|TRUE|watertownurl2.json
+|||FALSE|FALSE|watertownurl20.json
+|||FALSE|FALSE|watertownurl21.json
+|||FALSE|FALSE|watertownurl22.json
+|||FALSE|FALSE|watertownurl23.json
+|||FALSE|FALSE|watertownurl24.json
+|||FALSE|TRUE|watertownurl25.json
+|||FALSE|FALSE|watertownurl26.json
+|||FALSE|FALSE|watertownurl27.json
+|||FALSE|FALSE|watertownurl28.json
+NC|EXCLUDE|Not ACRES town - just Logan Airport|TRUE|FALSE|watertownurl29.json
+NC|INCLUDE||TRUE|FALSE|watertownurl3.json
+|||FALSE|FALSE|watertownurl30.json
+NC|EXCLUDE|off-topic|TRUE|FALSE|watertownurl31.json
+|||FALSE|FALSE|watertownurl32.json
+|||FALSE|FALSE|watertownurl33.json
+|||FALSE|FALSE|watertownurl34.json
+|||FALSE|FALSE|watertownurl35.json
+|||FALSE|FALSE|watertownurl38.json
+NC|EXCLUDE|off-topic|TRUE|FALSE|watertownurl4.json
+|||FALSE|FALSE|watertownurl5.json
+|||FALSE|FALSE|watertownurl6.json
+|||FALSE|FALSE|watertownurl7.json
+|||FALSE|FALSE|watertownurl8.json
+|||FALSE|FALSE|wilmingtonurl1.json
+|||FALSE|FALSE|wilmingtonurl10.json
+|||FALSE|TRUE|wilmingtonurl11.json
+|||FALSE|FALSE|wilmingtonurl12.json
+|||FALSE|FALSE|wilmingtonurl13.json
+|||FALSE|FALSE|wilmingtonurl14.json
+|||FALSE|FALSE|wilmingtonurl15.json
+|||FALSE|FALSE|wilmingtonurl16.json
+|||FALSE|FALSE|wilmingtonurl17.json
+NC|EXCLUDE|off-topic, CV|TRUE|TRUE|wilmingtonurl18.json
+|||FALSE|FALSE|wilmingtonurl19.json
+|||FALSE|TRUE|wilmingtonurl2.json
+|||FALSE|FALSE|wilmingtonurl20.json
+|||FALSE|FALSE|wilmingtonurl21.json
+|||FALSE|FALSE|wilmingtonurl22.json
+|||FALSE|TRUE|wilmingtonurl23.json
+|||FALSE|FALSE|wilmingtonurl24.json
+|||FALSE|FALSE|wilmingtonurl25.json
+|||FALSE|FALSE|wilmingtonurl26.json
+|||FALSE|FALSE|wilmingtonurl27.json
+|||FALSE|TRUE|wilmingtonurl28.json
+|||FALSE|TRUE|wilmingtonurl29.json
+|||FALSE|FALSE|wilmingtonurl3.json
+|||FALSE|FALSE|wilmingtonurl30.json
+|||FALSE|FALSE|wilmingtonurl31.json
+NC|EXCLUDE|off-topic|TRUE|FALSE|wilmingtonurl32.json
+NC|EXCLUDE|off-topic|TRUE|FALSE|wilmingtonurl33.json
+NC|EXCLUDE|Not ACRES town|FALSE|FALSE|wilmingtonurl34.json
+|||FALSE|TRUE|wilmingtonurl35.json
+|||FALSE|FALSE|wilmingtonurl36.json
+|||FALSE|FALSE|wilmingtonurl37.json
+|||FALSE|FALSE|wilmingtonurl38.json
+|||FALSE|FALSE|wilmingtonurl39.json
+|||FALSE|FALSE|wilmingtonurl4.json
+|||FALSE|FALSE|wilmingtonurl40.json
+|||FALSE|FALSE|wilmingtonurl41.json
+|||FALSE|FALSE|wilmingtonurl42.json
+|||FALSE|FALSE|wilmingtonurl43.json
+|||FALSE|FALSE|wilmingtonurl44.json
+|||FALSE|FALSE|wilmingtonurl45.json
+|||FALSE|FALSE|wilmingtonurl46.json
+|||FALSE|FALSE|wilmingtonurl5.json
+|||FALSE|FALSE|wilmingtonurl6.json
+|||FALSE|FALSE|wilmingtonurl7.json
+|||FALSE|TRUE|wilmingtonurl8.json
+|||FALSE|FALSE|wilmingtonurl9.json
+NC|EXCLUDE|Not ACRES town - all MA|TRUE|FALSE|winchesterurl1.json
+|||FALSE|FALSE|winchesterurl10.json
+|||FALSE|TRUE|winchesterurl11.json
+|||FALSE|FALSE|winchesterurl12.json
+|||FALSE|FALSE|winchesterurl13.json
+|||FALSE|FALSE|winchesterurl14.json
+|||FALSE|FALSE|winchesterurl15.json
+|||FALSE|FALSE|winchesterurl16.json
+|||FALSE|FALSE|winchesterurl17.json
+|||FALSE|FALSE|winchesterurl18.json
+|||FALSE|FALSE|winchesterurl19.json
+NC|EXCLUDE|Not ACRES town|TRUE|FALSE|winchesterurl2.json
+|||FALSE|FALSE|winchesterurl20.json
+|||FALSE|TRUE|winchesterurl21.json
+|||FALSE|FALSE|winchesterurl22.json
+|||FALSE|TRUE|winchesterurl23.json
+|||FALSE|FALSE|winchesterurl24.json
+|||FALSE|FALSE|winchesterurl25.json
+|||FALSE|FALSE|winchesterurl27.json
+|||FALSE|FALSE|winchesterurl28.json
+|||FALSE|FALSE|winchesterurl29.json
+NC|EXCLUDE|Not ACRES town|TRUE|FALSE|winchesterurl3.json
+|||FALSE|FALSE|winchesterurl30.json
+|||FALSE|FALSE|winchesterurl31.json
+|||FALSE|FALSE|winchesterurl33.json
+NC|EXCLUDE|Off-topic|FALSE|FALSE|winchesterurl34.json
+|||FALSE|TRUE|winchesterurl35.json
+|||FALSE|FALSE|winchesterurl36.json
+|||FALSE|FALSE|winchesterurl37.json
+|||FALSE|FALSE|winchesterurl38.json
+|||FALSE|FALSE|winchesterurl39.json
+NC|EXCLUDE|Not town specific|FALSE|FALSE|winchesterurl4.json
+|||FALSE|FALSE|winchesterurl40.json
+|||FALSE|FALSE|winchesterurl41.json
+|||FALSE|FALSE|winchesterurl42.json
+|||FALSE|FALSE|winchesterurl43.json
+|||FALSE|FALSE|winchesterurl5.json
+|||FALSE|FALSE|winchesterurl6.json
+|||FALSE|FALSE|winchesterurl7.json
+|||FALSE|FALSE|winchesterurl8.json
+|||FALSE|FALSE|winchesterurl9.json
+|||FALSE|FALSE|winthropurl1.json
+|||FALSE|FALSE|winthropurl10.json
+NC|EXCLUDE|Not ACRES town|FALSE|FALSE|winthropurl11.json
+|||FALSE|FALSE|winthropurl12.json
+NC|INCLUDE|East Boston should be the identified town|TRUE|FALSE|winthropurl13.json
+NC|EXCLUDE|Off-topic (local news about girl scout tree planting)|TRUE|FALSE|winthropurl14.json
+|||FALSE|FALSE|winthropurl15.json
+|||FALSE|FALSE|winthropurl16.json
+NC|EXCLUDE|off-topic|TRUE|FALSE|winthropurl17.json
+|||FALSE|FALSE|winthropurl18.json
+|||FALSE|FALSE|winthropurl19.json
+NC|INCLUDE||FALSE|FALSE|winthropurl2.json
+|||FALSE|FALSE|winthropurl20.json
+|||FALSE|FALSE|winthropurl21.json
+NC|EXCLUDE|Off-topic|TRUE|FALSE|winthropurl22.json
+NC|EXCLUDE|Off-topic (report ABOUT Boston, not BY community)|TRUE|FALSE|winthropurl23.json
+|||FALSE|FALSE|winthropurl24.json
+|||FALSE|FALSE|winthropurl25.json
+|||FALSE|FALSE|winthropurl26.json
+|||FALSE|FALSE|winthropurl28.json
+|||FALSE|FALSE|winthropurl3.json
+|||FALSE|FALSE|winthropurl30.json
+|||FALSE|FALSE|winthropurl31.json
+|||FALSE|FALSE|winthropurl32.json
+|||FALSE|FALSE|winthropurl33.json
+NC|EXCLUDE|Not ACRES town|FALSE|FALSE|winthropurl34.json
+|||FALSE|FALSE|winthropurl4.json
+NC|EXCLUDE|Not ACRES town, whole shoreline|TRUE|FALSE|winthropurl5.json
+NC|INCLUDE|Statewide?|FALSE|TRUE|winthropurl6.json
+|||FALSE|TRUE|winthropurl7.json
+NC|EXCLUDE|Not ACRES town|FALSE|FALSE|winthropurl8.json
+|||FALSE|FALSE|winthropurl9.json
+NC|EXCLUDE|Off-topic; planning permit, not ACRES town|TRUE|TRUE|woburnurl1.json
+|||FALSE|FALSE|woburnurl10.json
+|||FALSE|FALSE|woburnurl11.json
+|||FALSE|FALSE|woburnurl12.json
+NC|EXCLUDE|Not ACRES town|FALSE|FALSE|woburnurl13.json
+|||FALSE|FALSE|woburnurl14.json
+|||FALSE|FALSE|woburnurl15.json
+|||FALSE|FALSE|woburnurl17.json
+|||FALSE|FALSE|woburnurl18.json
+|||FALSE|FALSE|woburnurl19.json
+|||FALSE|TRUE|woburnurl2.json
+|||FALSE|FALSE|woburnurl20.json
+|||FALSE|FALSE|woburnurl21.json
+|||FALSE|FALSE|woburnurl22.json
+|||FALSE|FALSE|woburnurl24.json
+|||FALSE|FALSE|woburnurl25.json
+|||FALSE|FALSE|woburnurl26.json
+|||FALSE|FALSE|woburnurl27.json
+|||FALSE|FALSE|woburnurl28.json
+|||FALSE|FALSE|woburnurl29.json
+|||FALSE|FALSE|woburnurl3.json
+|||FALSE|FALSE|woburnurl30.json
+|||FALSE|FALSE|woburnurl31.json
+|||FALSE|FALSE|woburnurl32.json
+NC|INCLUDE||TRUE|FALSE|woburnurl4.json
+NC|EXCLUDE|Not ACRES town|TRUE|FALSE|woburnurl5.json
+NC|INCLUDE||TRUE|FALSE|woburnurl6.json
+|||FALSE|FALSE|woburnurl7.json
+NC|EXCLUDE|All MA|TRUE|FALSE|woburnurl8.json
+|||FALSE|FALSE|woburnurl9.json
