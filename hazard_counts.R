@@ -68,6 +68,7 @@ write_tsv(combined_table[, c('file_name', 'duplicated')] %>%
 
 combined_table <- combined_table %>%
   mutate(pass_checks2 = (
+    duplicated == F &
     is_ACRES_town == T &
     is_MASS == T &
     has_climate == 1 &
@@ -87,7 +88,7 @@ combined_table <- combined_table %>% left_join(mancx, by = join_by(file_name == 
 dim(combined_table)
 data.frame(head(combined_table))
 
-write_tsv(combined_table, 'combined_table_v2.tsv')
+write_tsv(combined_table, 'combined_table_v3.tsv')
 
 # ----------------------------------------------------------------------------
 # ma.url omitted
@@ -220,9 +221,9 @@ towns_to_include <- toupper(c("Burlington", "Lexington", "Belmont", "Watertown",
 ma_towns <- read_sf(paste0(my_dir, "towns_fixed.shp"))
 ACRES_towns_plot <- ma_towns %>% 
   filter(TOWN20 %in% towns_to_include)
-# hazard_towns$centroid <- st_centroid(hazard_towns$geometry)
-# centroids_coords <- st_coordinates(hazard_towns$centroid)
-# hazard_towns <- hazard_towns %>%
+# ACRES_towns_plot$centroid <- st_centroid(ACRES_towns_plot$geometry)
+# centroids_coords <- st_coordinates(ACRES_towns_plot$centroid)
+# ACRES_towns_plot <- ACRES_towns_plot %>%
 #   mutate(x = centroids_coords[,1], y = centroids_coords[,2])
 
 #adjust based on your computer 
@@ -245,7 +246,7 @@ bbox_coords <- st_bbox(ma_outline_bbox)
 
 
 ####
-ACRES_hazard_towns_plot <- ACRES_towns_plot %>%
+ACRES_hazard_town_plot <- ACRES_towns_plot %>%
   left_join(hazard_by_town %>% pivot_longer(cols = flood_avg:fire_avg) %>%
               mutate(most_common_town = toupper(most_common_town)), 
             by = join_by(TOWN20 == most_common_town))
@@ -267,11 +268,11 @@ hazard_name_map = c(
   'storm_avg' = 'Storm'
 )
 
-ACRES_hazard_towns_plot$haz_name_plot = hazard_name_map[ACRES_hazard_towns_plot$name]
+ACRES_hazard_town_plot$haz_name_plot = hazard_name_map[ACRES_hazard_town_plot$name]
 
-ACRES_hazard_towns_plot$value
+ACRES_hazard_town_plot$value
 
-ggplot(ACRES_hazard_towns_plot %>%
+ggplot(ACRES_hazard_town_plot %>%
               filter(!is.na(value))) + theme_classic2() +
   geom_sf(data = ma_counties_no_suffolk,
           color = "black", linetype = '11',
@@ -280,8 +281,8 @@ ggplot(ACRES_hazard_towns_plot %>%
   coord_sf(xlim = c(bbox_coords$xmin - 0.01, bbox_coords$xmax + 0.01), 
            ylim = c(bbox_coords$ymin - 0.01, bbox_coords$ymax + 0.01), 
            expand = FALSE) +  # Set plot bounds
-  scale_fill_binned(type = 'viridis',
-                    name = 'Average per-document\nproportion of\nhazard words\nreferencing hazard X\n') +
+  scale_fill_binned(type = 'viridis',breaks = seq(20, 80, by = 20),
+                    name = 'Average per-document\nproportion of\nhazard words\nreferencing each hazard') +
   facet_rep_wrap(~haz_name_plot, nrow = 2, repeat.tick.labels = 'x') +
   xlab(NULL) + ylab(NULL) +
   theme(strip.background = element_blank(),
@@ -306,15 +307,16 @@ ggplot(ACRES_outreach_towns_plot) +
 
 
 # ----------------------------------------------------------------------------
-hazard_towns$centroid <- st_centroid(hazard_towns$geometry)
-centroids_coords <- st_coordinates(hazard_towns$centroid)
-hazard_towns <- hazard_towns %>%
+ACRES_towns_plot$centroid <- st_centroid(ACRES_towns_plot$geometry)
+centroids_coords <- st_coordinates(ACRES_towns_plot$centroid)
+ACRES_towns_plot <- ACRES_towns_plot %>%
   mutate(x = centroids_coords[,1], y = centroids_coords[,2])
 
 # add centroid coordinates to the hazard data
 
-hazard_data <- hazard_data %>%
-  left_join(hazard_towns %>% st_drop_geometry() %>% select(TOWN20, x, y), 
+hazard_data <- hazard_by_town %>%
+  mutate(town_name = toupper(most_common_town)) %>%
+  left_join(ACRES_towns_plot %>% st_drop_geometry() %>% select(TOWN20, x, y), 
             by = join_by(town_name == TOWN20)) %>% 
   arrange(town_name, hazard_type) %>%
   group_by(town_name) %>%
@@ -330,12 +332,12 @@ ma_outline <- states(cb = T) %>% filter(NAME == "Massachusetts")
 ma_counties <- counties(state = "MA", cb = T)
 ma_counties_no_suffolk <- ma_counties %>% filter(NAME != "Suffolk")
 ma_outline_wgs84 <- st_transform(ma_outline, crs = 4326)
-bbox <- st_bbox(hazard_towns)
+bbox <- st_bbox(ACRES_towns_plot)
 bbox_sf <- st_as_sfc(bbox)
 ma_outline_bbox <- st_crop(ma_outline_wgs84, bbox_sf)
 bbox_coords <- st_bbox(ma_outline_bbox)
 
-base_map <- hazard_towns %>% 
+base_map <- ACRES_towns_plot %>% 
   ggplot() + 
   # geom_sf(data = ma_outline_bbox,
   #         color = "black",
@@ -478,7 +480,7 @@ leaflet_map <- leaflet_map %>%
               weight = 1,
               opacity = 1,
               fillOpacity = 0.5) %>% 
-  addPolygons(data = hazard_towns,
+  addPolygons(data = ACRES_towns_plot,
               color = "black",
               fillColor = "white",
               weight = 1,
