@@ -21,6 +21,7 @@ community_engagement_1 = {
 	"information" = {"report distribution", "share report"}
 	}
 
+
 ## A more granular approach
 	
 community_engagement_2 = {

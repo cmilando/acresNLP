@@ -75,6 +75,9 @@ combined_table <- combined_table %>%
     has_community == 1
   ))
 
+write_tsv(combined_table, 'combined_table_v3.tsv')
+
+
 combined_table
 
 table(combined_table$most_common_town, combined_table$pass_checks2)
@@ -89,8 +92,7 @@ combined_table <- combined_table %>% left_join(mancx)
 dim(combined_table)
 data.frame(head(combined_table))
 
-write_tsv(combined_table, 'combined_table_v3.tsv')
-
+w
 # ----------------------------------------------------------------------------
 # ma.url omitted
 
@@ -156,17 +158,57 @@ hazard_by_town$mod_sum
 
 ## LOOK AT REVERE AND LEXINGTON
 
+hazard_name_map = c(
+  "air_pollution_avg" = 'Air Pollution',
+  'chem_hazard_avg' = 'Chemical Hazards',
+  'extreme_precip_avg' = 'Extreme Precip.',
+  'fire_avg' = 'Fire',
+  'flood_avg' = 'Flood',
+  'heat_avg' = 'Heat',
+  'indoor_air_avg' = 'Indoor Air',
+  'storm_avg' = 'Storm'
+)
+
+capitalizeFirstLetter <- function(textVector) {
+  # Helper function to capitalize the first letter of a single string
+  singleCapitalize <- function(text) {
+    # Capitalize the first letter and leave the rest unchanged
+    paste0(toupper(substr(text, 1, 1)), substr(text, 2, nchar(text)))
+  }
+  
+  # Apply the singleCapitalize function to each string in the vector
+  result <- sapply(textVector, singleCapitalize)
+  
+  return(result)
+}
+
+# Example usage:
+capitalizeFirstLetter(c("convert_text to camel_case", "another_example_here", "hello world"))
+# Output: "Convert_text to camel_case" "Another_example_here" "Hello world"
+# Output: "convertTextToCamelCase" "anotherExampleHere" "helloWorld"
+
+
 hazard_by_town
 
-hazard_by_town %>%
+p1 <- hazard_by_town %>%
   pivot_longer(cols = flood_avg:fire_avg) %>%
-  mutate(value = ifelse(value == 0, NA, value)) %>%
+  mutate(value = ifelse(value == 0, NA, value),
+         name_nice = hazard_name_map[name],
+         town_name_nice = capitalizeFirstLetter(most_common_town)) %>%
   ggplot() +
-    geom_tile(aes(x = reorder(name, value, na.rm = T), 
-                  y = most_common_town, fill = value),
+    geom_tile(aes(y = reorder(name_nice, value, na.rm = T), 
+                  x = town_name_nice, 
+                  fill = value),
               color = 'white') +
-  scale_fill_binned(type = 'viridis', breaks = c(seq(20, 80, by = 20)))
+  scale_fill_binned(type = 'viridis', 
+                    name = 'Average proportion\nof per-document\nreferences',
+                    limits = c(0, 100),
+                    breaks = c(seq(20, 80, by = 20))) +
+  ylab('Hazard') + xlab('Town') + 
+  scale_x_discrete(position = 'top') +
+  theme(axis.text.x = element_text(angle = 35, hjust = 0))
 
+p1
 #this figure no longer looks good because there are too many towns
 # hazard_by_town %>%
 #   pivot_longer(cols = flood_avg:fire_avg) %>%
@@ -211,16 +253,48 @@ outreach_by_town <- combined_table_relevant %>%
 ##View(outreach_by_town)
 outreach_by_town$mod_sum
 
-outreach_by_town %>%
+outreach_name_map = c(
+   "workshop_avg"= 'Workshop',
+   "mapping_avg" = 'Mapping',
+   "focus_group_avg" = 'Focus group',
+   "interview_avg"= "Interview",
+   "survey_avg" = "Survey",
+   "community_meeting_avg" = "Community meeting",
+   "small_group_meeting_avg" = "Small group meeting",
+   "information_avg" = "Information"
+)
+
+p2 <- outreach_by_town %>%
   pivot_longer(cols = workshop_avg:information_avg) %>%
-  mutate(value = ifelse(value == 0, NA, value)) %>%
+  mutate(value = ifelse(value == 0, NA, value),
+         name_nice = outreach_name_map[name],
+         town_name_nice = capitalizeFirstLetter(most_common_town)) %>%
   ggplot() +
-  geom_tile(aes(x = reorder(name, value, na.rm = T), 
-                y = most_common_town, fill = value),
+  geom_tile(aes(y = reorder(name_nice, value, na.rm = T), 
+                x = town_name_nice, 
+                fill = value),
             color = 'white') +
-  scale_fill_binned(type = 'viridis', breaks = c(seq(20, 80, by = 20)))
+  scale_fill_binned(type = 'viridis',
+                    name = 'Average proportion\nof per-document\nreferences',
+                    limits = c(0, 100),
+                    breaks = c(seq(20, 80, by = 20))) +
+  ylab('Outreach') + xlab('Town') + 
+  theme(axis.text.x = element_blank()) +
+  scale_x_discrete(position = 'top')
 
 
+library(patchwork)
+
+p1 + p2 + 
+  plot_layout(ncol = 1, heights = c(0.52, 0.48),
+              axis_titles = 'collect_x', 
+              guides = 'collect')
+
+dev.size()
+
+ggsave(filename = 'tileplot_v1.png', 
+       width = 12.9/2, height = 6.67/2,
+       dpi = 600)
 
 # ----------------------------------------------------------------------------
 #### load in and filter town polygons ####
