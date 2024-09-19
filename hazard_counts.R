@@ -31,8 +31,8 @@ library(leaflet)
 #### create dataframe of hazard counts and proportions by town ####
 
 #adjust based on your computer
-# my_dir <- "/Users/allisonjames/Desktop/bu/acresNLP/"
-my_dir <- "/Users/cwm/Documents/GitHub/acresNLP/"
+my_dir <- "/Users/alliej/Library/CloudStorage/OneDrive-BostonUniversity/ACRES NLP/acresNLP/"
+#my_dir <- "/Users/cwm/Documents/GitHub/acresNLP/"
 
 create_df <- function(filename){
   data <- read_delim(filename)
@@ -63,8 +63,8 @@ combined_table <- combined_table %>%
 # duplicated
 combined_table$duplicated = duplicated(combined_table$first100words)
 
-write_tsv(combined_table[, c('file_name', 'duplicated')] %>%
-            arrange(file_name), 'duplicated.tsv')
+# write_tsv(combined_table[, c('file_name', 'duplicated')] %>%
+#             arrange(file_name), 'duplicated.tsv')
 
 combined_table <- combined_table %>%
   mutate(pass_checks2 = (
@@ -79,8 +79,7 @@ combined_table
 
 table(combined_table$most_common_town, combined_table$pass_checks2)
 table(combined_table$pass_checks2)
-
-mancx <- read.csv("manual_checks.csv", header = F)
+mancx <- read.csv(paste0(my_dir, "manual_checks.csv"), header = F)
 head(mancx)
 
 combined_table <- combined_table %>% left_join(mancx, by = join_by(file_name == V7))
@@ -226,9 +225,6 @@ ACRES_towns_plot <- ma_towns %>%
 # ACRES_towns_plot <- ACRES_towns_plot %>%
 #   mutate(x = centroids_coords[,1], y = centroids_coords[,2])
 
-#adjust based on your computer 
-#(put this in the acresnlp folder - should not be in blackouts)
-
 #make background blue to represent water
 ma_outline <- states(cb = T) %>% filter(NAME == "Massachusetts")
 ma_counties <- counties(state = "MA", cb = T)
@@ -296,14 +292,39 @@ ggsave(device = 'png', dpi = 600, file = 'fig1.png',
 
 ####
 ACRES_outreach_towns_plot <- ACRES_towns_plot %>%
-  left_join(outreach_by_town %>% pivot_longer(cols = workshop_avg:information_avg), 
-            by = join_by(TOWN20 == town_name))
+  left_join(outreach_by_town %>% 
+              mutate(most_common_town = toupper(most_common_town)) %>% 
+              pivot_longer(cols = workshop_avg:information_avg),
+            by = join_by(TOWN20 == most_common_town))
 
-ggplot(ACRES_outreach_towns_plot) +
+# ggplot(ACRES_outreach_towns_plot) +
+#   geom_sf(aes(fill = value)) +
+#   scale_fill_binned(type = 'viridis',
+#                     name = 'Percent\nof documents\nreferencing\nhazard X') + 
+#   facet_wrap(~name, nrow = 2)
+
+#outreach_name_map <-
+#ACRES_hazard_town_plot$outr_name_plot = outreach_name_map[ACRES_outreach_towns_plot$name]
+
+
+ggplot(ACRES_outreach_towns_plot %>%
+         filter(!is.na(value))) + theme_classic2() +
+  geom_sf(data = ma_counties_no_suffolk,
+          color = "black", linetype = '11',
+          fill = "grey") +
   geom_sf(aes(fill = value)) +
-  scale_fill_binned(type = 'viridis',
-                    name = 'Percent\nof documents\nreferencing\nhazard X') + 
-  facet_wrap(~name, nrow = 2)
+  coord_sf(xlim = c(bbox_coords$xmin - 0.01, bbox_coords$xmax + 0.01), 
+           ylim = c(bbox_coords$ymin - 0.01, bbox_coords$ymax + 0.01), 
+           expand = FALSE) +  # Set plot bounds
+  scale_fill_binned(type = 'viridis',breaks = seq(20, 80, by = 20),
+                    name = 'Average per-document\nproportion of\noutreach words\nreferencing each hazard') +
+  facet_rep_wrap(~name, nrow = 2, repeat.tick.labels = 'x') +
+  xlab(NULL) + ylab(NULL) +
+  theme(strip.background = element_blank(),
+        strip.text = element_text(size = 12),
+        panel.background = element_rect(color = 'black'),
+        axis.text = element_blank(),
+        axis.ticks = element_blank())
 
 
 # ----------------------------------------------------------------------------
@@ -315,13 +336,15 @@ ACRES_towns_plot <- ACRES_towns_plot %>%
 # add centroid coordinates to the hazard data
 
 hazard_data <- hazard_by_town %>%
+  gather(key = "hazard_type", value = "proportion", flood_avg:fire_avg) %>%
+  mutate(id = row_number()) %>% 
   mutate(town_name = toupper(most_common_town)) %>%
   left_join(ACRES_towns_plot %>% st_drop_geometry() %>% select(TOWN20, x, y), 
             by = join_by(town_name == TOWN20)) %>% 
   arrange(town_name, hazard_type) %>%
   group_by(town_name) %>%
-  mutate(start_angle = lag(cumsum(proportion * 2 * pi), default = 0),
-         end_angle = cumsum(proportion * 2 * pi)) %>%
+  mutate(start_angle = lag(cumsum(proportion / 100 * 360), default = 0),
+         end_angle = round(cumsum(proportion / 100 * 360)), 0) %>%
   ungroup()
 
 
@@ -457,10 +480,13 @@ legend <- gtable_filter(ggplotGrob(legend_pie),
 
 #base_map2
 
+
+plot_size <- dev.size()
+png(paste0(my_dir,"output_map.png"), width = plot_size[1], height = plot_size[2], units = "in", res = 300)
 #put everything together on a new page
 grid.newpage()
 grid.draw(arrangeGrob(base_map2, legend, ncol = 1, heights = c(9, 1)))
-
+dev.off()
 
 
 #### scratch above, use leaflet ####
