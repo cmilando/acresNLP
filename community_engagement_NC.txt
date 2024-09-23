@@ -1,30 +1,43 @@
 ## A real basic outreach strategy search (we'll see what we get!)
 
 outreach_strat = { 
-    "involve": ("involve"),
-    "collaborate": ("collaborate","collaboration"),
-    "inform": ("inform"),
-    "consult": ("consult", "consultation") 
+    "involve": {},
+    "collaborate": {},
+    "inform": {},
+    "consult": {} 
 }
 
 
 ## A more general approach to documenting community engagement
 
 community_engagement_1 = {
-	"workshop" = {"workshop", "workshops"},
+	"workshop" = {"workshop", "workshops","working group", "work group"}, # collaborate/involve
+	"mapping" = {"community mapping", "participatory mapping"}, # collaborate/involve 
+	"conversation" = {"interview","focus group"}, # consult
+	"survey" = {"survey", "opinion poll", "poll", "questionnaire"}, # consult
+	"community_meeting" = {"town hall", "forum", "public hearing", "community meeting"}, # consult
+	"small_group_discussion" = {"roundtable", "round table","feedback session", "listening session"}, # consult
+	"inform" = {"flyer", "pamphlet", "information session"} # inform
+	}
+
+
+community_engagement_2 = {
+	"engage" = {},
+	"discuss" = {},
+	"inform" = {},
+	"workshop" = {"workshop", "workshops","working group", "work group"},
 	"mapping" = {"community mapping", "participatory mapping"},
-	"focus_group" = {"focus group"},
-	"interview" = {"interview"},
+	"conversations" = {"interview","focus group"},
 	"survey" = {"survey", "opinion poll", "poll", "questionnaire"},
-	"community_meeting" = {"town hall", "forum", "public hearing"},
-	"small_group_meeting" = {"roundtable", "round table","working group", "work group", "feedback session", "listening session"},
-	"information" = {"report distribution", "share report"}
+	"community_meeting" = {"town hall", "forum", "public hearing", "community meeting"},
+	"small_group_discussion" = {"roundtable", "round table","feedback session", "listening session"},
+	"inform" = {"flyer", "pamphlet", "information session"}
 	}
 
 
 ## A more granular approach
 	
-community_engagement_2 = {
+community_engagement_3 = {
 	"workshop" = {"workshop", "workshops"},
 	"mapping" = {"community mapping", "participatory mapping"},
 	"focus_group" = {"focus group"},
