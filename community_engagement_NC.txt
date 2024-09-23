@@ -8,9 +8,9 @@ outreach_strat = {
 }
 
 
-## A more general approach to documenting community engagement
+## Community engagement that (roughly) aligns with the outreach strategies
 
-community_engagement_1 = {
+community_engagement = {
 	"workshop" = {"workshop", "workshops","working group", "work group"}, # collaborate/involve
 	"mapping" = {"community mapping", "participatory mapping"}, # collaborate/involve 
 	"conversation" = {"interview","focus group"}, # consult
@@ -19,38 +19,3 @@ community_engagement_1 = {
 	"small_group_discussion" = {"roundtable", "round table","feedback session", "listening session"}, # consult
 	"inform" = {"flyer", "pamphlet", "information session"} # inform
 	}
-
-
-community_engagement_2 = {
-	"engage" = {},
-	"discuss" = {},
-	"inform" = {},
-	"workshop" = {"workshop", "workshops","working group", "work group"},
-	"mapping" = {"community mapping", "participatory mapping"},
-	"conversations" = {"interview","focus group"},
-	"survey" = {"survey", "opinion poll", "poll", "questionnaire"},
-	"community_meeting" = {"town hall", "forum", "public hearing", "community meeting"},
-	"small_group_discussion" = {"roundtable", "round table","feedback session", "listening session"},
-	"inform" = {"flyer", "pamphlet", "information session"}
-	}
-
-
-## A more granular approach
-	
-community_engagement_3 = {
-	"workshop" = {"workshop", "workshops"},
-	"mapping" = {"community mapping", "participatory mapping"},
-	"focus_group" = {"focus group"},
-	"interview" = {"interview"},
-	"survey" = {"survey", "opinion poll", "poll", "questionnaire"},
-	"town_hall" = {"town hall"},
-	"forum" = {"forum"},
-	"public_hearing" = {"public hearing", "community hearing"},
-	"community_meeting" = {"community meeting", "public meeting"}
-	"roundtable" = {"roundtable", "round table"},
-	"working_group" = {"working group", "work group"},
-	"feedback_session" = {"feedback session"},
-	"listening_session" = {"listening session"}
-	"information" = {"report distribution", "share report"}
-	}
-	
