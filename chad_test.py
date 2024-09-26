@@ -78,7 +78,9 @@ if __name__ == "__main__":
                          "Wakefield", "Chelsea", "Revere", "Winthrop", "Wilmington"]
 
     # adjust for the path for where you have the json files
+    #file_path = "/Users/alliej/Library/CloudStorage/OneDrive-BostonUniversity/ACRES NLP/acresNLP/"
     file_path = "/Users/cwm/Documents/GitHub/acresNLP/"
+    #json_file_path = "/Users/alliej/Library/CloudStorage/OneDrive-BostonUniversity/ACRES NLP/acresNLP/scraped_plans/"
     json_file_path = "/Users/cwm/Library/CloudStorage/OneDrive-SharedLibraries-BostonUniversity/James, Allison - scraped_plans/"
 
     # adjust this for your computer
@@ -124,7 +126,7 @@ if __name__ == "__main__":
 
     # Save the combined results into a single TSV file
     combined_output = "\t".join(f_headers) + "\n" + "\n".join("\t".join(map(str, row)) for row in all_data)
-    output_file = file_path + "combined_output_v3.tsv"
+    output_file = file_path + "combined_output_v4.tsv"
 
     with open(output_file, 'w') as f:
         f.write(combined_output)

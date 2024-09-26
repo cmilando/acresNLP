@@ -31,8 +31,8 @@ library(leaflet)
 #### create dataframe of hazard counts and proportions by town ####
 
 #adjust based on your computer
-#my_dir <- "/Users/alliej/Library/CloudStorage/OneDrive-BostonUniversity/ACRES NLP/acresNLP/"
-my_dir <- "/Users/cwm/Documents/GitHub/acresNLP/"
+my_dir <- "/Users/alliej/Library/CloudStorage/OneDrive-BostonUniversity/ACRES NLP/acresNLP/"
+#my_dir <- "/Users/cwm/Documents/GitHub/acresNLP/"
 
 create_df <- function(filename){
   data <- read_delim(filename)
@@ -41,7 +41,7 @@ create_df <- function(filename){
 
 
 #combined table missing all arlington/belmont and some chelsea/everett
-combined_table <- create_df(paste0(my_dir, "combined_output_v3.tsv"))
+combined_table <- create_df(paste0(my_dir, "combined_output_v4.tsv"))
 combined_table <- combined_table %>% clean_names()
 combined_table$town_name <- gsub("url\\d+|\\d+|\\.json", "",
                                  combined_table$file_name)
@@ -75,7 +75,7 @@ combined_table <- combined_table %>%
     has_community == 1
   ))
 
-write_tsv(combined_table, 'combined_table_v3.tsv')
+write_tsv(combined_table, 'combined_table_v4.tsv')
 
 
 combined_table
@@ -92,7 +92,7 @@ combined_table <- combined_table %>% left_join(mancx)
 dim(combined_table)
 data.frame(head(combined_table))
 
-w
+
 # ----------------------------------------------------------------------------
 # ma.url omitted
 
@@ -240,14 +240,12 @@ outreach_by_town <- combined_table_relevant %>%
   summarize(n = n(),
             workshop_avg = mean(workshop_percent),
             mapping_avg = mean(mapping_percent),
-            focus_group_avg = mean(focus_group_percent),
-            interview_avg = mean(interview_percent),
             survey_avg = mean(survey_percent),
             community_meeting_avg = mean(community_meeting_percent),
-            small_group_meeting_avg = mean(small_group_meeting_percent),
-            information_avg = mean(information_percent)
+            small_group_discussion_avg = mean(small_group_discussion_percent),
+            inform_avg = mean(inform_percent)
   ) %>%
-  mutate(mod_sum = rowSums(across(workshop_avg:information_avg)))
+  mutate(mod_sum = rowSums(across(workshop_avg:inform_avg)))
 
 ## LOOK AT REVERE AND LEXINGTON
 ##View(outreach_by_town)
@@ -265,7 +263,7 @@ outreach_name_map = c(
 )
 
 p2 <- outreach_by_town %>%
-  pivot_longer(cols = workshop_avg:information_avg) %>%
+  pivot_longer(cols = workshop_avg:inform_avg) %>%
   mutate(value = ifelse(value == 0, NA, value),
          name_nice = outreach_name_map[name],
          town_name_nice = capitalizeFirstLetter(most_common_town)) %>%
@@ -292,7 +290,7 @@ p1 + p2 +
 
 dev.size()
 
-ggsave(filename = 'tileplot_v1.png', 
+ggsave(filename = 'tileplot_v4.png', 
        width = 12.9/2, height = 6.67/2,
        dpi = 600)
 
@@ -385,7 +383,7 @@ ggsave(device = 'png', dpi = 600, file = 'fig1.png',
 ACRES_outreach_towns_plot <- ACRES_towns_plot %>%
   left_join(outreach_by_town %>% 
               mutate(most_common_town = toupper(most_common_town)) %>% 
-              pivot_longer(cols = workshop_avg:information_avg),
+              pivot_longer(cols = workshop_avg:inform_avg),
             by = join_by(TOWN20 == most_common_town))
 
 # ggplot(ACRES_outreach_towns_plot) +
