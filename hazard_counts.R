@@ -33,6 +33,7 @@ library(leaflet)
 #adjust based on your computer
 #my_dir <- "/Users/alliej/Library/CloudStorage/OneDrive-BostonUniversity/ACRES NLP/acresNLP/"
 my_dir <- "/Users/cwm/Documents/GitHub/acresNLP/"
+my_dir <- "C:/Users/ncesare/Downloads/"
 
 create_df <- function(filename){
   data <- read_delim(filename)
@@ -141,6 +142,12 @@ combined_table_relevant <- combined_table %>%
 dim(combined_table)
 dim(combined_table_relevant)
 
+mystic_towns_list <- tolower(c("Burlington", "Lexington", "Belmont", "Watertown",
+                     "Arlington", "Winchester", "Woburn", "Reading",
+                     "Stoneham", "Medford", "Somerville", "Cambridge",
+                     "Boston", "Charlestown", "Everett", "Malden", "Melrose",
+                     "Wakefield", "Chelsea", "Revere", "Winthrop", "Wilmington"))
+
 hazard_by_town <- combined_table_relevant %>% 
   group_by(most_common_town) %>% 
   summarize(n = n(),
@@ -155,7 +162,24 @@ hazard_by_town <- combined_table_relevant %>%
   ) %>%
   mutate(mod_sum = rowSums(across(flood_avg:fire_avg)))
 
+
+mystic_towns_list_sub <- setdiff(mystic_towns_list,  unique(hazard_by_town$most_common_town))
+
+hazard_by_town_blank <- data.frame(most_common_town = mystic_towns_list_sub,
+                                   n = rep(0, length(mystic_towns_list_sub)),
+                                   flood_avg = rep(NA, length(mystic_towns_list_sub)),
+                                   storm_avg = rep(NA, length(mystic_towns_list_sub)),
+                                   heat_avg = rep(NA, length(mystic_towns_list_sub)),
+                                   air_pollution_avg = rep(NA, length(mystic_towns_list_sub)),
+                                   indoor_air_avg = rep(NA, length(mystic_towns_list_sub)),
+                                   chem_hazard_avg = rep(NA, length(mystic_towns_list_sub)),
+                                   extreme_precip_avg = rep(NA, length(mystic_towns_list_sub)),
+                                   fire_avg = rep(NA, length(mystic_towns_list_sub)),
+                                   mod_sum = rep(0, length(mystic_towns_list_sub)))
+
 hazard_by_town$mod_sum
+
+hazard_by_town <- rbind(hazard_by_town, hazard_by_town_blank)
 
 ## LOOK AT REVERE AND LEXINGTON
 
@@ -195,7 +219,7 @@ p1 <- hazard_by_town %>%
   pivot_longer(cols = flood_avg:fire_avg) %>%
   mutate(value = ifelse(value == 0, NA, value),
          name_nice = hazard_name_map[name],
-         town_name_nice = capitalizeFirstLetter(most_common_town)) %>%
+         town_name_nice = paste0(capitalizeFirstLetter(most_common_town), " (", n, ")")) %>%
   ggplot() +
     geom_tile(aes(y = reorder(name_nice, value, na.rm = T), 
                   x = town_name_nice, 
@@ -253,6 +277,23 @@ outreach_by_town <- combined_table_relevant %>%
 ##View(outreach_by_town)
 outreach_by_town$mod_sum
 
+mystic_towns_list_sub <- setdiff(mystic_towns_list,  unique(outreach_by_town$most_common_town))
+
+outreach_by_town_blank <- data.frame(most_common_town = mystic_towns_list_sub,
+                                   n = rep(0, length(mystic_towns_list_sub)),
+                                   workshop_avg = rep(NA, length(mystic_towns_list_sub)),
+                                   mapping_avg = rep(NA, length(mystic_towns_list_sub)),
+                                   survey_avg = rep(NA, length(mystic_towns_list_sub)),
+                                   conversation_avg = rep(NA, length(mystic_towns_list_sub)),
+                                   community_meeting_avg = rep(NA, length(mystic_towns_list_sub)),
+                                   small_group_discussion_avg = rep(NA, length(mystic_towns_list_sub)),
+                                   inform_avg = rep(NA, length(mystic_towns_list_sub)),
+                                   mod_sum = rep(0, length(mystic_towns_list_sub)))
+
+outreach_by_town$mod_sum
+
+outreach_by_town <- rbind(outreach_by_town, outreach_by_town_blank)
+
 outreach_name_map = c(
    "workshop_avg"= 'Workshop',
    "mapping_avg" = 'Mapping',
@@ -271,7 +312,7 @@ p2 <- outreach_by_town %>%
   pivot_longer(cols = workshop_avg:inform_avg) %>%
   mutate(value = ifelse(value == 0, NA, value),
          name_nice = outreach_name_map[name],
-         town_name_nice = capitalizeFirstLetter(most_common_town)) %>%
+         town_name_nice = paste0(capitalizeFirstLetter(most_common_town), " (", n, ")")) %>%
   ggplot() +
   geom_tile(aes(y = reorder(name_nice, value, na.rm = T), 
                 x = town_name_nice, 
@@ -283,6 +324,7 @@ p2 <- outreach_by_town %>%
                     breaks = c(seq(20, 80, by = 20))) +
   ylab('Outreach') + xlab('Town') + 
   theme(axis.text.x = element_blank()) +
+  #theme(axis.text.x = element_text(angle = 35, hjust = 0)) +
   scale_x_discrete(position = 'top')
 
 
@@ -296,7 +338,8 @@ p1 + p2 +
 dev.size()
 
 ggsave(filename = 'tileplot_v5.png', 
-       width = 12.9/2, height = 6.67/2,
+       #width = 12.9/2, height = 6.67/2,
+       width = 10.5/2, height = 5.9/2,
        dpi = 600)
 
 # ----------------------------------------------------------------------------
