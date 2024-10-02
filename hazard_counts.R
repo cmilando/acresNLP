@@ -31,8 +31,8 @@ library(leaflet)
 #### create dataframe of hazard counts and proportions by town ####
 
 #adjust based on your computer
-my_dir <- "/Users/alliej/Library/CloudStorage/OneDrive-BostonUniversity/ACRES NLP/acresNLP/"
-#my_dir <- "/Users/cwm/Documents/GitHub/acresNLP/"
+#my_dir <- "/Users/alliej/Library/CloudStorage/OneDrive-BostonUniversity/ACRES NLP/acresNLP/"
+my_dir <- "/Users/cwm/Documents/GitHub/acresNLP/"
 
 create_df <- function(filename){
   data <- read_delim(filename)
@@ -41,7 +41,8 @@ create_df <- function(filename){
 
 
 #combined table missing all arlington/belmont and some chelsea/everett
-combined_table <- create_df(paste0(my_dir, "combined_output_v4.tsv"))
+combined_table <- create_df(paste0(my_dir, "combined_output_v5.tsv"))
+colnames(combined_table)
 combined_table <- combined_table %>% clean_names()
 combined_table$town_name <- gsub("url\\d+|\\d+|\\.json", "",
                                  combined_table$file_name)
@@ -75,7 +76,7 @@ combined_table <- combined_table %>%
     has_community == 1
   ))
 
-write_tsv(combined_table, 'combined_table_v4.tsv')
+write_tsv(combined_table, 'combined_table_v5.tsv')
 
 
 combined_table
@@ -241,6 +242,7 @@ outreach_by_town <- combined_table_relevant %>%
             workshop_avg = mean(workshop_percent),
             mapping_avg = mean(mapping_percent),
             survey_avg = mean(survey_percent),
+            conversation_avg = mean(conversation_percent),
             community_meeting_avg = mean(community_meeting_percent),
             small_group_discussion_avg = mean(small_group_discussion_percent),
             inform_avg = mean(inform_percent)
@@ -254,13 +256,16 @@ outreach_by_town$mod_sum
 outreach_name_map = c(
    "workshop_avg"= 'Workshop',
    "mapping_avg" = 'Mapping',
-   "focus_group_avg" = 'Focus group',
-   "interview_avg"= "Interview",
    "survey_avg" = "Survey",
+   "conversation_avg"= "Conversation",
    "community_meeting_avg" = "Community meeting",
-   "small_group_meeting_avg" = "Small group meeting",
-   "information_avg" = "Information"
+   "small_group_discussion_avg" = "Small group meeting",
+   "inform_avg" = "Information"
 )
+
+xyz <- outreach_by_town %>%
+  pivot_longer(cols = workshop_avg:inform_avg) 
+unique(xyz$name)
 
 p2 <- outreach_by_town %>%
   pivot_longer(cols = workshop_avg:inform_avg) %>%
@@ -290,7 +295,7 @@ p1 + p2 +
 
 dev.size()
 
-ggsave(filename = 'tileplot_v4.png', 
+ggsave(filename = 'tileplot_v5.png', 
        width = 12.9/2, height = 6.67/2,
        dpi = 600)
 
