@@ -33,7 +33,7 @@ library(leaflet)
 #adjust based on your computer
 #my_dir <- "/Users/alliej/Library/CloudStorage/OneDrive-BostonUniversity/ACRES NLP/acresNLP/"
 my_dir <- "/Users/cwm/Documents/GitHub/acresNLP/"
-my_dir <- "C:/Users/ncesare/Downloads/"
+# my_dir <- "C:/Users/ncesare/Downloads/"
 
 create_df <- function(filename){
   data <- read_delim(filename)
@@ -338,8 +338,8 @@ p1 + p2 +
 dev.size()
 
 ggsave(filename = 'tileplot_v5.png', 
-       #width = 12.9/2, height = 6.67/2,
-       width = 10.5/2, height = 5.9/2,
+       width = 12.9/1.5, height = 6.67/1.5,
+       #width = 10.5/2, height = 5.9/2,
        dpi = 600)
 
 # ----------------------------------------------------------------------------
