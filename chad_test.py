@@ -44,7 +44,7 @@ def process_file(this_json_file_path, f_name, hazard_dict, engage_dict):
     # create the hazard and community engagement tables (with counts and percentages)
     hazard_counts, hazard_pcts = func_countkeywords.count_keyword_occurrences(text, hazard_dict, False)
 
-    engage_counts, engage_pcts = func_countkeywords.count_keyword_occurrences(text, engage_dict, True)
+    engage_counts, engage_pcts = func_countkeywords.count_keyword_occurrences(text, engage_dict, False)
 
     # add the tables' data
     this_pdf_data = [f_name, url,

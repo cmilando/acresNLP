@@ -1,9 +1,41 @@
 {
-	"workshop" : ["workshop", "workshops","working group", "work group"],
-	"mapping" : ["community mapping", "participatory mapping"], 
-	"survey" : ["survey", "opinion poll", "poll", "questionnaire"],
-	"conversation" : ["interview","focus group"],
-	"community_meeting" : ["town hall", "forum", "public hearing", "community meeting"],
-	"small_group_discussion" : ["roundtable", "round table","feedback session", "listening session"],
-	"inform" : ["flyer", "pamphlet", "information session"]
+	"workshop" : [
+		"workshop",
+		"working group",
+		"work group"
+	],
+	"mapping" : [
+		"community mapping",
+		"participatory mapping"
+	],
+	"survey" : [
+		"survey",
+		"opinion poll",
+		"poll",
+		"questionnaire"
+	],
+	"conversation" : [
+		"interview",
+		"focus group"
+	],
+	"community_meeting" : [
+		"town hall",
+		"outreach",
+		"forum",
+		"site walk",
+		"public hearing",
+		"public meeting",
+		"community meeting"
+	],
+	"small_group_discussion" : [
+		"roundtable",
+		"round table",
+		"feedback session",
+		"listening session"
+	],
+	"inform" : [
+		"flyer",
+		"pamphlet",
+		"information session"
+	]
 }
