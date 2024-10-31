@@ -132,6 +132,8 @@ write_tsv(pass_checks, 'pass_checks.tsv')
 
 #only filter for relevant and matching
 
+write_tsv(combined_table, 'combined_table_v5_final.tsv')
+
 # ----------------------------------------------------------------------------
 #90% or over for all towns
 combined_table_relevant <- combined_table %>% 
@@ -186,7 +188,7 @@ hazard_by_town <- rbind(hazard_by_town, hazard_by_town_blank)
 hazard_name_map = c(
   "air_pollution_avg" = 'Air Pollution',
   'chem_hazard_avg' = 'Chemical Hazards',
-  'extreme_precip_avg' = 'Extreme Precip.',
+  'extreme_precip_avg' = 'Extreme Precipitation',
   'fire_avg' = 'Fire',
   'flood_avg' = 'Flood',
   'heat_avg' = 'Heat',
@@ -231,9 +233,19 @@ p1 <- hazard_by_town %>%
                     breaks = c(seq(20, 80, by = 20))) +
   ylab('Hazard') + xlab('Town') + 
   scale_x_discrete(position = 'top') +
-  theme(axis.text.x = element_text(angle = 35, hjust = 0))
+  theme(axis.text.x = element_text(angle = 35, hjust = 0, size = 11),
+        axis.text.y = element_text(size = 14),
+        axis.title = element_text(size = 14))
 
 p1
+
+#dev.size()
+
+ggsave(filename = 'hazplot_v5.png', 
+       width = 13.375000 * 0.8, 
+       height = 4.361111 * 0.8,
+       dpi = 600)
+
 #this figure no longer looks good because there are too many towns
 # hazard_by_town %>%
 #   pivot_longer(cols = flood_avg:fire_avg) %>%
