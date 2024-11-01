@@ -100,7 +100,7 @@ data.frame(head(combined_table))
 
 combined_table <- combined_table %>%
   mutate(pass_checks2 = (
-    Manual.Check == 'INCLUDE' &
+    Manual.Check %in% c('INCLUDE', 'INCLDE') &
     duplicated == F &
       is_ACRES_town == T &
       is_MASS == T &
@@ -112,7 +112,7 @@ pass_checks <- combined_table %>%
   filter(pass_checks2) %>%
   group_by(most_common_town) %>% tally()
 
-pass_checks
+sum(pass_checks$n)
 
 
 write_tsv(pass_checks, 'pass_checks.tsv')
@@ -134,10 +134,37 @@ write_tsv(pass_checks, 'pass_checks.tsv')
 
 write_tsv(combined_table, 'combined_table_v5_final.tsv')
 
+### make flowchart
+table(combined_table$duplicated)
+
+table(combined_table %>% filter(duplicated == F) %>% select(is_MASS))
+
+table(combined_table %>% 
+        filter(duplicated == F, is_MASS == T) %>% 
+        select(is_ACRES_town))
+
+table(combined_table %>% 
+        filter(duplicated == F, is_MASS == T, is_ACRES_town == T) %>% 
+        select(has_climate))
+
+table(combined_table %>% 
+        filter(duplicated == F, is_MASS == T, is_ACRES_town == T,
+               has_climate == 1) %>% 
+        select(has_community))
+
+table(combined_table %>% 
+        filter(duplicated == F, is_MASS == T, is_ACRES_town == T,
+               has_climate == 1, has_community == 1) %>% 
+        select(Manual.Check))
+
+Manual.Check
+
 # ----------------------------------------------------------------------------
 #90% or over for all towns
 combined_table_relevant <- combined_table %>% 
   filter(pass_checks2)
+
+dim(combined_table_relevant)
 
 #write_tsv(combined_table_relevant, 'combined_table_relevant.tsv')
 
