@@ -74,7 +74,9 @@ if __name__ == "__main__":
                          "Arlington", "Winchester", "Woburn", "Reading",
                          "Stoneham", "Medford", "Somerville", "Cambridge",
                          "Boston", "Charlestown", "Everett", "Malden", "Melrose",
-                         "Wakefield", "Chelsea", "Revere", "Winthrop", "Wilmington"]
+                         "Wakefield", "Chelsea", "Revere", "Winthrop", "Wilmington",
+                         "Newton", "Brookline", "Quincy", "Saugus", "Lynn",
+                         "Needham", "Milton", "Waltham"]
 
     # adjust for the path for where you have the json files
     # file_path = "/Users/alliej/Library/CloudStorage/OneDrive-BostonUniversity/ACRES NLP/acresNLP/"
@@ -125,7 +127,7 @@ if __name__ == "__main__":
 
     # Save the combined results into a single TSV file
     combined_output = "\t".join(f_headers) + "\n" + "\n".join("\t".join(map(str, row)) for row in all_data)
-    output_file = file_path + "combined_output_v5.tsv"
+    output_file = file_path + "combined_output_v7.tsv"
 
     with open(output_file, 'w') as f:
         f.write(combined_output)

@@ -1,92 +1,14 @@
-library(readr)
-library(tidyverse)
-library(ggforce)
-library(janitor)
-library(sf)
-library(gtable)
-library(grid)
-library(gridExtra)
-library(tigris)
-library(leaflet)
-
-### NOTES
-
-# * STONEHAM HAS NO CLIMATE REPORTS
-# * NOT A LOT OF ADJACENCY IN HAZARDS
-#
-# * 
-# * allison: for both hazards and outreach, for some towns the totals are < 100%
-# * chad: expanding heat search terms and seeing if that changes things, manual search
-
-# Needs:
-# * Map
-# * table of the heatmap with %s and n
-
-# * REVERE AND LEXINGTON DON'T HAVE 100% in relevancy table
-# * WHY ISNT HEAT MORE ** SEARCH TERMS
-#
-# * WHAT ABOUT THE COMMUNITY CONCERNS
-
-# ----------------------------------------------------------------------------
-#### create dataframe of hazard counts and proportions by town ####
-
-#adjust based on your computer
-#my_dir <- "/Users/alliej/Library/CloudStorage/OneDrive-BostonUniversity/ACRES NLP/acresNLP/"
-my_dir <- "/Users/cwm/Documents/GitHub/acresNLP/"
-# my_dir <- "C:/Users/ncesare/Downloads/"
-
-create_df <- function(filename){
-  data <- read_delim(filename)
-  return(data)
-}
 
 
-#combined table missing all arlington/belmont and some chelsea/everett
-combined_table <- create_df(paste0(my_dir, "combined_output_v5.tsv"))
-colnames(combined_table)
-combined_table <- combined_table %>% clean_names()
-combined_table$town_name <- gsub("url\\d+|\\d+|\\.json", "",
-                                 combined_table$file_name)
-combined_table$town_name <- toupper(combined_table$town_name)
+source("01_make_passchecks.R")
 
-#View(combined_table)
-
-mystic_towns_list = c("Burlington", "Lexington", "Belmont", "Watertown",
-                     "Arlington", "Winchester", "Woburn", "Reading",
-                     "Stoneham", "Medford", "Somerville", "Cambridge",
-                     "Boston", "Charlestown", "Everett", "Malden", "Melrose",
-                     "Wakefield", "Chelsea", "Revere", "Winthrop", "Wilmington")
-
-##
-combined_table <- combined_table %>% 
-  mutate(is_ACRES_town = (most_common_town %in% tolower(mystic_towns_list)),
-         is_MASS = (most_common_state == 'massachusetts'))
-
-# duplicated
-combined_table$duplicated = duplicated(combined_table$first100words)
-
-# write_tsv(combined_table[, c('file_name', 'duplicated')] %>%
-#             arrange(file_name), 'duplicated.tsv')
-
-combined_table <- combined_table %>%
-  mutate(pass_checks2 = (
-    duplicated == F &
-    is_ACRES_town == T &
-    is_MASS == T &
-    has_climate == 1 &
-    has_community == 1
-  ))
-
-write_tsv(combined_table, 'combined_table_v5.tsv')
-
-
-combined_table
+dim(combined_table)
 
 table(combined_table$most_common_town, combined_table$pass_checks2)
 table(combined_table$pass_checks2)
 
-mancx <- read.csv(paste0(my_dir, "manual_checks_2.csv"), header = T,
-                  sep = "|")[,c('Manual.Check', "file_name")]
+mancx <- read.csv(paste0(my_dir, "manual_checks_1202.csv"), header = T,
+                  sep = "|")
 head(mancx)
 
 combined_table <- combined_table %>% left_join(mancx)
@@ -99,23 +21,22 @@ data.frame(head(combined_table))
 # ma.url omitted
 
 combined_table <- combined_table %>%
-  mutate(pass_checks2 = (
-    Manual.Check %in% c('INCLUDE', 'INCLDE') &
+  mutate(pass_checks3 = (
+    Manual.Check.11.19 %in% c('INCLUDE') &
     duplicated == F &
-      is_ACRES_town == T &
+      is_INNER_CORE == T &
       is_MASS == T &
       has_climate == 1 &
       has_community == 1
   ))
 
 pass_checks <- combined_table %>%
-  filter(pass_checks2) %>%
+  filter(pass_checks3) %>%
   group_by(most_common_town) %>% tally()
 
 sum(pass_checks$n)
 
-
-write_tsv(pass_checks, 'pass_checks.tsv')
+write_tsv(pass_checks, 'pass_checks_1202.tsv')
 
 # num_irrelevant <- combined_table %>% 
 #   group_by(town_name) %>% 
@@ -132,37 +53,40 @@ write_tsv(pass_checks, 'pass_checks.tsv')
 
 #only filter for relevant and matching
 
-write_tsv(combined_table, 'combined_table_v5_final.tsv')
+write_tsv(combined_table, 'combined_table_v7_final.tsv')
+
+# ----------------------------------------------------------------------------
 
 ### make flowchart
+nrow(combined_table)
+
 table(combined_table$duplicated)
 
-table(combined_table %>% filter(duplicated == F) %>% select(is_MASS))
+table(combined_table %>% 
+        filter(duplicated == F) %>% select(is_MASS))
 
 table(combined_table %>% 
         filter(duplicated == F, is_MASS == T) %>% 
-        select(is_ACRES_town))
+        select(is_INNER_CORE))
 
 table(combined_table %>% 
-        filter(duplicated == F, is_MASS == T, is_ACRES_town == T) %>% 
+        filter(duplicated == F, is_MASS == T, is_INNER_CORE == T) %>% 
         select(has_climate))
 
 table(combined_table %>% 
-        filter(duplicated == F, is_MASS == T, is_ACRES_town == T,
+        filter(duplicated == F, is_MASS == T, is_INNER_CORE == T,
                has_climate == 1) %>% 
         select(has_community))
 
 table(combined_table %>% 
-        filter(duplicated == F, is_MASS == T, is_ACRES_town == T,
+        filter(duplicated == F, is_MASS == T, is_INNER_CORE == T,
                has_climate == 1, has_community == 1) %>% 
-        select(Manual.Check))
-
-Manual.Check
+        select(Manual.Check.11.19))
 
 # ----------------------------------------------------------------------------
 #90% or over for all towns
 combined_table_relevant <- combined_table %>% 
-  filter(pass_checks2)
+  filter(pass_checks3)
 
 dim(combined_table_relevant)
 
@@ -171,11 +95,10 @@ dim(combined_table_relevant)
 dim(combined_table)
 dim(combined_table_relevant)
 
-mystic_towns_list <- tolower(c("Burlington", "Lexington", "Belmont", "Watertown",
-                     "Arlington", "Winchester", "Woburn", "Reading",
-                     "Stoneham", "Medford", "Somerville", "Cambridge",
-                     "Boston", "Charlestown", "Everett", "Malden", "Melrose",
-                     "Wakefield", "Chelsea", "Revere", "Winthrop", "Wilmington"))
+# Charlestown removed
+INNER_CORE <- read.table("INNER_CORE.txt", header = F)
+head(INNER_CORE)
+mystic_towns_list <- tolower(INNER_CORE$V1)
 
 hazard_by_town <- combined_table_relevant %>% 
   group_by(most_common_town) %>% 
@@ -268,7 +191,7 @@ p1
 
 #dev.size()
 
-ggsave(filename = 'hazplot_v5.png', 
+ggsave(filename = 'hazplot_v6.png', 
        width = 13.375000 * 0.8, 
        height = 4.361111 * 0.8,
        dpi = 600)

@@ -23,7 +23,7 @@ def extract_text_and_combine(pdf):
     return combined_text, pages_text
 
 
-def process_pdf_from_url(url, town_name):
+def process_pdf_from_url(url, this_town_name):
     # create request object
     req = urllib.request.Request(url)
 
@@ -40,7 +40,7 @@ def process_pdf_from_url(url, town_name):
         pdf_content = response.read()
 
         # open pdf with pdfplumber and store it in the repository
-        pdf_path = os.path.join(file_prefix, "pdfs", f"{town_name}.pdf")
+        pdf_path = os.path.join(file_prefix, "pdfs", f"{this_town_name}.pdf")
         os.makedirs(os.path.dirname(pdf_path), exist_ok=True)
 
         # check if it exists first - if not, then add it
@@ -61,7 +61,7 @@ def process_pdf_from_url(url, town_name):
         }
 
         # write text to json file
-        json_path = file_prefix + town_name + ".json"
+        json_path = file_prefix + this_town_name + ".json"
         with open(json_path, 'w') as json_file:
             json.dump(output, json_file, ensure_ascii=False, indent=4)
 
@@ -81,23 +81,25 @@ def process_pdf_from_url(url, town_name):
 if __name__ == "__main__":
 
     # save pdf's also #
-    all_towns = ['brookline', 'lynn',
-                 'milton', 'needham', 'newton',
-                 'quincy', 'saugus', 'waltham']
+    all_towns = [  'waltham']
+    #
 
     xfolder_path = "/Users/cwm/Documents/GitHub/acresNLP/"
-    file_prefix = "/Users/cwm/Library/CloudStorage/OneDrive-SharedLibraries-BostonUniversity/James, Allison - scraped_plans/"
+    file_prefix = "/Users/cwm/Library/CloudStorage/" + \
+                  "OneDrive-SharedLibraries-BostonUniversity/" + \
+                  "James, Allison - scraped_plans/"
 
     for town_names_base in all_towns:
 
         # REPLACE THIS with the town + "url" that
         town_names = town_names_base + "url"
 
-        with open(xfolder_path + 'url_lists/' + town_names + '_list' + '.json', 'r') as file:
+        with open(xfolder_path + 'url_lists/' +
+                  town_names + '_list' + '.json', 'r') as file:
             url_list = json.load(file)
 
-        #if there is an error for a PDF throughout and the code stops, you can resume using this chunk.
-        #use the index of the PDF that failed (since Python indexing starts at 0)
+        # if there is an error for a PDF throughout and the code stops, you can resume using this chunk.
+        #muse the index of the PDF that failed (since Python indexing starts at 0)
         for i in range(0, len(url_list)):
             print(f"------id:{town_names}{i + 1}------")
             town_name = town_names + str(i + 1)
