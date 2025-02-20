@@ -22,8 +22,7 @@ places_data <- get_acs(
 dim(places_data)
 head(places_data)
 
-INNER_CORE <- read.table("INNER_CORE.txt", header = F)
-head(INNER_CORE)
+INNER_CORE <- read.table("COMBINED_TOWNS.txt", header = F)
 INNER_CORE_data <- vector("list", nrow(INNER_CORE))
 
 for(i in 1:nrow(INNER_CORE)) {
@@ -39,8 +38,10 @@ for(i in 1:nrow(INNER_CORE)) {
 }
 
 INNER_CORE_df <- do.call(rbind, INNER_CORE_data)
+dim(INNER_CORE_df)
 
-o <-INNER_CORE_df %>% pivot_wider(id_cols = NAME, names_from = variable,
+o <-INNER_CORE_df %>% pivot_wider(id_cols = NAME, 
+                                  names_from = variable,
                               values_from = estimate)
 
 write.table(o, quote = F, sep = "|", row.names = F, file = 'TOWNS_CENSUS.txt')
