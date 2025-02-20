@@ -78,10 +78,11 @@ def process_pdf_from_url(url, this_town_name):
         print(f"Failed to download the PDF. Reason:")
 
 
+
 if __name__ == "__main__":
 
     # save pdf's also #
-    all_towns = [  'waltham']
+    all_towns = ['waltham', 'wilmington', 'reading', 'malden', 'burlington']
     #
 
     xfolder_path = "/Users/cwm/Documents/GitHub/acresNLP/"
@@ -101,8 +102,11 @@ if __name__ == "__main__":
         # if there is an error for a PDF throughout and the code stops, you can resume using this chunk.
         #muse the index of the PDF that failed (since Python indexing starts at 0)
         for i in range(0, len(url_list)):
-            print(f"------id:{town_names}{i + 1}------")
+            # print(f"------id:{town_names}{i + 1}------")
             town_name = town_names + str(i + 1)
-            process_pdf_from_url(url_list[i], town_name)
+            # just for now read the last one
+            if i == (len(url_list) - 1):
+                print(url_list[i])
+                process_pdf_from_url(url_list[i], town_name)
 
         # make sure pdf's saved too

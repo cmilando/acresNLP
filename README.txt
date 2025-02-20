@@ -1,6 +1,7 @@
 READ ME for NLP processing
 
-All of the code is complete, so all you have to do is run it. Scrape_from_url.py is run individually for each town, 
+All of the code is complete, so all you have to do is run it.
+Scrape_from_url.py is run individually for each town,
 and chad_test.py is run once all together.
 
 To get the data prepared to run:

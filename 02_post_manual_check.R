@@ -15,7 +15,34 @@ combined_table <- combined_table %>% left_join(mancx)
 
 dim(combined_table)
 data.frame(head(combined_table))
+ 
+# ----------------------------------------------------------------------------
+# get the new pdfs to 'INCLUDE'
 
+# malden 63
+r1 <- which(combined_table$file_name == 'maldenurl63.json')
+r1
+combined_table$Manual.Check.11.19[r1] <- 'INCLUDE'
+
+# burlington 85
+r1 <- which(combined_table$file_name == 'burlingtonurl85.json')
+r1
+combined_table$Manual.Check.11.19[r1] <- 'INCLUDE'
+
+# reading 60
+r1 <- which(combined_table$file_name == 'readingurl60.json')
+r1
+combined_table$Manual.Check.11.19[r1] <- 'INCLUDE'
+
+# wilmington
+r1 <- which(combined_table$file_name == 'wilmingtonurl47.json')
+r1
+combined_table$Manual.Check.11.19[r1] <- 'INCLUDE'
+
+# waltham 82
+r1 <- which(combined_table$file_name == 'walthamurl82.json')
+r1
+combined_table$Manual.Check.11.19[r1] <- 'INCLUDE'
 
 # ----------------------------------------------------------------------------
 # ma.url omitted
@@ -24,7 +51,7 @@ combined_table <- combined_table %>%
   mutate(pass_checks3 = (
     Manual.Check.11.19 %in% c('INCLUDE') &
     duplicated == F &
-      is_INNER_CORE == T &
+      (is_INNER_CORE == T | is_ACRES_town == T) &
       is_MASS == T &
       has_climate == 1 &
       has_community == 1
@@ -36,7 +63,7 @@ pass_checks <- combined_table %>%
 
 sum(pass_checks$n)
 
-write_tsv(pass_checks, 'pass_checks_1202.tsv')
+write_tsv(pass_checks, 'pass_checks_0220.tsv')
 
 # num_irrelevant <- combined_table %>% 
 #   group_by(town_name) %>% 
@@ -53,7 +80,7 @@ write_tsv(pass_checks, 'pass_checks_1202.tsv')
 
 #only filter for relevant and matching
 
-write_tsv(combined_table, 'combined_table_v7_final.tsv')
+write_tsv(combined_table, 'combined_table_v8_final.tsv')
 
 # ----------------------------------------------------------------------------
 
@@ -96,9 +123,9 @@ dim(combined_table)
 dim(combined_table_relevant)
 
 # Charlestown removed
-INNER_CORE <- read.table("INNER_CORE.txt", header = F)
-head(INNER_CORE)
-mystic_towns_list <- tolower(INNER_CORE$V1)
+ALL_TOWNS <- read.table("COMBINED_TOWNS.txt", header = F)
+head(ALL_TOWNS)
+ALL_TOWNS_list <- tolower(ALL_TOWNS$V1)
 
 hazard_by_town <- combined_table_relevant %>% 
   group_by(most_common_town) %>% 
@@ -115,19 +142,20 @@ hazard_by_town <- combined_table_relevant %>%
   mutate(mod_sum = rowSums(across(flood_avg:fire_avg)))
 
 
-mystic_towns_list_sub <- setdiff(mystic_towns_list,  unique(hazard_by_town$most_common_town))
+ALL_TOWNS_list_sub <- setdiff(ALL_TOWNS_list,  
+                                 unique(hazard_by_town$most_common_town))
 
-hazard_by_town_blank <- data.frame(most_common_town = mystic_towns_list_sub,
-                                   n = rep(0, length(mystic_towns_list_sub)),
-                                   flood_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   storm_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   heat_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   air_pollution_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   indoor_air_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   chem_hazard_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   extreme_precip_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   fire_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   mod_sum = rep(0, length(mystic_towns_list_sub)))
+hazard_by_town_blank <- data.frame(most_common_town = ALL_TOWNS_list_sub,
+                                   n = rep(0, length(ALL_TOWNS_list_sub)),
+                                   flood_avg = rep(NA, length(ALL_TOWNS_list_sub)),
+                                   storm_avg = rep(NA, length(ALL_TOWNS_list_sub)),
+                                   heat_avg = rep(NA, length(ALL_TOWNS_list_sub)),
+                                   air_pollution_avg = rep(NA, length(ALL_TOWNS_list_sub)),
+                                   indoor_air_avg = rep(NA, length(ALL_TOWNS_list_sub)),
+                                   chem_hazard_avg = rep(NA, length(ALL_TOWNS_list_sub)),
+                                   extreme_precip_avg = rep(NA, length(ALL_TOWNS_list_sub)),
+                                   fire_avg = rep(NA, length(ALL_TOWNS_list_sub)),
+                                   mod_sum = rep(0, length(ALL_TOWNS_list_sub)))
 
 hazard_by_town$mod_sum
 
@@ -239,18 +267,18 @@ outreach_by_town <- combined_table_relevant %>%
 ##View(outreach_by_town)
 outreach_by_town$mod_sum
 
-mystic_towns_list_sub <- setdiff(mystic_towns_list,  unique(outreach_by_town$most_common_town))
+ALL_TOWNS_list_sub <- setdiff(ALL_TOWNS_list,  unique(outreach_by_town$most_common_town))
 
-outreach_by_town_blank <- data.frame(most_common_town = mystic_towns_list_sub,
-                                   n = rep(0, length(mystic_towns_list_sub)),
-                                   workshop_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   mapping_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   survey_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   conversation_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   community_meeting_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   small_group_discussion_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   inform_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   mod_sum = rep(0, length(mystic_towns_list_sub)))
+outreach_by_town_blank <- data.frame(most_common_town = ALL_TOWNS_list_sub,
+                                   n = rep(0, length(ALL_TOWNS_list_sub)),
+                                   workshop_avg = rep(NA, length(ALL_TOWNS_list_sub)),
+                                   mapping_avg = rep(NA, length(ALL_TOWNS_list_sub)),
+                                   survey_avg = rep(NA, length(ALL_TOWNS_list_sub)),
+                                   conversation_avg = rep(NA, length(ALL_TOWNS_list_sub)),
+                                   community_meeting_avg = rep(NA, length(ALL_TOWNS_list_sub)),
+                                   small_group_discussion_avg = rep(NA, length(ALL_TOWNS_list_sub)),
+                                   inform_avg = rep(NA, length(ALL_TOWNS_list_sub)),
+                                   mod_sum = rep(0, length(ALL_TOWNS_list_sub)))
 
 outreach_by_town$mod_sum
 

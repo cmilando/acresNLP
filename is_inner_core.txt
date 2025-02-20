@@ -386,6 +386,7 @@ burlingtonurl81.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 burlingtonurl82.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 burlingtonurl83.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 burlingtonurl84.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
+burlingtonurl85.json|burlington|FALSE|TRUE|TRUE|FALSE|1|1
 burlingtonurl9.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 cambridgeurl1.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 cambridgeurl10.json|cambridge|TRUE|TRUE|FALSE|TRUE|1|1
@@ -784,6 +785,7 @@ maldenurl6.json|worcester|FALSE|FALSE|FALSE|TRUE|0|1
 maldenurl60.json|washington|FALSE|FALSE|FALSE|FALSE|0|1
 maldenurl61.json|orange|FALSE|FALSE|FALSE|FALSE|1|1
 maldenurl62.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
+maldenurl63.json|malden|TRUE|TRUE|FALSE|TRUE|1|1
 maldenurl7.json|chelsea|TRUE|TRUE|FALSE|TRUE|1|1
 maldenurl8.json|holden|FALSE|FALSE|FALSE|TRUE|1|1
 maldenurl9.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
@@ -1173,6 +1175,7 @@ readingurl57.json|cambridge|TRUE|TRUE|FALSE|FALSE|1|1
 readingurl58.json|georgetown|FALSE|FALSE|FALSE|FALSE|1|1
 readingurl59.json|reading|FALSE|TRUE|FALSE|FALSE|1|1
 readingurl6.json|hancock|FALSE|FALSE|FALSE|FALSE|1|1
+readingurl60.json|reading|FALSE|TRUE|FALSE|TRUE|1|1
 readingurl7.json|princeton|FALSE|FALSE|FALSE|FALSE|1|1
 readingurl8.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 readingurl9.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
@@ -1450,6 +1453,7 @@ walthamurl79.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 walthamurl8.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 walthamurl80.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 walthamurl81.json|waltham|TRUE|FALSE|FALSE|FALSE|0|1
+walthamurl82.json|waltham|TRUE|FALSE|FALSE|TRUE|1|1
 walthamurl9.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 watertownurl1.json|watertown|TRUE|TRUE|FALSE|TRUE|1|1
 watertownurl10.json|tolland|FALSE|FALSE|FALSE|FALSE|1|1
@@ -1527,6 +1531,7 @@ wilmingtonurl43.json|florida|FALSE|FALSE|FALSE|FALSE|1|1
 wilmingtonurl44.json|burlington|FALSE|TRUE|FALSE|FALSE|1|1
 wilmingtonurl45.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 wilmingtonurl46.json|wilmington|FALSE|TRUE|FALSE|FALSE|1|1
+wilmingtonurl47.json|wilmington|FALSE|TRUE|FALSE|TRUE|1|1
 wilmingtonurl5.json|florida|FALSE|FALSE|FALSE|FALSE|1|1
 wilmingtonurl6.json|chester|FALSE|FALSE|TRUE|FALSE|1|1
 wilmingtonurl7.json|florida|FALSE|FALSE|FALSE|FALSE|1|1

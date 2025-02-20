@@ -42,7 +42,7 @@ create_df <- function(filename){
 
 
 #combined table missing all arlington/belmont and some chelsea/everett
-combined_table <- create_df(paste0(my_dir, "combined_output_v7.tsv"))
+combined_table <- create_df(paste0(my_dir, "combined_output_v8.tsv"))
 problems(combined_table)
 colnames(combined_table)
 combined_table <- combined_table %>% clean_names()
@@ -93,7 +93,7 @@ combined_table$duplicated = duplicated(combined_table$first100words)
 combined_table <- combined_table %>%
   mutate(pass_checks2 = (
     duplicated == F &
-      is_INNER_CORE == T &
+      (is_INNER_CORE == T | is_ACRES_town == T) &
       is_MASS == T &
       has_climate == 1 &
       has_community == 1
@@ -123,4 +123,4 @@ combined_table <- combined_table %>% left_join(mancx)
 dim(combined_table)
 data.frame(head(combined_table))
 
-write_tsv(combined_table, 'combined_table_v7.tsv')
+write_tsv(combined_table, 'combined_table_v8.tsv')

@@ -127,7 +127,7 @@ if __name__ == "__main__":
 
     # Save the combined results into a single TSV file
     combined_output = "\t".join(f_headers) + "\n" + "\n".join("\t".join(map(str, row)) for row in all_data)
-    output_file = file_path + "combined_output_v7.tsv"
+    output_file = file_path + "combined_output_v8.tsv"
 
     with open(output_file, 'w') as f:
         f.write(combined_output)
