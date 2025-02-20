@@ -86,6 +86,7 @@ write_tsv(combined_table, 'combined_table_v8_final.tsv')
 
 ### make flowchart
 nrow(combined_table)
+# 27 Original from 
 
 table(combined_table$duplicated)
 

@@ -1,22 +1,29 @@
 NAME|B01003_001|B19013_001
-Arlington CDP, Massachusetts|45379|114576
-Belmont CDP, Massachusetts|26158|140500
-Boston city, Massachusetts|689326|76298
-Brookline CDP, Massachusetts|59223|113642
-Cambridge city, Massachusetts|117822|107490
-Chelsea city, Massachusetts|39878|60370
-Everett city, Massachusetts|46275|70627
 Lynn city, Massachusetts|94201|61329
+Saugus CDP, Massachusetts|28326|88463
+Needham CDP, Massachusetts|31177|174707
+Milton CDP, Massachusetts|27590|141050
+Quincy city, Massachusetts|94389|80462
+Newton city, Massachusetts|88322|154398
+Brookline CDP, Massachusetts|59223|113642
+Waltham city, Massachusetts|62597|95851
+Chelsea city, Massachusetts|39878|60370
+Burlington CDP, Massachusetts|28077|121433
+Cambridge city, Massachusetts|117822|107490
+Lexington CDP, Massachusetts|33304|185686
 Malden city, Massachusetts|60710|73399
 Medford city, Massachusetts|58290|101168
 Melrose city, Massachusetts|28054|114604
-Milton CDP, Massachusetts|27590|141050
-Needham CDP, Massachusetts|31177|174707
-Newton city, Massachusetts|88322|154398
-Quincy city, Massachusetts|94389|80462
+Reading CDP, Massachusetts|25236|131515
 Revere city, Massachusetts|53400|68331
-Saugus CDP, Massachusetts|28326|88463
-Somerville city, Massachusetts|81175|102311
-Waltham city, Massachusetts|62597|95851
+Everett city, Massachusetts|46275|70627
+Stoneham CDP, Massachusetts|23625|103104
+Wakefield CDP, Massachusetts|27041|103696
 Watertown Town city, Massachusetts|35749|100434
+Wilmington CDP, Massachusetts|23390|133873
+Woburn city, Massachusetts|40297|92084
+Arlington CDP, Massachusetts|45379|114576
+Belmont CDP, Massachusetts|26158|140500
+Boston city, Massachusetts|689326|76298
 Winthrop Town city, Massachusetts|18558|76996
+Winchester CDP, Massachusetts|22760|173058
