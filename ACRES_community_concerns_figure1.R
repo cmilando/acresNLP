@@ -36,7 +36,7 @@ capitalizeFirstLetter <- function(textVector) {
 
 
 ### Load and filter data ####
-combined_table <- read_tsv("C:/Users/ncesare/OneDrive - Boston University/ACRES/combined_table_v5_final.tsv")
+combined_table <- read_tsv("C:/Users/ncesare/OneDrive - Boston University/ACRES/combined_table_v8_final.tsv")
 
 combined_table_relevant <- combined_table %>% 
   filter(pass_checks2)
@@ -44,13 +44,18 @@ combined_table_relevant <- combined_table %>%
 dim(combined_table)
 dim(combined_table_relevant)
 
-mystic_towns_list <- tolower(c("Burlington", "Lexington", "Belmont", "Watertown",
-                               "Arlington", "Winchester", "Woburn", "Reading",
-                               "Stoneham", "Medford", "Somerville", "Cambridge",
-                               "Boston", "Charlestown", "Everett", "Malden", "Melrose",
-                               "Wakefield", "Chelsea", "Revere", "Winthrop", "Wilmington"))
+
+myrwa <- read.table("C:/Users/ncesare/OneDrive - Boston University/ACRES/MYRWA_towns.txt")
 
 
+combined_table$in_myrwa <- 0
+combined_table$in_myrwa[which(combined_table$most_common_town %in% tolower(myrwa$V1))] <- 1
+
+combined_table_relevant <- combined_table %>% 
+  filter(pass_checks2)
+
+dim(combined_table)
+dim(combined_table_relevant)
 
 
 #### Plot: Hazards by town ####
@@ -130,6 +135,7 @@ p1
 
 
 hazard_overall_1 <- combined_table_relevant %>% 
+  group_by(in_myrwa) %>%
   summarize(flood_avg = mean(flood_percent),
             storm_avg = mean(storm_percent),
             heat_avg = mean(heat_percent),
@@ -140,6 +146,7 @@ hazard_overall_1 <- combined_table_relevant %>%
             fire_avg = mean(fire_percent))
             
 hazard_overall_2 <- combined_table_relevant %>% 
+  group_by(in_myrwa) %>%
   summarize(flood_upper = mean(flood_percent) + (1.96 * std.error(flood_percent)),
             storm_upper = mean(storm_percent) + (1.96 * std.error(storm_percent)),
             heat_upper = mean(heat_percent) + (1.96 * std.error(heat_percent)),
@@ -151,6 +158,7 @@ hazard_overall_2 <- combined_table_relevant %>%
             
             
 hazard_overall_3 <- combined_table_relevant %>% 
+  group_by(in_myrwa) %>%
   summarize(flood_lower = mean(flood_percent) - (1.96 * std.error(flood_percent)),
             storm_lower = mean(storm_percent) - (1.96 * std.error(storm_percent)),
             heat_lower = mean(heat_percent) - (1.96 * std.error(heat_percent)),
@@ -161,15 +169,15 @@ hazard_overall_3 <- combined_table_relevant %>%
             fire_lower = mean(fire_percent) - (1.96 * std.error(fire_percent)))
 
 
-hazard_overall_1 <- reshape2::melt(hazard_overall_1)
+hazard_overall_1 <- reshape2::melt(hazard_overall_1, id = "in_myrwa")
 
-hazard_overall_2 <- reshape2::melt(hazard_overall_2)
+hazard_overall_2 <- reshape2::melt(hazard_overall_2, id = "in_myrwa")
 
-hazard_overall_3 <- reshape2::melt(hazard_overall_3)
+hazard_overall_3 <- reshape2::melt(hazard_overall_3, id = "in_myrwa")
 
 
-hazard_overall <- cbind(hazard_overall_1, hazard_overall_2[,-c(1)], hazard_overall_3[,-c(1)])
-names(hazard_overall)[c(2:4)] <- c("Mean","Upper","Lower")
+hazard_overall <- cbind(hazard_overall_1, hazard_overall_2[,-c(1,2)], hazard_overall_3[,-c(1,2)])
+names(hazard_overall)[c(3:5)] <- c("Mean","Upper","Lower")
 
 hazard_overall$hazard[grep("flood", hazard_overall$variable)] <-"Flood"
 hazard_overall$hazard[grep("storm", hazard_overall$variable)] <-"Storm"
@@ -180,14 +188,23 @@ hazard_overall$hazard[grep("indoor", hazard_overall$variable)] <-"Indoor\n Air"
 hazard_overall$hazard[grep("fire", hazard_overall$variable)] <-"Fire"
 hazard_overall$hazard[grep("chem", hazard_overall$variable)] <-"Chemical\n Hazards"
 
+hazard_overall$in_myrwa[which(hazard_overall$in_myrwa == 1)] <- "MyRWA"
+hazard_overall$in_myrwa[which(hazard_overall$in_myrwa == 0)] <- "Rest of Inner Core"
+
+
 hazard_overall <- hazard_overall %>% mutate(hazard2 = fct_reorder(hazard, .x = Mean, .fun = max, .desc = TRUE))
 
 # skeleton is up - we can add colors and make pretty later
-p2 <- ggplot(hazard_overall, aes(hazard2, Mean)) + 
-  geom_point() +
-  geom_errorbar(aes(ymin = Lower, ymax = Upper)) +
+p2 <- ggplot(hazard_overall, aes(hazard2, Mean, color = as.factor(in_myrwa))) + 
+  geom_point(position = position_dodge(width = 0.8)) +
+  geom_errorbar(aes(ymin = Lower, ymax = Upper),position = position_dodge(width = 0.8)) +
   ylab("Average proportion of hazard terms per document\n representing hazard") +
+  scale_color_manual(name = "Geography:", values = c("#7f3b08","#542788")) +
   xlab("Hazard") +
-  theme_pubr() 
+  theme_pubr()
 
+
+png("C:/Users/ncesare/OneDrive - Boston University/ACRES/figure_1.png", units="in", width=7, height=5, res=600)
+p2
+dev.off()
 
