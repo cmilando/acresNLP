@@ -16,7 +16,7 @@ combined_table <- combined_table %>% left_join(mancx)
 dim(combined_table)
 data.frame(head(combined_table))
  
-# ----------------------------------------------------------------------------
+ # ----------------------------------------------------------------------------
 # get the new pdfs to 'INCLUDE'
 
 # malden 63
@@ -44,6 +44,11 @@ r1 <- which(combined_table$file_name == 'walthamurl82.json')
 r1
 combined_table$Manual.Check.11.19[r1] <- 'INCLUDE'
 
+
+# and any with url that starts with https://www.mass.gov/doc/
+r1 <- which(grepl("https://www.mass.gov/doc/", combined_table$url))
+combined_table$Manual.Check.11.19[r1] <- 'INCLUDE'
+
 # ----------------------------------------------------------------------------
 # ma.url omitted
 
@@ -56,6 +61,9 @@ combined_table <- combined_table %>%
       has_climate == 1 &
       has_community == 1
   ))
+
+glimpse(combined_table[820,])
+
 
 pass_checks <- combined_table %>%
   filter(pass_checks3) %>%

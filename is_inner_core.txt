@@ -13,9 +13,11 @@ arlingtonurl19.json|arlington|TRUE|TRUE|FALSE|FALSE|1|1
 arlingtonurl2.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 arlingtonurl20.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 arlingtonurl21.json|woburn|FALSE|TRUE|FALSE|TRUE|1|1
+arlingtonurl22.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 arlingtonurl23.json|cambridge|TRUE|TRUE|FALSE|FALSE|1|1
 arlingtonurl24.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 arlingtonurl25.json|lee|FALSE|FALSE|FALSE|FALSE|1|1
+arlingtonurl26.json|lynn|TRUE|FALSE|FALSE|TRUE|1|1
 arlingtonurl27.json|amherst|FALSE|FALSE|FALSE|TRUE|1|1
 arlingtonurl28.json|cambridge|TRUE|TRUE|FALSE|TRUE|1|0
 arlingtonurl29.json|everett|TRUE|TRUE|FALSE|TRUE|1|1
@@ -32,8 +34,10 @@ arlingtonurl38.json|cambridge|TRUE|TRUE|FALSE|FALSE|1|1
 arlingtonurl39.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 arlingtonurl4.json|cambridge|TRUE|TRUE|FALSE|FALSE|0|0
 arlingtonurl40.json|boston|TRUE|FALSE|FALSE|TRUE|0|1
+arlingtonurl41.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 arlingtonurl42.json|washington|FALSE|FALSE|FALSE|FALSE|1|0
 arlingtonurl43.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
+arlingtonurl44.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 arlingtonurl45.json|arlington|TRUE|TRUE|FALSE|TRUE|1|1
 arlingtonurl46.json|florida|FALSE|FALSE|FALSE|FALSE|1|1
 arlingtonurl47.json|nantucket|FALSE|FALSE|FALSE|TRUE|1|1
@@ -42,6 +46,7 @@ arlingtonurl49.json|arlington|TRUE|TRUE|FALSE|FALSE|1|1
 arlingtonurl5.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 arlingtonurl50.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 arlingtonurl51.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
+arlingtonurl52.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 arlingtonurl53.json|winthrop|TRUE|TRUE|FALSE|TRUE|1|1
 arlingtonurl54.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 arlingtonurl55.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
@@ -81,6 +86,7 @@ arlingtonurl85.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 arlingtonurl86.json|sharon|FALSE|FALSE|FALSE|FALSE|1|1
 arlingtonurl87.json|hudson|FALSE|FALSE|FALSE|FALSE|1|1
 arlingtonurl88.json|harvard|FALSE|FALSE|FALSE|FALSE|1|1
+arlingtonurl89.json|arlington|TRUE|TRUE|FALSE|TRUE|1|1
 arlingtonurl9.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 belmonturl1.json|cambridge|TRUE|TRUE|FALSE|TRUE|1|1
 belmonturl10.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
@@ -93,6 +99,7 @@ belmonturl16.json|wilmington|FALSE|TRUE|FALSE|FALSE|1|1
 belmonturl17.json|weymouth|FALSE|FALSE|FALSE|TRUE|1|1
 belmonturl19.json|washington|FALSE|FALSE|FALSE|FALSE|0|1
 belmonturl2.json|springfield|FALSE|FALSE|FALSE|TRUE|1|1
+belmonturl20.json|harvard|FALSE|FALSE|FALSE|FALSE|1|1
 belmonturl21.json|tyringham|FALSE|FALSE|FALSE|TRUE|1|1
 belmonturl22.json|weston|FALSE|FALSE|FALSE|FALSE|1|1
 belmonturl23.json|hudson|FALSE|FALSE|FALSE|FALSE|1|1
@@ -105,7 +112,7 @@ belmonturl29.json|cambridge|TRUE|TRUE|FALSE|FALSE|0|0
 belmonturl3.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 belmonturl30.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 belmonturl31.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
-belmonturl32.json|bourne|FALSE|FALSE|FALSE|FALSE|0|0
+belmonturl32.json|bourne|FALSE|FALSE|FALSE|TRUE|0|0
 belmonturl33.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 belmonturl34.json|belmont|TRUE|TRUE|FALSE|TRUE|1|1
 belmonturl35.json|douglas|FALSE|FALSE|FALSE|FALSE|1|1
@@ -127,7 +134,7 @@ belmonturl49.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 belmonturl5.json|duxbury|FALSE|FALSE|FALSE|TRUE|1|1
 belmonturl50.json|bourne|FALSE|FALSE|TRUE|TRUE|1|1
 belmonturl51.json|richmond|FALSE|FALSE|FALSE|FALSE|1|1
-belmonturl52.json|east bridgewater|FALSE|FALSE|FALSE|FALSE|1|1
+belmonturl52.json|east bridgewater|FALSE|FALSE|FALSE|TRUE|1|1
 belmonturl53.json|washington|FALSE|FALSE|FALSE|FALSE|0|0
 belmonturl54.json|cambridge|TRUE|TRUE|FALSE|FALSE|1|1
 belmonturl55.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
@@ -136,6 +143,7 @@ belmonturl57.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 belmonturl58.json|hudson|FALSE|FALSE|FALSE|FALSE|1|1
 belmonturl59.json|boston|TRUE|FALSE|FALSE|TRUE|0|0
 belmonturl6.json|worcester|FALSE|FALSE|FALSE|TRUE|1|1
+belmonturl60.json|amherst|FALSE|FALSE|FALSE|TRUE|1|1
 belmonturl61.json|salisbury|FALSE|FALSE|FALSE|TRUE|1|0
 belmonturl62.json|blackstone|FALSE|FALSE|FALSE|TRUE|1|1
 belmonturl63.json|richmond|FALSE|FALSE|FALSE|FALSE|1|1
@@ -147,7 +155,9 @@ belmonturl68.json|orange|FALSE|FALSE|FALSE|FALSE|1|1
 belmonturl69.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 belmonturl7.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 belmonturl70.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
+belmonturl71.json|montgomery|FALSE|FALSE|FALSE|FALSE|1|1
 belmonturl72.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
+belmonturl73.json|washington|FALSE|FALSE|FALSE|FALSE|0|1
 belmonturl74.json|weston|FALSE|FALSE|FALSE|TRUE|1|1
 belmonturl75.json|princeton|FALSE|FALSE|FALSE|FALSE|1|1
 belmonturl76.json|florida|FALSE|FALSE|FALSE|TRUE|1|1
@@ -160,8 +170,9 @@ belmonturl81.json|milford|FALSE|FALSE|FALSE|FALSE|1|1
 belmonturl82.json|belmont|TRUE|TRUE|FALSE|TRUE|0|1
 belmonturl83.json|cambridge|TRUE|TRUE|FALSE|FALSE|1|1
 belmonturl84.json|cambridge|TRUE|TRUE|FALSE|FALSE|1|1
+belmonturl85.json|belmont|TRUE|TRUE|FALSE|TRUE|1|1
 belmonturl9.json|weston|FALSE|FALSE|FALSE|TRUE|1|1
-bostonurl1.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
+bostonurl1.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 bostonurl10.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 bostonurl11.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 bostonurl12.json|cambridge|TRUE|TRUE|FALSE|TRUE|1|1
@@ -210,12 +221,14 @@ bostonurl50.json|chatham|FALSE|FALSE|FALSE|FALSE|1|1
 bostonurl51.json|boston|TRUE|FALSE|FALSE|FALSE|1|0
 bostonurl52.json|winthrop|TRUE|TRUE|TRUE|TRUE|1|1
 bostonurl53.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
+bostonurl54.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 bostonurl55.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 bostonurl56.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 bostonurl57.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 bostonurl59.json|woburn|FALSE|TRUE|TRUE|TRUE|1|1
 bostonurl6.json|cambridge|TRUE|TRUE|TRUE|TRUE|1|1
 bostonurl60.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
+bostonurl61.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 bostonurl62.json|newburyport|FALSE|FALSE|FALSE|TRUE|1|1
 bostonurl63.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 bostonurl64.json|shirley|FALSE|FALSE|FALSE|TRUE|1|1
@@ -228,14 +241,14 @@ bostonurl7.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 bostonurl70.json|natick|FALSE|FALSE|FALSE|TRUE|1|1
 bostonurl71.json|springfield|FALSE|FALSE|FALSE|TRUE|1|1
 bostonurl72.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
-bostonurl73.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
+bostonurl73.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 bostonurl74.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 bostonurl75.json|boston|TRUE|FALSE|FALSE|TRUE|0|1
 bostonurl76.json|None|FALSE|FALSE|FALSE|FALSE|0|0
 bostonurl77.json|springfield|FALSE|FALSE|FALSE|TRUE|1|1
 bostonurl78.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
-bostonurl79.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
-bostonurl8.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
+bostonurl79.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
+bostonurl8.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 bostonurl80.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 bostonurl81.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 bostonurl82.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
@@ -247,22 +260,26 @@ bostonurl87.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 bostonurl88.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 bostonurl89.json|worcester|FALSE|FALSE|FALSE|TRUE|1|1
 bostonurl9.json|cambridge|TRUE|TRUE|FALSE|TRUE|1|1
+bostonurl90.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 brooklineurl1.json|brookline|TRUE|FALSE|TRUE|TRUE|1|1
 brooklineurl10.json|brookline|TRUE|FALSE|FALSE|TRUE|0|1
 brooklineurl11.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 brooklineurl12.json|everett|TRUE|TRUE|TRUE|TRUE|1|1
+brooklineurl13.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 brooklineurl14.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 brooklineurl15.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 brooklineurl16.json|boston|TRUE|FALSE|TRUE|TRUE|0|1
 brooklineurl17.json|quincy|TRUE|FALSE|TRUE|TRUE|1|1
 brooklineurl18.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 brooklineurl19.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
-brooklineurl2.json|boston|TRUE|FALSE|TRUE|FALSE|1|1
-brooklineurl20.json|boston|TRUE|FALSE|TRUE|FALSE|1|1
+brooklineurl2.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
+brooklineurl20.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
+brooklineurl21.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 brooklineurl22.json|oak bluffs|FALSE|FALSE|FALSE|TRUE|1|1
 brooklineurl23.json|rowley|FALSE|FALSE|FALSE|TRUE|1|1
+brooklineurl24.json|boston|TRUE|FALSE|FALSE|FALSE|1|0
 brooklineurl25.json|norfolk|FALSE|FALSE|FALSE|TRUE|0|1
-brooklineurl26.json|harvard|FALSE|FALSE|FALSE|FALSE|0|1
+brooklineurl26.json|harvard|FALSE|FALSE|FALSE|TRUE|0|1
 brooklineurl27.json|cambridge|TRUE|TRUE|TRUE|FALSE|0|0
 brooklineurl28.json|boston|TRUE|FALSE|FALSE|TRUE|1|0
 brooklineurl29.json|dunstable|FALSE|FALSE|FALSE|TRUE|1|1
@@ -273,6 +290,7 @@ brooklineurl32.json|windsor|FALSE|FALSE|FALSE|FALSE|1|1
 brooklineurl33.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 brooklineurl34.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 brooklineurl35.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
+brooklineurl36.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 brooklineurl37.json|hudson|FALSE|FALSE|FALSE|FALSE|1|1
 brooklineurl38.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 brooklineurl39.json|brookline|TRUE|FALSE|FALSE|FALSE|0|1
@@ -294,7 +312,7 @@ brooklineurl53.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 brooklineurl54.json|boston|TRUE|FALSE|FALSE|FALSE|0|0
 brooklineurl55.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 brooklineurl56.json|cambridge|TRUE|TRUE|FALSE|TRUE|0|1
-brooklineurl57.json|wellesley|FALSE|FALSE|FALSE|FALSE|0|1
+brooklineurl57.json|wellesley|FALSE|FALSE|FALSE|TRUE|0|1
 brooklineurl58.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 brooklineurl59.json|worcester|FALSE|FALSE|FALSE|FALSE|0|1
 brooklineurl6.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
@@ -305,6 +323,7 @@ brooklineurl63.json|washington|FALSE|FALSE|FALSE|FALSE|0|1
 brooklineurl65.json|cambridge|TRUE|TRUE|FALSE|TRUE|1|1
 brooklineurl66.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 brooklineurl67.json|harvard|FALSE|FALSE|FALSE|FALSE|0|1
+brooklineurl68.json|brookline|TRUE|FALSE|TRUE|TRUE|1|1
 brooklineurl7.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 brooklineurl8.json|somerville|TRUE|TRUE|FALSE|TRUE|1|1
 brooklineurl9.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
@@ -315,7 +334,7 @@ burlingtonurl13.json|everett|TRUE|TRUE|FALSE|TRUE|1|1
 burlingtonurl14.json|barre|FALSE|FALSE|FALSE|FALSE|1|1
 burlingtonurl15.json|burlington|FALSE|TRUE|FALSE|FALSE|1|1
 burlingtonurl16.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
-burlingtonurl17.json|beverly|FALSE|FALSE|TRUE|FALSE|1|1
+burlingtonurl17.json|beverly|FALSE|FALSE|TRUE|TRUE|1|1
 burlingtonurl18.json|everett|TRUE|TRUE|TRUE|TRUE|1|1
 burlingtonurl19.json|barnstable|FALSE|FALSE|FALSE|TRUE|1|1
 burlingtonurl2.json|burlington|FALSE|TRUE|FALSE|FALSE|1|1
@@ -324,13 +343,14 @@ burlingtonurl21.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 burlingtonurl22.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 burlingtonurl23.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 burlingtonurl24.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
+burlingtonurl25.json|lynn|TRUE|FALSE|TRUE|TRUE|1|1
 burlingtonurl26.json|auburn|FALSE|FALSE|FALSE|FALSE|1|1
 burlingtonurl27.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 burlingtonurl28.json|florida|FALSE|FALSE|FALSE|FALSE|1|1
 burlingtonurl29.json|florida|FALSE|FALSE|TRUE|FALSE|1|1
 burlingtonurl3.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 burlingtonurl30.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
-burlingtonurl31.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
+burlingtonurl31.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
 burlingtonurl32.json|burlington|FALSE|TRUE|FALSE|FALSE|0|1
 burlingtonurl33.json|norfolk|FALSE|FALSE|TRUE|FALSE|1|1
 burlingtonurl34.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
@@ -338,6 +358,7 @@ burlingtonurl35.json|burlington|FALSE|TRUE|FALSE|FALSE|1|1
 burlingtonurl36.json|burlington|FALSE|TRUE|FALSE|FALSE|1|1
 burlingtonurl37.json|florida|FALSE|FALSE|TRUE|FALSE|1|1
 burlingtonurl38.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
+burlingtonurl39.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 burlingtonurl4.json|worcester|FALSE|FALSE|TRUE|TRUE|1|1
 burlingtonurl40.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 burlingtonurl41.json|salem|FALSE|FALSE|FALSE|FALSE|1|0
@@ -357,6 +378,7 @@ burlingtonurl53.json|washington|FALSE|FALSE|FALSE|FALSE|0|1
 burlingtonurl54.json|wakefield|FALSE|TRUE|FALSE|TRUE|1|1
 burlingtonurl55.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 burlingtonurl56.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
+burlingtonurl57.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 burlingtonurl58.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 burlingtonurl59.json|sharon|FALSE|FALSE|TRUE|FALSE|1|1
 burlingtonurl6.json|burlington|FALSE|TRUE|TRUE|FALSE|1|1
@@ -386,13 +408,14 @@ burlingtonurl81.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 burlingtonurl82.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 burlingtonurl83.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 burlingtonurl84.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
-burlingtonurl85.json|burlington|FALSE|TRUE|TRUE|FALSE|1|1
+burlingtonurl85.json|burlington|FALSE|TRUE|TRUE|TRUE|1|1
+burlingtonurl86.json|burlington|FALSE|TRUE|TRUE|TRUE|1|1
 burlingtonurl9.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 cambridgeurl1.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 cambridgeurl10.json|cambridge|TRUE|TRUE|FALSE|TRUE|1|1
 cambridgeurl11.json|cambridge|TRUE|TRUE|FALSE|TRUE|1|1
 cambridgeurl12.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
-cambridgeurl13.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
+cambridgeurl13.json|washington|FALSE|FALSE|FALSE|TRUE|1|1
 cambridgeurl14.json|amherst|FALSE|FALSE|FALSE|FALSE|1|1
 cambridgeurl15.json|cambridge|TRUE|TRUE|FALSE|FALSE|1|1
 cambridgeurl16.json|montgomery|FALSE|FALSE|TRUE|FALSE|1|1
@@ -446,6 +469,8 @@ cambridgeurl59.json|lawrence|FALSE|FALSE|FALSE|FALSE|1|1
 cambridgeurl6.json|cambridge|TRUE|TRUE|FALSE|FALSE|1|1
 cambridgeurl60.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 cambridgeurl61.json|medford|TRUE|TRUE|TRUE|TRUE|1|1
+cambridgeurl62.json|cambridge|TRUE|TRUE|TRUE|TRUE|1|1
+cambridgeurl63.json|cambridge|TRUE|TRUE|TRUE|TRUE|1|1
 cambridgeurl7.json|cambridge|TRUE|TRUE|TRUE|TRUE|1|1
 cambridgeurl8.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 cambridgeurl9.json|florida|FALSE|FALSE|FALSE|FALSE|1|1
@@ -454,7 +479,7 @@ chelseaurl10.json|cambridge|TRUE|TRUE|TRUE|TRUE|1|1
 chelseaurl11.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 chelseaurl12.json|somerville|TRUE|TRUE|TRUE|FALSE|1|1
 chelseaurl13.json|worcester|FALSE|FALSE|FALSE|TRUE|1|1
-chelseaurl14.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
+chelseaurl14.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 chelseaurl16.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 chelseaurl17.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 chelseaurl18.json|everett|TRUE|TRUE|TRUE|TRUE|1|1
@@ -474,6 +499,7 @@ chelseaurl3.json|chelsea|TRUE|TRUE|FALSE|TRUE|1|1
 chelseaurl30.json|boston|TRUE|FALSE|TRUE|TRUE|0|1
 chelseaurl31.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 chelseaurl32.json|washington|FALSE|FALSE|FALSE|TRUE|1|1
+chelseaurl34.json|boston|TRUE|FALSE|FALSE|TRUE|0|1
 chelseaurl35.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 chelseaurl36.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 chelseaurl37.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
@@ -495,6 +521,7 @@ chelseaurl51.json|boston|TRUE|FALSE|TRUE|FALSE|1|1
 chelseaurl52.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
 chelseaurl53.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 chelseaurl54.json|florida|FALSE|FALSE|TRUE|FALSE|1|1
+chelseaurl55.json|boston|TRUE|FALSE|TRUE|FALSE|1|1
 chelseaurl56.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 chelseaurl57.json|boston|TRUE|FALSE|TRUE|TRUE|1|0
 chelseaurl58.json|chelsea|TRUE|TRUE|FALSE|FALSE|1|1
@@ -538,11 +565,12 @@ chelseaurl92.json|adams|FALSE|FALSE|FALSE|FALSE|1|1
 chelseaurl93.json|weston|FALSE|FALSE|TRUE|FALSE|1|1
 chelseaurl94.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 chelseaurl95.json|boston|TRUE|FALSE|TRUE|FALSE|1|1
+chelseaurl96.json|chelsea|TRUE|TRUE|TRUE|TRUE|1|1
 everetturl1.json|everett|TRUE|TRUE|TRUE|TRUE|1|1
 everetturl10.json|boston|TRUE|FALSE|TRUE|TRUE|0|1
 everetturl11.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 everetturl12.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
-everetturl13.json|beverly|FALSE|FALSE|TRUE|FALSE|1|1
+everetturl13.json|beverly|FALSE|FALSE|TRUE|TRUE|1|1
 everetturl14.json|somerville|TRUE|TRUE|TRUE|FALSE|1|1
 everetturl15.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 everetturl16.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
@@ -581,7 +609,7 @@ everetturl46.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 everetturl47.json|colrain|FALSE|FALSE|FALSE|TRUE|1|1
 everetturl48.json|boston|TRUE|FALSE|FALSE|TRUE|1|0
 everetturl49.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
-everetturl5.json|somerville|TRUE|TRUE|TRUE|FALSE|1|1
+everetturl5.json|chelsea|TRUE|TRUE|FALSE|TRUE|1|1
 everetturl50.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 everetturl51.json|douglas|FALSE|FALSE|FALSE|FALSE|1|1
 everetturl52.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
@@ -609,7 +637,9 @@ everetturl75.json|reading|FALSE|TRUE|FALSE|FALSE|1|1
 everetturl76.json|everett|TRUE|TRUE|FALSE|FALSE|1|1
 everetturl77.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 everetturl78.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
+everetturl79.json|everett|TRUE|TRUE|TRUE|TRUE|1|1
 everetturl8.json|cambridge|TRUE|TRUE|TRUE|TRUE|1|1
+everetturl80.json|everett|TRUE|TRUE|TRUE|TRUE|1|1
 everetturl9.json|everett|TRUE|TRUE|TRUE|TRUE|1|1
 lexingtonurl1.json|lexington|FALSE|TRUE|FALSE|TRUE|1|1
 lexingtonurl10.json|winthrop|TRUE|TRUE|FALSE|FALSE|1|1
@@ -651,7 +681,7 @@ lexingtonurl42.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 lexingtonurl43.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 lexingtonurl44.json|richmond|FALSE|FALSE|TRUE|FALSE|1|1
 lexingtonurl45.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
-lexingtonurl46.json|lexington|FALSE|TRUE|FALSE|FALSE|0|1
+lexingtonurl46.json|lexington|FALSE|TRUE|FALSE|TRUE|0|1
 lexingtonurl47.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 lexingtonurl48.json|lee|FALSE|FALSE|FALSE|FALSE|1|1
 lexingtonurl49.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
@@ -665,8 +695,10 @@ lexingtonurl55.json|lexington|FALSE|TRUE|TRUE|TRUE|1|1
 lexingtonurl56.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 lexingtonurl57.json|hudson|FALSE|FALSE|TRUE|FALSE|1|1
 lexingtonurl59.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
+lexingtonurl6.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
 lexingtonurl60.json|florida|FALSE|FALSE|FALSE|FALSE|1|1
 lexingtonurl61.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
+lexingtonurl62.json|lexington|FALSE|TRUE|TRUE|TRUE|1|1
 lexingtonurl7.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 lexingtonurl8.json|boston|TRUE|FALSE|TRUE|FALSE|1|1
 lexingtonurl9.json|florida|FALSE|FALSE|FALSE|FALSE|1|1
@@ -703,7 +735,7 @@ lynnurl36.json|oxford|FALSE|FALSE|FALSE|FALSE|1|1
 lynnurl37.json|florida|FALSE|FALSE|FALSE|FALSE|1|1
 lynnurl38.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 lynnurl39.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
-lynnurl4.json|lynn|TRUE|FALSE|FALSE|TRUE|1|1
+lynnurl4.json|lynn|TRUE|FALSE|TRUE|TRUE|1|1
 lynnurl40.json|lynn|TRUE|FALSE|FALSE|TRUE|1|1
 lynnurl41.json|sterling|FALSE|FALSE|FALSE|FALSE|1|1
 lynnurl42.json|cambridge|TRUE|TRUE|FALSE|FALSE|1|1
@@ -723,6 +755,7 @@ lynnurl54.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
 lynnurl55.json|harvard|FALSE|FALSE|FALSE|TRUE|0|1
 lynnurl56.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
 lynnurl57.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
+lynnurl58.json|lynn|TRUE|FALSE|FALSE|TRUE|1|1
 lynnurl6.json|springfield|FALSE|FALSE|TRUE|TRUE|1|1
 lynnurl7.json|florida|FALSE|FALSE|FALSE|FALSE|1|1
 lynnurl8.json|salem|FALSE|FALSE|TRUE|TRUE|1|1
@@ -733,7 +766,7 @@ maldenurl11.json|tyringham|FALSE|FALSE|TRUE|TRUE|1|1
 maldenurl12.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 maldenurl13.json|harvard|FALSE|FALSE|TRUE|FALSE|1|1
 maldenurl14.json|boston|TRUE|FALSE|FALSE|TRUE|0|1
-maldenurl15.json|malden|TRUE|TRUE|FALSE|FALSE|0|1
+maldenurl15.json|malden|TRUE|TRUE|FALSE|TRUE|0|1
 maldenurl16.json|cambridge|TRUE|TRUE|FALSE|FALSE|1|1
 maldenurl17.json|boston|TRUE|FALSE|FALSE|TRUE|1|0
 maldenurl18.json|florida|FALSE|FALSE|FALSE|FALSE|1|1
@@ -786,6 +819,7 @@ maldenurl60.json|washington|FALSE|FALSE|FALSE|FALSE|0|1
 maldenurl61.json|orange|FALSE|FALSE|FALSE|FALSE|1|1
 maldenurl62.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 maldenurl63.json|malden|TRUE|TRUE|FALSE|TRUE|1|1
+maldenurl64.json|malden|TRUE|TRUE|FALSE|TRUE|1|1
 maldenurl7.json|chelsea|TRUE|TRUE|FALSE|TRUE|1|1
 maldenurl8.json|holden|FALSE|FALSE|FALSE|TRUE|1|1
 maldenurl9.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
@@ -795,6 +829,7 @@ medfordurl11.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 medfordurl12.json|sutton|FALSE|FALSE|FALSE|TRUE|1|0
 medfordurl13.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
 medfordurl14.json|orange|FALSE|FALSE|FALSE|FALSE|1|1
+medfordurl15.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 medfordurl16.json|amherst|FALSE|FALSE|FALSE|TRUE|1|1
 medfordurl17.json|somerville|TRUE|TRUE|FALSE|TRUE|1|1
 medfordurl18.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
@@ -805,6 +840,7 @@ medfordurl22.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 medfordurl23.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 medfordurl24.json|douglas|FALSE|FALSE|FALSE|FALSE|1|1
 medfordurl25.json|wales|FALSE|FALSE|FALSE|FALSE|1|1
+medfordurl26.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 medfordurl27.json|cambridge|TRUE|TRUE|FALSE|FALSE|1|1
 medfordurl28.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 medfordurl29.json|westhampton|FALSE|FALSE|FALSE|FALSE|1|1
@@ -821,6 +857,7 @@ medfordurl4.json|somerville|TRUE|TRUE|TRUE|TRUE|1|1
 medfordurl40.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 medfordurl41.json|medford|TRUE|TRUE|FALSE|FALSE|1|1
 medfordurl42.json|cambridge|TRUE|TRUE|FALSE|FALSE|1|1
+medfordurl43.json|medford|TRUE|TRUE|FALSE|FALSE|0|1
 medfordurl5.json|medford|TRUE|TRUE|FALSE|TRUE|1|1
 medfordurl6.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
 medfordurl7.json|orange|FALSE|FALSE|FALSE|TRUE|0|1
@@ -849,6 +886,7 @@ melroseurl28.json|boston|TRUE|FALSE|FALSE|TRUE|0|1
 melroseurl29.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 melroseurl3.json|winthrop|TRUE|TRUE|FALSE|TRUE|1|1
 melroseurl30.json|wales|FALSE|FALSE|FALSE|FALSE|1|1
+melroseurl31.json|boston|TRUE|FALSE|FALSE|TRUE|0|1
 melroseurl32.json|None|FALSE|FALSE|TRUE|FALSE|0|0
 melroseurl33.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 melroseurl34.json|hudson|FALSE|FALSE|FALSE|FALSE|1|1
@@ -875,12 +913,14 @@ melroseurl54.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 melroseurl56.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 melroseurl57.json|avon|FALSE|FALSE|FALSE|FALSE|1|1
 melroseurl58.json|washington|FALSE|FALSE|FALSE|FALSE|0|1
+melroseurl59.json|washington|FALSE|FALSE|FALSE|FALSE|0|1
 melroseurl6.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 melroseurl60.json|washington|FALSE|FALSE|FALSE|FALSE|0|1
+melroseurl62.json|melrose|TRUE|TRUE|FALSE|TRUE|1|1
 melroseurl7.json|lincoln|FALSE|FALSE|FALSE|FALSE|1|1
 melroseurl8.json|florida|FALSE|FALSE|FALSE|FALSE|1|1
 melroseurl9.json|hudson|FALSE|FALSE|FALSE|FALSE|1|1
-miltonurl1.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
+miltonurl1.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 miltonurl10.json|chelsea|TRUE|TRUE|TRUE|TRUE|1|1
 miltonurl11.json|cambridge|TRUE|TRUE|FALSE|FALSE|1|1
 miltonurl12.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
@@ -930,6 +970,7 @@ miltonurl53.json|cambridge|TRUE|TRUE|FALSE|FALSE|1|1
 miltonurl54.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 miltonurl55.json|florida|FALSE|FALSE|FALSE|FALSE|0|1
 miltonurl56.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
+miltonurl57.json|milton|TRUE|FALSE|FALSE|TRUE|1|1
 miltonurl6.json|sharon|FALSE|FALSE|TRUE|TRUE|1|1
 miltonurl7.json|otis|FALSE|FALSE|FALSE|TRUE|1|1
 miltonurl8.json|None|FALSE|FALSE|TRUE|FALSE|0|0
@@ -965,6 +1006,7 @@ needhamurl34.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 needhamurl35.json|cambridge|TRUE|TRUE|FALSE|FALSE|1|1
 needhamurl36.json|needham|TRUE|FALSE|FALSE|FALSE|1|1
 needhamurl37.json|orange|FALSE|FALSE|FALSE|TRUE|1|1
+needhamurl38.json|needham|TRUE|FALSE|FALSE|TRUE|1|1
 needhamurl39.json|franklin|FALSE|FALSE|FALSE|FALSE|1|1
 needhamurl4.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 needhamurl40.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
@@ -984,9 +1026,11 @@ needhamurl52.json|taunton|FALSE|FALSE|FALSE|TRUE|0|1
 needhamurl53.json|washington|FALSE|FALSE|TRUE|FALSE|0|1
 needhamurl54.json|lee|FALSE|FALSE|FALSE|FALSE|1|1
 needhamurl55.json|boston|TRUE|FALSE|FALSE|TRUE|0|1
+needhamurl57.json|needham|TRUE|FALSE|FALSE|TRUE|1|1
 needhamurl6.json|worcester|FALSE|FALSE|FALSE|TRUE|1|1
 needhamurl7.json|florida|FALSE|FALSE|FALSE|FALSE|1|1
 needhamurl8.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
+needhamurl9.json|needham|TRUE|FALSE|FALSE|TRUE|0|1
 newtonurl1.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 newtonurl10.json|newton|TRUE|FALSE|FALSE|FALSE|1|1
 newtonurl11.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
@@ -1024,6 +1068,7 @@ newtonurl40.json|russell|FALSE|FALSE|TRUE|TRUE|0|1
 newtonurl41.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
 newtonurl42.json|rowe|FALSE|FALSE|FALSE|TRUE|1|1
 newtonurl43.json|sutton|FALSE|FALSE|TRUE|TRUE|1|0
+newtonurl44.json|boston|TRUE|FALSE|TRUE|FALSE|1|1
 newtonurl45.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 newtonurl46.json|needham|TRUE|FALSE|TRUE|TRUE|1|1
 newtonurl47.json|orleans|FALSE|FALSE|FALSE|FALSE|1|1
@@ -1056,6 +1101,7 @@ newtonurl70.json|boston|TRUE|FALSE|FALSE|TRUE|0|1
 newtonurl71.json|boston|TRUE|FALSE|FALSE|TRUE|0|1
 newtonurl72.json|cambridge|TRUE|TRUE|TRUE|FALSE|1|1
 newtonurl73.json|chelsea|TRUE|TRUE|TRUE|TRUE|1|1
+newtonurl74.json|newton|TRUE|FALSE|FALSE|TRUE|1|1
 newtonurl8.json|newton|TRUE|FALSE|FALSE|FALSE|1|1
 newtonurl9.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 quincyurl1.json|quincy|TRUE|FALSE|FALSE|TRUE|1|1
@@ -1090,8 +1136,8 @@ quincyurl35.json|peabody|FALSE|FALSE|TRUE|FALSE|1|1
 quincyurl36.json|florida|FALSE|FALSE|TRUE|FALSE|1|1
 quincyurl37.json|boston|TRUE|FALSE|TRUE|FALSE|1|1
 quincyurl38.json|quincy|TRUE|FALSE|FALSE|FALSE|0|0
-quincyurl39.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
-quincyurl4.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
+quincyurl39.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
+quincyurl4.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 quincyurl40.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 quincyurl41.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 quincyurl42.json|falmouth|FALSE|FALSE|FALSE|FALSE|0|1
@@ -1104,7 +1150,7 @@ quincyurl48.json|saugus|TRUE|FALSE|FALSE|TRUE|1|1
 quincyurl49.json|orleans|FALSE|FALSE|FALSE|FALSE|1|1
 quincyurl5.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 quincyurl50.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
-quincyurl51.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
+quincyurl51.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 quincyurl52.json|washington|FALSE|FALSE|TRUE|FALSE|1|0
 quincyurl53.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 quincyurl54.json|natick|FALSE|FALSE|FALSE|TRUE|1|1
@@ -1119,6 +1165,9 @@ quincyurl61.json|harvard|FALSE|FALSE|FALSE|FALSE|1|0
 quincyurl62.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 quincyurl63.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 quincyurl64.json|warren|FALSE|FALSE|FALSE|FALSE|1|1
+quincyurl65.json|quincy|TRUE|FALSE|FALSE|TRUE|1|1
+quincyurl66.json|quincy|TRUE|FALSE|FALSE|FALSE|1|1
+quincyurl67.json|quincy|TRUE|FALSE|FALSE|FALSE|1|1
 quincyurl7.json|amherst|FALSE|FALSE|FALSE|TRUE|1|1
 quincyurl8.json|concord|FALSE|FALSE|FALSE|TRUE|1|1
 quincyurl9.json|nantucket|FALSE|FALSE|FALSE|FALSE|1|1
@@ -1127,7 +1176,7 @@ readingurl10.json|florida|FALSE|FALSE|TRUE|FALSE|1|1
 readingurl11.json|orleans|FALSE|FALSE|TRUE|FALSE|1|1
 readingurl12.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
 readingurl13.json|lee|FALSE|FALSE|TRUE|FALSE|1|1
-readingurl14.json|avon|FALSE|FALSE|FALSE|FALSE|1|1
+readingurl14.json|avon|FALSE|FALSE|FALSE|TRUE|1|1
 readingurl15.json|lee|FALSE|FALSE|TRUE|FALSE|1|1
 readingurl16.json|amherst|FALSE|FALSE|FALSE|TRUE|1|1
 readingurl17.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
@@ -1136,12 +1185,13 @@ readingurl19.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 readingurl2.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
 readingurl20.json|berlin|FALSE|FALSE|FALSE|FALSE|1|1
 readingurl21.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
-readingurl22.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
+readingurl22.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 readingurl23.json|florida|FALSE|FALSE|FALSE|FALSE|1|0
 readingurl24.json|georgetown|FALSE|FALSE|FALSE|FALSE|1|1
 readingurl25.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 readingurl26.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 readingurl27.json|sterling|FALSE|FALSE|TRUE|FALSE|1|1
+readingurl28.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
 readingurl29.json|richmond|FALSE|FALSE|TRUE|FALSE|1|1
 readingurl3.json|cambridge|TRUE|TRUE|TRUE|TRUE|1|1
 readingurl30.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
@@ -1162,6 +1212,7 @@ readingurl43.json|reading|FALSE|TRUE|FALSE|FALSE|1|1
 readingurl44.json|russell|FALSE|FALSE|FALSE|FALSE|1|1
 readingurl45.json|hudson|FALSE|FALSE|TRUE|FALSE|1|1
 readingurl46.json|palmer|FALSE|FALSE|FALSE|FALSE|1|1
+readingurl47.json|bolton|FALSE|FALSE|FALSE|FALSE|1|0
 readingurl48.json|florida|FALSE|FALSE|FALSE|FALSE|1|1
 readingurl49.json|reading|FALSE|TRUE|FALSE|FALSE|1|1
 readingurl5.json|worcester|FALSE|FALSE|FALSE|TRUE|1|1
@@ -1170,12 +1221,14 @@ readingurl51.json|lee|FALSE|FALSE|FALSE|FALSE|1|1
 readingurl52.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 readingurl53.json|cambridge|TRUE|TRUE|TRUE|FALSE|1|1
 readingurl54.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
+readingurl55.json|harvard|FALSE|FALSE|TRUE|FALSE|1|1
 readingurl56.json|washington|FALSE|FALSE|FALSE|FALSE|0|1
 readingurl57.json|cambridge|TRUE|TRUE|FALSE|FALSE|1|1
 readingurl58.json|georgetown|FALSE|FALSE|FALSE|FALSE|1|1
 readingurl59.json|reading|FALSE|TRUE|FALSE|FALSE|1|1
 readingurl6.json|hancock|FALSE|FALSE|FALSE|FALSE|1|1
 readingurl60.json|reading|FALSE|TRUE|FALSE|TRUE|1|1
+readingurl61.json|reading|FALSE|TRUE|FALSE|TRUE|1|1
 readingurl7.json|princeton|FALSE|FALSE|FALSE|FALSE|1|1
 readingurl8.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 readingurl9.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
@@ -1194,7 +1247,7 @@ revereurl2.json|revere|TRUE|TRUE|FALSE|TRUE|1|1
 revereurl20.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 revereurl21.json|new bedford|FALSE|FALSE|FALSE|TRUE|1|1
 revereurl22.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
-revereurl23.json|barnstable|FALSE|FALSE|FALSE|FALSE|1|0
+revereurl23.json|barnstable|FALSE|FALSE|FALSE|TRUE|1|0
 revereurl24.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 revereurl25.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 revereurl26.json|westhampton|FALSE|FALSE|TRUE|FALSE|1|1
@@ -1216,6 +1269,7 @@ revereurl40.json|washington|FALSE|FALSE|FALSE|FALSE|0|1
 revereurl41.json|florida|FALSE|FALSE|FALSE|FALSE|0|1
 revereurl42.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 revereurl43.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
+revereurl44.json|revere|TRUE|TRUE|TRUE|TRUE|1|1
 revereurl5.json|revere|TRUE|TRUE|FALSE|TRUE|1|1
 revereurl6.json|everett|TRUE|TRUE|TRUE|TRUE|1|1
 revereurl7.json|orange|FALSE|FALSE|TRUE|FALSE|1|1
@@ -1226,7 +1280,7 @@ saugusurl10.json|florida|FALSE|FALSE|TRUE|FALSE|1|1
 saugusurl11.json|mashpee|FALSE|FALSE|FALSE|TRUE|1|1
 saugusurl12.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 saugusurl13.json|lynn|TRUE|FALSE|TRUE|TRUE|1|1
-saugusurl14.json|boston|TRUE|FALSE|FALSE|FALSE|0|1
+saugusurl14.json|boston|TRUE|FALSE|FALSE|TRUE|0|1
 saugusurl15.json|boston|TRUE|FALSE|FALSE|FALSE|1|0
 saugusurl16.json|winthrop|TRUE|TRUE|TRUE|TRUE|1|1
 saugusurl17.json|weymouth|FALSE|FALSE|FALSE|TRUE|1|1
@@ -1236,7 +1290,7 @@ saugusurl2.json|lynn|TRUE|FALSE|FALSE|TRUE|1|1
 saugusurl20.json|barnstable|FALSE|FALSE|TRUE|TRUE|0|1
 saugusurl21.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 saugusurl22.json|boston|TRUE|FALSE|FALSE|TRUE|1|0
-saugusurl23.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
+saugusurl23.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 saugusurl24.json|revere|TRUE|TRUE|TRUE|TRUE|1|1
 saugusurl25.json|florida|FALSE|FALSE|FALSE|FALSE|1|1
 saugusurl26.json|lawrence|FALSE|FALSE|FALSE|FALSE|0|0
@@ -1253,7 +1307,9 @@ saugusurl35.json|florida|FALSE|FALSE|FALSE|FALSE|1|1
 saugusurl36.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 saugusurl37.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 saugusurl38.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
+saugusurl39.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 saugusurl4.json|revere|TRUE|TRUE|TRUE|TRUE|1|1
+saugusurl40.json|saugus|TRUE|FALSE|TRUE|TRUE|0|1
 saugusurl5.json|saugus|TRUE|FALSE|TRUE|TRUE|1|1
 saugusurl6.json|saugus|TRUE|FALSE|TRUE|TRUE|1|1
 saugusurl7.json|revere|TRUE|TRUE|TRUE|TRUE|1|1
@@ -1284,8 +1340,9 @@ somervilleurl29.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 somervilleurl3.json|somerville|TRUE|TRUE|FALSE|TRUE|1|1
 somervilleurl30.json|boston|TRUE|FALSE|FALSE|TRUE|0|1
 somervilleurl31.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
+somervilleurl32.json|somerville|TRUE|TRUE|FALSE|TRUE|1|1
 somervilleurl4.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
-somervilleurl5.json|somerville|TRUE|TRUE|FALSE|FALSE|1|1
+somervilleurl5.json|somerville|TRUE|TRUE|FALSE|TRUE|1|1
 somervilleurl6.json|somerville|TRUE|TRUE|TRUE|TRUE|1|1
 somervilleurl7.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
 somervilleurl8.json|somerville|TRUE|TRUE|FALSE|TRUE|0|1
@@ -1296,16 +1353,17 @@ stonehamurl11.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 stonehamurl12.json|boston|TRUE|FALSE|FALSE|TRUE|0|1
 stonehamurl13.json|oxford|FALSE|FALSE|FALSE|FALSE|0|1
 stonehamurl14.json|lincoln|FALSE|FALSE|FALSE|FALSE|1|1
+stonehamurl15.json|plymouth|FALSE|FALSE|FALSE|TRUE|0|1
 stonehamurl16.json|falmouth|FALSE|FALSE|FALSE|FALSE|1|1
 stonehamurl17.json|warren|FALSE|FALSE|FALSE|FALSE|1|1
 stonehamurl18.json|wakefield|FALSE|TRUE|FALSE|TRUE|0|1
 stonehamurl19.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 stonehamurl2.json|woburn|FALSE|TRUE|FALSE|TRUE|1|1
-stonehamurl20.json|hamilton|FALSE|FALSE|FALSE|FALSE|1|1
+stonehamurl20.json|hamilton|FALSE|FALSE|FALSE|TRUE|1|1
 stonehamurl21.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 stonehamurl22.json|lowell|FALSE|FALSE|FALSE|TRUE|0|1
 stonehamurl23.json|lincoln|FALSE|FALSE|FALSE|TRUE|1|1
-stonehamurl24.json|medford|TRUE|TRUE|FALSE|FALSE|1|1
+stonehamurl24.json|medford|TRUE|TRUE|FALSE|TRUE|1|1
 stonehamurl25.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 stonehamurl26.json|stoneham|FALSE|TRUE|FALSE|FALSE|1|1
 stonehamurl27.json|wareham|FALSE|FALSE|FALSE|TRUE|1|1
@@ -1371,6 +1429,7 @@ wakefieldurl49.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 wakefieldurl5.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 wakefieldurl50.json|florida|FALSE|FALSE|FALSE|FALSE|1|1
 wakefieldurl51.json|newton|TRUE|FALSE|FALSE|FALSE|0|0
+wakefieldurl52.json|wakefield|FALSE|TRUE|FALSE|TRUE|1|1
 wakefieldurl6.json|grafton|FALSE|FALSE|FALSE|FALSE|1|1
 wakefieldurl7.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 wakefieldurl8.json|douglas|FALSE|FALSE|TRUE|FALSE|1|1
@@ -1404,6 +1463,7 @@ walthamurl32.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
 walthamurl33.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 walthamurl34.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 walthamurl35.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
+walthamurl36.json|boston|TRUE|FALSE|TRUE|FALSE|1|1
 walthamurl37.json|newton|TRUE|FALSE|FALSE|TRUE|1|1
 walthamurl38.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 walthamurl39.json|florida|FALSE|FALSE|FALSE|FALSE|1|1
@@ -1434,6 +1494,7 @@ walthamurl60.json|quincy|TRUE|FALSE|FALSE|TRUE|1|1
 walthamurl61.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 walthamurl62.json|cambridge|TRUE|TRUE|FALSE|FALSE|1|1
 walthamurl63.json|bourne|FALSE|FALSE|FALSE|TRUE|1|1
+walthamurl64.json|cambridge|TRUE|TRUE|FALSE|TRUE|0|1
 walthamurl65.json|boston|TRUE|FALSE|FALSE|TRUE|0|0
 walthamurl66.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 walthamurl67.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
@@ -1444,7 +1505,7 @@ walthamurl70.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 walthamurl71.json|waltham|TRUE|FALSE|FALSE|TRUE|1|1
 walthamurl72.json|washington|FALSE|FALSE|FALSE|FALSE|0|0
 walthamurl73.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
-walthamurl74.json|boston|TRUE|FALSE|FALSE|TRUE|0|1
+walthamurl74.json|boston|TRUE|FALSE|TRUE|TRUE|0|1
 walthamurl75.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 walthamurl76.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 walthamurl77.json|west tisbury|FALSE|FALSE|FALSE|TRUE|0|1
@@ -1454,6 +1515,7 @@ walthamurl8.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 walthamurl80.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 walthamurl81.json|waltham|TRUE|FALSE|FALSE|FALSE|0|1
 walthamurl82.json|waltham|TRUE|FALSE|FALSE|TRUE|1|1
+walthamurl83.json|waltham|TRUE|FALSE|TRUE|TRUE|1|1
 walthamurl9.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 watertownurl1.json|watertown|TRUE|TRUE|FALSE|TRUE|1|1
 watertownurl10.json|tolland|FALSE|FALSE|FALSE|FALSE|1|1
@@ -1466,7 +1528,7 @@ watertownurl16.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 watertownurl17.json|hudson|FALSE|FALSE|FALSE|FALSE|1|1
 watertownurl18.json|cambridge|TRUE|TRUE|TRUE|TRUE|1|1
 watertownurl19.json|salisbury|FALSE|FALSE|FALSE|FALSE|1|1
-watertownurl2.json|boston|TRUE|FALSE|TRUE|FALSE|1|1
+watertownurl2.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 watertownurl20.json|florida|FALSE|FALSE|FALSE|FALSE|1|1
 watertownurl21.json|lincoln|FALSE|FALSE|FALSE|FALSE|1|1
 watertownurl22.json|florida|FALSE|FALSE|FALSE|FALSE|1|1
@@ -1485,6 +1547,7 @@ watertownurl33.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 watertownurl34.json|hudson|FALSE|FALSE|FALSE|FALSE|1|1
 watertownurl35.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 watertownurl38.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
+watertownurl39.json|watertown|TRUE|TRUE|FALSE|TRUE|1|1
 watertownurl4.json|boston|TRUE|FALSE|FALSE|TRUE|1|1
 watertownurl5.json|rochester|FALSE|FALSE|FALSE|FALSE|1|1
 watertownurl6.json|harvard|FALSE|FALSE|FALSE|TRUE|1|1
@@ -1512,7 +1575,7 @@ wilmingtonurl26.json|wilmington|FALSE|TRUE|FALSE|FALSE|1|1
 wilmingtonurl27.json|wilmington|FALSE|TRUE|TRUE|FALSE|1|1
 wilmingtonurl28.json|None|FALSE|FALSE|TRUE|FALSE|0|0
 wilmingtonurl29.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
-wilmingtonurl3.json|dartmouth|FALSE|FALSE|FALSE|FALSE|1|1
+wilmingtonurl3.json|dartmouth|FALSE|FALSE|FALSE|TRUE|1|1
 wilmingtonurl30.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 wilmingtonurl31.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 wilmingtonurl32.json|wilmington|FALSE|TRUE|FALSE|TRUE|1|1
@@ -1555,12 +1618,14 @@ winchesterurl22.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 winchesterurl23.json|washington|FALSE|FALSE|TRUE|FALSE|0|0
 winchesterurl24.json|russell|FALSE|FALSE|FALSE|FALSE|1|1
 winchesterurl25.json|harvard|FALSE|FALSE|FALSE|FALSE|1|1
+winchesterurl26.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 winchesterurl27.json|arlington|TRUE|TRUE|FALSE|FALSE|1|1
 winchesterurl28.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 winchesterurl29.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
 winchesterurl3.json|cambridge|TRUE|TRUE|FALSE|TRUE|1|1
 winchesterurl30.json|avon|FALSE|FALSE|FALSE|FALSE|1|1
 winchesterurl31.json|gill|FALSE|FALSE|FALSE|FALSE|1|1
+winchesterurl32.json|worthington|FALSE|FALSE|FALSE|FALSE|1|1
 winchesterurl33.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 winchesterurl34.json|winchester|FALSE|TRUE|FALSE|FALSE|1|1
 winchesterurl35.json|None|FALSE|FALSE|TRUE|FALSE|0|0
@@ -1573,6 +1638,7 @@ winchesterurl40.json|lynn|TRUE|FALSE|FALSE|FALSE|1|1
 winchesterurl41.json|sunderland|FALSE|FALSE|FALSE|FALSE|1|0
 winchesterurl42.json|salem|FALSE|FALSE|FALSE|FALSE|0|0
 winchesterurl43.json|reading|FALSE|TRUE|FALSE|FALSE|1|0
+winchesterurl44.json|winchester|FALSE|TRUE|FALSE|TRUE|1|1
 winchesterurl5.json|springfield|FALSE|FALSE|FALSE|TRUE|0|1
 winchesterurl6.json|cheshire|FALSE|FALSE|FALSE|FALSE|1|1
 winchesterurl7.json|cambridge|TRUE|TRUE|FALSE|TRUE|1|0
@@ -1604,11 +1670,12 @@ winthropurl31.json|lancaster|FALSE|FALSE|FALSE|FALSE|0|0
 winthropurl32.json|reading|FALSE|TRUE|FALSE|FALSE|0|1
 winthropurl33.json|southampton|FALSE|FALSE|FALSE|FALSE|1|1
 winthropurl34.json|washington|FALSE|FALSE|FALSE|FALSE|1|1
+winthropurl35.json|None|FALSE|FALSE|TRUE|FALSE|0|0
 winthropurl4.json|florida|FALSE|FALSE|FALSE|FALSE|1|1
 winthropurl5.json|winthrop|TRUE|TRUE|FALSE|TRUE|1|1
 winthropurl6.json|lynn|TRUE|FALSE|TRUE|TRUE|1|1
 winthropurl7.json|washington|FALSE|FALSE|TRUE|FALSE|1|1
-winthropurl8.json|hamilton|FALSE|FALSE|FALSE|FALSE|1|1
+winthropurl8.json|hamilton|FALSE|FALSE|FALSE|TRUE|1|1
 winthropurl9.json|east longmeadow|FALSE|FALSE|FALSE|TRUE|1|1
 woburnurl1.json|woburn|FALSE|TRUE|TRUE|TRUE|1|1
 woburnurl10.json|cambridge|TRUE|TRUE|FALSE|FALSE|1|1
@@ -1616,7 +1683,7 @@ woburnurl11.json|woburn|FALSE|TRUE|FALSE|TRUE|0|1
 woburnurl12.json|washington|FALSE|FALSE|FALSE|FALSE|0|1
 woburnurl13.json|orange|FALSE|FALSE|FALSE|FALSE|1|1
 woburnurl14.json|orleans|FALSE|FALSE|FALSE|FALSE|1|1
-woburnurl15.json|bourne|FALSE|FALSE|FALSE|FALSE|1|1
+woburnurl15.json|bourne|FALSE|FALSE|FALSE|TRUE|1|1
 woburnurl17.json|boston|TRUE|FALSE|FALSE|FALSE|1|1
 woburnurl18.json|florida|FALSE|FALSE|FALSE|FALSE|0|0
 woburnurl19.json|windsor|FALSE|FALSE|FALSE|FALSE|1|1
@@ -1634,6 +1701,7 @@ woburnurl3.json|winchendon|FALSE|FALSE|FALSE|TRUE|1|1
 woburnurl30.json|florida|FALSE|FALSE|FALSE|FALSE|0|1
 woburnurl31.json|hudson|FALSE|FALSE|FALSE|FALSE|1|0
 woburnurl32.json|oxford|FALSE|FALSE|FALSE|FALSE|1|1
+woburnurl33.json|woburn|FALSE|TRUE|TRUE|TRUE|1|1
 woburnurl4.json|boston|TRUE|FALSE|TRUE|TRUE|1|1
 woburnurl5.json|woburn|FALSE|TRUE|FALSE|TRUE|1|1
 woburnurl6.json|cambridge|TRUE|TRUE|FALSE|TRUE|1|1
