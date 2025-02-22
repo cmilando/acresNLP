@@ -19,35 +19,7 @@ data.frame(head(combined_table))
  # ----------------------------------------------------------------------------
 # get the new pdfs to 'INCLUDE'
 
-# malden 63
-r1 <- which(combined_table$file_name == 'maldenurl63.json')
-r1
-combined_table$Manual.Check.11.19[r1] <- 'INCLUDE'
 
-# burlington 85
-r1 <- which(combined_table$file_name == 'burlingtonurl85.json')
-r1
-combined_table$Manual.Check.11.19[r1] <- 'INCLUDE'
-
-# reading 60
-r1 <- which(combined_table$file_name == 'readingurl60.json')
-r1
-combined_table$Manual.Check.11.19[r1] <- 'INCLUDE'
-
-# wilmington
-r1 <- which(combined_table$file_name == 'wilmingtonurl47.json')
-r1
-combined_table$Manual.Check.11.19[r1] <- 'INCLUDE'
-
-# waltham 82
-r1 <- which(combined_table$file_name == 'walthamurl82.json')
-r1
-combined_table$Manual.Check.11.19[r1] <- 'INCLUDE'
-
-
-# and any with url that starts with https://www.mass.gov/doc/
-r1 <- which(grepl("https://www.mass.gov/doc/", combined_table$url))
-combined_table$Manual.Check.11.19[r1] <- 'INCLUDE'
 
 # ----------------------------------------------------------------------------
 # ma.url omitted
@@ -62,9 +34,37 @@ combined_table <- combined_table %>%
       has_community == 1
   ))
 
-glimpse(combined_table[820,])
+# malden 63
+r1 <- which(combined_table$file_name == 'maldenurl63.json')
+r1
+combined_table$pass_checks3[r1] <- TRUE
+
+# burlington 85
+r1 <- which(combined_table$file_name == 'burlingtonurl85.json')
+r1
+combined_table$pass_checks3[r1] <- TRUE
+
+# reading 60
+r1 <- which(combined_table$file_name == 'readingurl60.json')
+r1
+combined_table$pass_checks3[r1] <- TRUE
+
+# wilmington
+r1 <- which(combined_table$file_name == 'wilmingtonurl47.json')
+r1
+combined_table$pass_checks3[r1] <- TRUE
+
+# waltham 82
+r1 <- which(combined_table$file_name == 'walthamurl82.json')
+r1
+combined_table$pass_checks3[r1] <- TRUE
 
 
+# and any with url that starts with https://www.mass.gov/doc/
+r1 <- which(grepl("https://www.mass.gov/doc/", combined_table$url))
+combined_table$pass_checks3[r1] <- TRUE
+
+##
 pass_checks <- combined_table %>%
   filter(pass_checks3) %>%
   group_by(most_common_town) %>% tally()
