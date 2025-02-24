@@ -20,6 +20,9 @@
 
 library(readr)
 library(plotrix)
+library(forcats)
+library(ggplot2)
+library(ggpubr)
 
 capitalizeFirstLetter <- function(textVector) {
   # Helper function to capitalize the first letter of a single string
@@ -39,7 +42,7 @@ capitalizeFirstLetter <- function(textVector) {
 combined_table <- read_tsv("C:/Users/ncesare/OneDrive - Boston University/ACRES/combined_table_v8_final.tsv")
 
 combined_table_relevant <- combined_table %>% 
-  filter(pass_checks2)
+  filter(pass_checks3)
 
 dim(combined_table)
 dim(combined_table_relevant)
@@ -57,86 +60,22 @@ combined_table_relevant <- combined_table %>%
 dim(combined_table)
 dim(combined_table_relevant)
 
+## Check that we have the correct towns 
 
-#### Plot: Hazards by town ####
+alltowns <- read.table("C:/Users/ncesare/OneDrive - Boston University/ACRES/COMBINED_TOWNS.txt")
 
-hazard_by_town <- combined_table_relevant %>% 
-  group_by(most_common_town) %>% 
-  summarize(n = n(),
-            flood_avg = mean(flood_percent),
-            storm_avg = mean(storm_percent),
-            heat_avg = mean(heat_percent),
-            air_pollution_avg = mean(air_pollution_percent),
-            indoor_air_avg = mean(indoor_air_quality_percent),
-            chem_hazard_avg = mean(chemical_hazards_percent),
-            extreme_precip_avg = mean(extreme_precipitation_percent),
-            fire_avg = mean(fire_percent)
-  ) %>%
-  mutate(mod_sum = rowSums(across(flood_avg:fire_avg)))
+setdiff(unique(tolower(combined_table_relevant$most_common_town)), unique(tolower(alltowns$V1)))
+setdiff(unique(tolower(alltowns$V1)),unique(tolower(combined_table_relevant$most_common_town))) # Only stoneham, which legitimately had no entries
 
 
-mystic_towns_list_sub <- setdiff(mystic_towns_list,  unique(hazard_by_town$most_common_town))
-
-hazard_by_town_blank <- data.frame(most_common_town = mystic_towns_list_sub,
-                                   n = rep(0, length(mystic_towns_list_sub)),
-                                   flood_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   storm_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   heat_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   air_pollution_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   indoor_air_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   chem_hazard_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   extreme_precip_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   fire_avg = rep(NA, length(mystic_towns_list_sub)),
-                                   mod_sum = rep(0, length(mystic_towns_list_sub)))
-
-hazard_by_town$mod_sum
-
-hazard_by_town <- rbind(hazard_by_town, hazard_by_town_blank)
+ #### Figure 1 #####
 
 
-hazard_name_map = c(
-  "air_pollution_avg" = 'Air Pollution',
-  'chem_hazard_avg' = 'Chemical Hazards',
-  'extreme_precip_avg' = 'Extreme Precipitation',
-  'fire_avg' = 'Fire',
-  'flood_avg' = 'Flood',
-  'heat_avg' = 'Heat',
-  'indoor_air_avg' = 'Indoor Air',
-  'storm_avg' = 'Storm'
-)
-
-
-
-p1 <- hazard_by_town %>%
-  pivot_longer(cols = flood_avg:fire_avg) %>%
-  mutate(value = ifelse(value == 0, NA, value),
-         name_nice = hazard_name_map[name],
-         town_name_nice = paste0(capitalizeFirstLetter(most_common_town), " (", n, ")")) %>%
-  ggplot() +
-  geom_tile(aes(y = reorder(name_nice, value, na.rm = T), 
-                x = town_name_nice, 
-                fill = value),
-            color = 'white') +
-  scale_fill_binned(type = 'viridis', 
-                    name = 'Average proportion\nof per-document\nreferences',
-                    limits = c(0, 100),
-                    breaks = c(seq(20, 80, by = 20))) +
-  ylab('Hazard') + xlab('Town') + 
-  scale_x_discrete(position = 'top') +
-  theme(axis.text.x = element_text(angle = 35, hjust = 0, size = 11),
-        axis.text.y = element_text(size = 14),
-        axis.title = element_text(size = 14))
-
-p1
-
-
-
- #### Plot: Hazards overall #####
-
+## Hazard plot prep
 
 hazard_overall_1 <- combined_table_relevant %>% 
-  group_by(in_myrwa) %>%
-  summarize(flood_avg = mean(flood_percent),
+  dplyr::group_by(in_myrwa) %>%
+  dplyr::summarize(flood_avg = mean(flood_percent),
             storm_avg = mean(storm_percent),
             heat_avg = mean(heat_percent),
             air_pollution_avg = mean(air_pollution_percent),
@@ -146,8 +85,8 @@ hazard_overall_1 <- combined_table_relevant %>%
             fire_avg = mean(fire_percent))
             
 hazard_overall_2 <- combined_table_relevant %>% 
-  group_by(in_myrwa) %>%
-  summarize(flood_upper = mean(flood_percent) + (1.96 * std.error(flood_percent)),
+  dplyr::group_by(in_myrwa) %>%
+  dplyr::summarize(flood_upper = mean(flood_percent) + (1.96 * std.error(flood_percent)),
             storm_upper = mean(storm_percent) + (1.96 * std.error(storm_percent)),
             heat_upper = mean(heat_percent) + (1.96 * std.error(heat_percent)),
             air_pollution_upper = mean(air_pollution_percent) + (1.96 * std.error(air_pollution_percent)),
@@ -158,8 +97,8 @@ hazard_overall_2 <- combined_table_relevant %>%
             
             
 hazard_overall_3 <- combined_table_relevant %>% 
-  group_by(in_myrwa) %>%
-  summarize(flood_lower = mean(flood_percent) - (1.96 * std.error(flood_percent)),
+  dplyr::group_by(in_myrwa) %>%
+  dplyr::summarize(flood_lower = mean(flood_percent) - (1.96 * std.error(flood_percent)),
             storm_lower = mean(storm_percent) - (1.96 * std.error(storm_percent)),
             heat_lower = mean(heat_percent) - (1.96 * std.error(heat_percent)),
             air_pollution_lower = mean(air_pollution_percent) - (1.96 * std.error(air_pollution_percent)),
@@ -194,17 +133,94 @@ hazard_overall$in_myrwa[which(hazard_overall$in_myrwa == 0)] <- "Rest of Inner C
 
 hazard_overall <- hazard_overall %>% mutate(hazard2 = fct_reorder(hazard, .x = Mean, .fun = max, .desc = TRUE))
 
+
+## Community concerns plot prep
+
+community_overall_1 = combined_table_relevant %>% 
+  dplyr::group_by(in_myrwa) %>%
+  dplyr::summarize(workshop_avg = mean(workshop_percent),
+            mapping_avg = mean(mapping_percent),     
+            survey_avg = mean(survey_percent),
+            conversation_avg = mean(conversation_percent),
+            community_meeting_avg = mean(community_meeting_percent),
+            small_group_discussion_avg = mean(small_group_discussion_percent),
+            inform_avg = mean(inform_percent))
+
+community_overall_2 = combined_table_relevant %>% 
+  dplyr::group_by(in_myrwa) %>%
+  dplyr::summarize(workshop_upper = mean(workshop_percent) + (1.96* std.error(workshop_percent)),
+            mapping_upper = mean(mapping_percent) + (1.96* std.error(mapping_percent)),        
+            survey_upper = mean(survey_percent) + (1.96* std.error(survey_percent)),
+            conversation_upper = mean(conversation_percent) + (1.96* std.error(conversation_percent)),
+            community_meeting_upper = mean(community_meeting_percent) + (1.96* std.error(community_meeting_percent)),
+            small_group_discussion_upper = mean(small_group_discussion_percent) + (1.96* std.error(small_group_discussion_percent)),
+            inform_upper = mean(inform_percent) + (1.96* std.error(inform_percent)))
+
+
+community_overall_3 = combined_table_relevant %>% 
+  dplyr::group_by(in_myrwa) %>%
+  dplyr::summarize(workshop_lower = mean(workshop_percent) - (1.96* std.error(workshop_percent)),
+            mapping_lower = mean(mapping_percent) - (1.96* std.error(mapping_percent)),        
+            survey_lower = mean(survey_percent) - (1.96* std.error(survey_percent)),
+            conversation_lower = mean(conversation_percent) - (1.96* std.error(conversation_percent)),
+            community_meeting_lower = mean(community_meeting_percent) - (1.96* std.error(community_meeting_percent)),
+            small_group_discussion_lower = mean(small_group_discussion_percent) - (1.96* std.error(small_group_discussion_percent)),
+            inform_lower = mean(inform_percent) - (1.96* std.error(inform_percent)))
+            
+
+
+community_overall_1 <- reshape2::melt(community_overall_1, id = "in_myrwa")
+
+community_overall_2 <- reshape2::melt(community_overall_2, id = "in_myrwa")
+
+community_overall_3 <- reshape2::melt(community_overall_3, id = "in_myrwa")
+
+
+community_overall <- cbind(community_overall_1, community_overall_2[,-c(1,2)], community_overall_3[,-c(1,2)])
+names(community_overall)[c(3:5)] <- c("Mean","Upper","Lower")
+
+community_overall$community[grep("workshop", community_overall$variable)] <-"Workshop"
+community_overall$community[grep("mapping", community_overall$variable)] <-"Mapping"
+community_overall$community[grep("survey", community_overall$variable)] <-"Survey"
+community_overall$community[grep("conversation", community_overall$variable)] <-"Conversation"
+community_overall$community[grep("community", community_overall$variable)] <-"Community\n meeting"
+community_overall$community[grep("small_group", community_overall$variable)] <-"Small group\n discussion"
+community_overall$community[grep("inform", community_overall$variable)] <-"Inform"
+
+community_overall$in_myrwa[which(community_overall$in_myrwa == 1)] <- "MyRWA"
+community_overall$in_myrwa[which(community_overall$in_myrwa == 0)] <- "Rest of Inner Core"
+
+
+community_overall <- community_overall %>% mutate(community2 = fct_reorder(community, .x = Mean, .fun = max, .desc = TRUE))
+
+
 # skeleton is up - we can add colors and make pretty later
-p2 <- ggplot(hazard_overall, aes(hazard2, Mean, color = as.factor(in_myrwa))) + 
-  geom_point(position = position_dodge(width = 0.8)) +
+p2a <- ggplot(hazard_overall, aes(hazard2, Mean, color = as.factor(in_myrwa))) + 
+  geom_point(position = position_dodge(width = 0.8), cex = 3) +
   geom_errorbar(aes(ymin = Lower, ymax = Upper),position = position_dodge(width = 0.8)) +
-  ylab("Average proportion of hazard terms per document\n representing hazard") +
+  ylab("Average proportion of keyword\n terms per document\n representing category") +
   scale_color_manual(name = "Geography:", values = c("#7f3b08","#542788")) +
-  xlab("Hazard") +
-  theme_pubr()
+  ggtitle("Hazards") +
+  xlab("Keyword category") +
+  theme_pubr() +
+  theme(legend.position = "none") 
 
 
-png("C:/Users/ncesare/OneDrive - Boston University/ACRES/figure_1.png", units="in", width=7, height=5, res=600)
-p2
+p2b <- ggplot(community_overall, aes(community2, Mean, color = as.factor(in_myrwa))) + 
+  geom_point(position = position_dodge(width = 0.8), cex = 3) +
+  geom_errorbar(aes(ymin = Lower, ymax = Upper),position = position_dodge(width = 0.8)) +
+  ylab("Average proportion of keyword\n terms per document\n representing category") +
+  scale_color_manual(name = "Geography:", values = c("#7f3b08","#542788")) +
+  ggtitle("Community engagement strategies") +
+  xlab("Keyword category") +
+  theme_pubr() + 
+  theme(legend.position = "bottom")
+
+
+
+png("C:/Users/ncesare/OneDrive - Boston University/ACRES/figure_1.png", units="in", width=10, height=10, res=600)
+Rmisc::multiplot(p2a, p2b)
 dev.off()
+
+
 
