@@ -56,15 +56,21 @@ combined_table$pass_checks3[r1] <- TRUE
 
 # waltham 82
 r1 <- which(combined_table$file_name == 'walthamurl82.json')
-r1
+length(r1)
 combined_table$pass_checks3[r1] <- TRUE
 
 
 # and any with url that starts with https://www.mass.gov/doc/
 r1 <- which(grepl("https://www.mass.gov/doc/", combined_table$url))
+length(r1)
+table(combined_table$pass_checks3[r1])
 combined_table$pass_checks3[r1] <- TRUE
 
 ##
+### WHICH ONE IS NONE
+which(combined_table$most_common_town == 'None' & 
+        combined_table$pass_checks3)
+
 pass_checks <- combined_table %>%
   filter(pass_checks3) %>%
   group_by(most_common_town) %>% tally()
@@ -117,7 +123,7 @@ table(combined_table %>%
 table(combined_table %>% 
         filter(duplicated == F, is_MASS == T, is_INNER_CORE == T,
                has_climate == 1, has_community == 1) %>% 
-        select(Manual.Check.11.19))
+        select(pass_checks3))
 
 # ----------------------------------------------------------------------------
 #90% or over for all towns

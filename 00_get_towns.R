@@ -3,7 +3,7 @@ library(tidycensus)
 library(dplyr)
 
 # Set your Census API key (get one from https://api.census.gov/data/key_signup.html)
-census_api_key("840a4b0cd2dce4a1c58a9375612945f9f14ac5d9")
+
 
 # Download data for all US places
 places_data <- get_acs(
