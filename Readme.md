@@ -4,7 +4,7 @@ Spreadsheet and relevant info is [here](https://docs.google.com/spreadsheets/d/1
 
 All of the code is complete, so all you have to do is run it.
 Scrape_from_url.py is run individually for each town,
-and chad_test.py is run once all together.
+and python_main.py is run once all together.
 
 To get the data prepared to run:
 1) go to the Community PDF finder and copy paste all URL's for a particular town into a JSON file. Put them into array format: ["pdf1", "pdf2", etc]
