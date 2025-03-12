@@ -17,7 +17,7 @@
 # DESCRIPTION   : 
 #######################################################################################
 
-
+library(tidyverse)
 library(readr)
 library(plotrix)
 library(forcats)
@@ -39,7 +39,7 @@ capitalizeFirstLetter <- function(textVector) {
 
 
 ### Load and filter data ####
-combined_table <- read_tsv("C:/Users/ncesare/OneDrive - Boston University/ACRES/combined_table_v8_final.tsv")
+combined_table <- read_tsv("combined_table_v8_final.tsv")
 
 combined_table_relevant <- combined_table %>% 
   filter(pass_checks3)
@@ -48,7 +48,7 @@ dim(combined_table)
 dim(combined_table_relevant)
 
 
-myrwa <- read.table("C:/Users/ncesare/OneDrive - Boston University/ACRES/MYRWA_towns.txt")
+myrwa <- read.table("MYRWA_towns.txt")
 
 
 combined_table$in_myrwa <- 0
@@ -62,7 +62,7 @@ dim(combined_table_relevant)
 
 ## Check that we have the correct towns 
 
-alltowns <- read.table("C:/Users/ncesare/OneDrive - Boston University/ACRES/COMBINED_TOWNS.txt")
+alltowns <- read.table("COMBINED_TOWNS.txt")
 
 setdiff(unique(tolower(combined_table_relevant$most_common_town)), unique(tolower(alltowns$V1)))
 setdiff(unique(tolower(alltowns$V1)),unique(tolower(combined_table_relevant$most_common_town))) # Only stoneham, which legitimately had no entries
