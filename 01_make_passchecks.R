@@ -50,6 +50,20 @@ combined_table$town_name <- gsub("url\\d+|\\d+|\\.json", "",
                                  combined_table$file_name)
 combined_table$town_name <- toupper(combined_table$town_name)
 
+# *********************
+towns_remove <- c(
+  "burlington", "lexington",  "winchester", "woburn",     "reading",
+  "stoneham",   "wakefield",  "wilmington"
+)
+combined_table$towns_to_scrub <- FALSE
+for(tt in towns_remove) {
+  rr <- which(grepl(paste0("^", tt), combined_table$file_name))
+  combined_table$towns_to_scrub[rr] <- TRUE
+}
+table(combined_table$towns_to_scrub)
+head(combined_table)
+# *********************
+
 #View(combined_table)
 
 mystic_towns_list = c(
@@ -104,8 +118,8 @@ xx <- combined_table[, c('file_name', 'most_common_town','is_INNER_CORE',
                          'has_climate','has_community')] %>%
   arrange(file_name)
 
-write.table(xx, file = 'is_inner_core.txt',  sep = "|",
-            quote = F, row.names = F)
+# write.table(xx, file = 'is_inner_core.txt',  sep = "|",
+#             quote = F, row.names = F)
 
 ##
 
@@ -123,4 +137,4 @@ combined_table <- combined_table %>% left_join(mancx)
 dim(combined_table)
 data.frame(head(combined_table))
 
-write_tsv(combined_table, 'combined_table_v8.tsv')
+# write_tsv(combined_table, 'combined_table_v8.tsv')

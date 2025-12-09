@@ -34,30 +34,30 @@ combined_table <- combined_table %>%
       has_community == 1
   ))
 
-# malden 63
-r1 <- which(combined_table$file_name == 'maldenurl63.json')
-r1
-combined_table$pass_checks3[r1] <- TRUE
-
-# burlington 85
-r1 <- which(combined_table$file_name == 'burlingtonurl85.json')
-r1
-combined_table$pass_checks3[r1] <- TRUE
-
-# reading 60
-r1 <- which(combined_table$file_name == 'readingurl60.json')
-r1
-combined_table$pass_checks3[r1] <- TRUE
-
-# wilmington
-r1 <- which(combined_table$file_name == 'wilmingtonurl47.json')
-r1
-combined_table$pass_checks3[r1] <- TRUE
-
-# waltham 82
-r1 <- which(combined_table$file_name == 'walthamurl82.json')
-length(r1)
-combined_table$pass_checks3[r1] <- TRUE
+# # malden 63
+# r1 <- which(combined_table$file_name == 'maldenurl63.json')
+# r1
+# combined_table$pass_checks3[r1] <- TRUE
+# 
+# # burlington 85
+# r1 <- which(combined_table$file_name == 'burlingtonurl85.json')
+# r1
+# combined_table$pass_checks3[r1] <- TRUE
+# 
+# # reading 60
+# r1 <- which(combined_table$file_name == 'readingurl60.json')
+# r1
+# combined_table$pass_checks3[r1] <- TRUE
+# 
+# # wilmington
+# r1 <- which(combined_table$file_name == 'wilmingtonurl47.json')
+# r1
+# combined_table$pass_checks3[r1] <- TRUE
+# 
+# # waltham 82
+# r1 <- which(combined_table$file_name == 'walthamurl82.json')
+# length(r1)
+# combined_table$pass_checks3[r1] <- TRUE
 
 
 # and any with url that starts with https://www.mass.gov/doc/
@@ -77,7 +77,7 @@ pass_checks <- combined_table %>%
 
 sum(pass_checks$n)
 
-write_tsv(pass_checks, 'pass_checks_0220.tsv')
+# write_tsv(pass_checks, 'pass_checks_0220.tsv')
 
 # num_irrelevant <- combined_table %>% 
 #   group_by(town_name) %>% 
@@ -94,13 +94,17 @@ write_tsv(pass_checks, 'pass_checks_0220.tsv')
 
 #only filter for relevant and matching
 
-write_tsv(combined_table, 'combined_table_v8_final.tsv')
+# write_tsv(combined_table, 'combined_table_v8_final.tsv')
 
 # ----------------------------------------------------------------------------
 
 ### make flowchart
 nrow(combined_table)
 # 27 Original from 
+
+##
+combined_table <- combined_table %>% filter(!towns_to_scrub)
+nrow(combined_table)
 
 table(combined_table$duplicated)
 
@@ -125,14 +129,28 @@ table(combined_table %>%
                has_climate == 1, has_community == 1) %>% 
         select(pass_checks3))
 
+combined_table <- combined_table %>% 
+        mutate(pass_checks4 = duplicated == F & is_MASS == T & 
+                 is_INNER_CORE == T & 
+               has_climate == 1 & has_community == 1 & pass_checks3)
+table(combined_table$pass_checks4)
+
+
 # ----------------------------------------------------------------------------
 #90% or over for all towns
 combined_table_relevant <- combined_table %>% 
-  filter(pass_checks3)
+  filter(pass_checks4)
+nrow(combined_table_relevant)
+
+#
+# combined_table %>%
+#   filter(duplicated == F, is_MASS == T, is_INNER_CORE == T,
+#          has_climate == 1, has_community == 1)
+
 
 dim(combined_table_relevant)
 
-#write_tsv(combined_table_relevant, 'combined_table_relevant.tsv')
+write_tsv(combined_table_relevant, 'combined_table_relevant_v10.tsv')
 
 dim(combined_table)
 dim(combined_table_relevant)
