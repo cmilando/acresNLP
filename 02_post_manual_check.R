@@ -24,11 +24,20 @@ data.frame(head(combined_table))
 # ----------------------------------------------------------------------------
 # ma.url omitted
 
+## NC Notes: We're reading in combined_table_v9_final.tsv" for this file, right? 
+##           Finally, I noticed we were dropping Malden and Waltham in the code below. 
+##           There are NA values in the manual checks, which I think come from duplicate reports? I think we just want to remove EXCLUDE. 
+##           The modified code below for the creation of pass_checks3 seems to add 4 malden and 3 Waltham reports back in...
+##           Also, there are 21 GBA IC communities (I mis-counted earlier!). We'll have to update the flowchart.
+
+
+`%!in%` <- function(x, y) !(x %in% y) # NC: Added function
+
 combined_table <- combined_table %>%
   mutate(pass_checks3 = (
-    Manual.Check.11.19 %in% c('INCLUDE') &
+    Manual.Check.11.19 %in% c("EXCLUDE") & # NC: modified creation of pass_checks3
     duplicated == F &
-      (is_INNER_CORE == T | is_ACRES_town == T) &
+      (is_INNER_CORE == T | is_ACRES_town == T) & 
       is_MASS == T &
       has_climate == 1 &
       has_community == 1
