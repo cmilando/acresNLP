@@ -31,11 +31,11 @@ data.frame(head(combined_table))
 ##           Also, there are 21 GBA IC communities (I mis-counted earlier!). We'll have to update the flowchart.
 
 
-`%!in%` <- function(x, y) !(x %in% y) # NC: Added function
+#`%!in%` <- function(x, y) !(x %in% y) # NC: Added function
 
 combined_table <- combined_table %>%
   mutate(pass_checks3 = (
-    Manual.Check.11.19 %in% c("EXCLUDE") & # NC: modified creation of pass_checks3
+    Manual.Check.11.19 %in% c("INCLUDE") & 
     duplicated == F &
       (is_INNER_CORE == T | is_ACRES_town == T) & 
       is_MASS == T &
@@ -44,9 +44,9 @@ combined_table <- combined_table %>%
   ))
 
 # # malden 63
-# r1 <- which(combined_table$file_name == 'maldenurl63.json')
-# r1
-# combined_table$pass_checks3[r1] <- TRUE
+ r1 <- which(combined_table$file_name == 'maldenurl63.json')
+ r1
+ combined_table$pass_checks3[r1] <- TRUE
 # 
 # # burlington 85
 # r1 <- which(combined_table$file_name == 'burlingtonurl85.json')
@@ -64,9 +64,9 @@ combined_table <- combined_table %>%
 # combined_table$pass_checks3[r1] <- TRUE
 # 
 # # waltham 82
-# r1 <- which(combined_table$file_name == 'walthamurl82.json')
-# length(r1)
-# combined_table$pass_checks3[r1] <- TRUE
+ r1 <- which(combined_table$file_name == 'walthamurl82.json')
+ length(r1)
+ combined_table$pass_checks3[r1] <- TRUE
 
 
 # and any with url that starts with https://www.mass.gov/doc/
