@@ -39,7 +39,7 @@ sTab_4 <- combined_tbl %>% summarize(flood_n = length(which(flood_count > 0)),
 
 
 
-#### Supplemental table 5 ####
+#### Supplemental table 5/6 ####
 
 # get summary stats for the town-averaged values
 plot_tbl <- combined_tbl %>%
@@ -84,7 +84,7 @@ write.csv(plot_tbl2, "supp_tab5_6_subregion.csv", row.names = FALSE)
 
 
 
-## Fig. 1 by subregion 
+#### Fig. 2 by subregion ####
 
 plot_tbl <- combined_tbl %>%
   mutate(is_ACRES_town = most_common_town %in% myrw_town) %>%
@@ -191,11 +191,11 @@ plot_tbl %>%
         strip.background = element_blank(),
         strip.text = element_text(hjust = 0, face = 'bold', size = 11))
 
-ggsave("fig1_subregion.png", width = 7.5, height = 5)
+ggsave("fig2_subregion.png", width = 7.5, height = 5)
 
 
 
-## Fig. 1 overall
+#### Fig. 2 overall ####
 
 plot_tbl <- combined_tbl %>%
   mutate(is_ACRES_town = most_common_town %in% myrw_town) %>%
@@ -300,4 +300,4 @@ plot_tbl %>%
         strip.background = element_blank(),
         strip.text = element_text(hjust = 0, face = 'bold', size = 11))
 
-ggsave("fig1_all.png", width = 7.5, height = 5)
+ggsave("fig2_all.png", width = 7.5, height = 5)
