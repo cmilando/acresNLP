@@ -111,37 +111,47 @@ sum(pass_checks$n)
 nrow(combined_table)
 # 27 Original from 
 
+
+
 ##
-combined_table <- combined_table %>% filter(!towns_to_scrub)
+combined_table <- combined_table %>% filter(is_INNER_CORE == T)
 nrow(combined_table)
 
+# not duplicated
 table(combined_table$duplicated)
 
+# in MA
 table(combined_table %>% 
         filter(duplicated == F) %>% select(is_MASS))
 
-table(combined_table %>% 
-        filter(duplicated == F, is_MASS == T) %>% 
-        select(is_INNER_CORE))
+# -- Already doing this --
+# table(combined_table %>% 
+#         filter(duplicated == F, is_MASS == T) %>% 
+#         select(is_INNER_CORE))
 
+# climate
 table(combined_table %>% 
         filter(duplicated == F, is_MASS == T, is_INNER_CORE == T) %>% 
         select(has_climate))
 
+# community
 table(combined_table %>% 
         filter(duplicated == F, is_MASS == T, is_INNER_CORE == T,
                has_climate == 1) %>% 
         select(has_community))
 
+# pass checks
 table(combined_table %>% 
         filter(duplicated == F, is_MASS == T, is_INNER_CORE == T,
                has_climate == 1, has_community == 1) %>% 
         select(pass_checks3))
 
-combined_table <- combined_table %>% 
-        mutate(pass_checks4 = duplicated == F & is_MASS == T & 
-                 is_INNER_CORE == T & 
+# save the result
+combined_table <- combined_table %>%
+        mutate(pass_checks4 = duplicated == F & is_MASS == T &
+                 is_INNER_CORE == T &
                has_climate == 1 & has_community == 1 & pass_checks3)
+
 table(combined_table$pass_checks4)
 
 
@@ -149,6 +159,7 @@ table(combined_table$pass_checks4)
 #90% or over for all towns
 combined_table_relevant <- combined_table %>% 
   filter(pass_checks4)
+
 nrow(combined_table_relevant)
 
 #
