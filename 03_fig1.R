@@ -10,11 +10,11 @@ combined_tbl <- read_tsv("combined_table_relevant_v10.tsv")
 # 
 # View(combined_tbl %>%
 #   filter(most_common_town == 'chelsea'))
-
-MyRW_town <- read.table("MYRWA_towns.txt")
-myrw_town <- tolower(MyRW_town$V1)
-
-combined_tbl <- combined_tbl  %>% mutate(is_ACRES_town = most_common_town %in% myrw_town)
+# 
+# MyRW_town <- read.table("MYRWA_towns.txt")
+# myrw_town <- tolower(MyRW_town$V1)
+# 
+# combined_tbl <- combined_tbl  %>% mutate(is_ACRES_town = most_common_town %in% myrw_town)
 
 #### Supplemental Table 4 ####
 
