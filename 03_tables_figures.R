@@ -41,7 +41,7 @@ sTab_4 <- combined_tbl %>% dplyr::summarize(flood_n = length(which(flood_count >
                            indoor_air_quality_term_pct = sum(indoor_air_quality_count)/sum(total_words) * 100,
                            chemical_hazards_term_pct = sum(chemical_hazards_count)/sum(total_words) * 100,
                            extreme_precipitation_term_pct = sum(extreme_precipitation_count)/sum(total_words) * 100,
-                           fire_term_pct = sum(fire_count)/sum(total_words) * 100) 
+                           fire_term_pct = sum(fire_count)/sum(total_words) * 100) %>% pivot_longer(cols = everything())
   
 
 write.csv(sTab_4, "supp_tab4.csv", row.names = FALSE)
