@@ -10,34 +10,41 @@ combined_tbl <- read_tsv("combined_table_relevant_v10.tsv")
 # 
 # View(combined_tbl %>%
 #   filter(most_common_town == 'chelsea'))
-# 
-# MyRW_town <- read.table("MYRWA_towns.txt")
-# myrw_town <- tolower(MyRW_town$V1)
-# 
-# combined_tbl <- combined_tbl  %>% mutate(is_ACRES_town = most_common_town %in% myrw_town)
+
+MyRW_town <- read.table("MYRWA_towns.txt")
+myrw_town <- tolower(MyRW_town$V1)
+
+combined_tbl <- combined_tbl  %>% mutate(is_ACRES_town = most_common_town %in% myrw_town) # report-level file
 
 #### Supplemental Table 4 ####
 
-sTab_4 <- combined_tbl %>% summarize(flood_n = length(which(flood_count > 0)),
-                           flood_pct = length(which(flood_count > 0))/length(flood_count),
+sTab_4 <- combined_tbl %>% dplyr::summarize(flood_n = length(which(flood_count > 0)),
+                           flood_pct = length(which(flood_count > 0))/length(flood_count) * 100,
                            storm_n = length(which(storm_count > 0)),
-                           storm_pct = length(which(storm_count > 0))/length(storm_count),
+                           storm_pct = length(which(storm_count > 0))/length(storm_count)* 100,
                            heat_n = length(which(heat_count > 0)),
-                           heat_pct = length(which(heat_count > 0))/length(heat_count),
+                           heat_pct = length(which(heat_count > 0))/length(heat_count) * 100,
                            air_pollution_n = length(which(air_pollution_count > 0)),
-                           air_pollution_pct = length(which(air_pollution_count > 0))/length(air_pollution_count),
+                           air_pollution_pct = length(which(air_pollution_count > 0))/length(air_pollution_count) * 100,
                            indoor_air_quality_n = length(which(indoor_air_quality_count > 0)),
-                           indoor_air_quality_pct = length(which(indoor_air_quality_count > 0))/length(indoor_air_quality_count),
+                           indoor_air_quality_pct = length(which(indoor_air_quality_count > 0))/length(indoor_air_quality_count) * 100,
                            chemical_hazards_n = length(which(chemical_hazards_count > 0)),
-                           chemical_hazards_pct = length(which(chemical_hazards_count > 0))/length(chemical_hazards_count),
+                           chemical_hazards_pct = length(which(chemical_hazards_count > 0))/length(chemical_hazards_count) * 100,
                            extreme_precipitation_n = length(which(extreme_precipitation_count > 0)),
-                           extreme_precipitation_pct = length(which(extreme_precipitation_count > 0))/length(extreme_precipitation_count),
+                           extreme_precipitation_pct = length(which(extreme_precipitation_count > 0))/length(extreme_precipitation_count) * 100,
                            fire_n = length(which(fire_count > 0)),
-                           fire_pct = length(which(fire_count > 0))/length(fire_count)) %>% pivot_longer()
+                           fire_pct = length(which(fire_count > 0))/length(fire_count) * 100,
+                           lood_term_pct = sum(flood_count)/sum(total_words) * 100,
+                           storm_term_pct = sum(storm_count)/sum(total_words) * 100,
+                           heat_term_pct = sum(heat_count)/sum(total_words) * 100,
+                           air_pollution_term_pct = sum(air_pollution_count)/sum(total_words) * 100,
+                           indoor_air_quality_term_pct = sum(indoor_air_quality_count)/sum(total_words) * 100,
+                           chemical_hazards_term_pct = sum(chemical_hazards_count)/sum(total_words) * 100,
+                           extreme_precipitation_term_pct = sum(extreme_precipitation_count)/sum(total_words) * 100,
+                           fire_term_pct = sum(fire_count)/sum(total_words) * 100) 
+  
 
-
-
-
+write.csv(sTab_4, "supp_tab4.csv", row.names = FALSE)
 
 #### Supplemental table 5/6 ####
 
@@ -274,7 +281,7 @@ plot_tbl$is_hazard_fct <- ifelse(
 
 
 
-#plot_tbl
+plot_tbl
 
 
 plot_tbl %>%
@@ -301,3 +308,5 @@ plot_tbl %>%
         strip.text = element_text(hjust = 0, face = 'bold', size = 11))
 
 ggsave("fig2_all.png", width = 7.5, height = 5)
+
+
