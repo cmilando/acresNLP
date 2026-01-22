@@ -68,6 +68,59 @@ plot_tbl <- plot_tbl[,-unique(c(idx1, idx2, idx3))]
 
 write.csv(plot_tbl, "supp_tab5_6_city.csv", row.names = FALSE)
 
+plot_tbl_longer <- plot_tbl %>% 
+  select(c(most_common_town, starts_with("median"))) %>%
+  pivot_longer(cols = starts_with("median"))
+
+head(plot_tbl_longer)
+
+plot_tbl_longer$plt_name <- gsub("median_", "", plot_tbl_longer$name)
+plot_tbl_longer$plt_name <- gsub("_percent", "", plot_tbl_longer$plt_name)
+
+hazards <- c('heat', 'flood', 'fire', 'indoor_air_quality',
+             'extreme_precipitation', 'storm', 'chemical_hazards',
+             'air_pollution')
+
+hazplot <- subset(plot_tbl_longer, plt_name %in% hazards)
+
+hazplot$most_common_town <- stringr::str_to_upper(hazplot$most_common_town)
+
+a <- ggplot(hazplot) + 
+  geom_tile(aes(y = reorder(plt_name, value), 
+                x = most_common_town, fill = value),
+            color = 'white', linewidth = 0.05) + 
+  scale_fill_viridis_c(name = 'Median percent of\nwithin-document mentions') +
+  ylab("Hazard") + xlab("Town") +
+  theme(axis.text.x = element_text(angle = 25, 
+                                   vjust = 1, hjust = 1)) + 
+  ggtitle("a.")
+
+ggsave("hazplot.png", plot = a, width = 10.3, height = 3.02)
+
+##
+outreach <- subset(plot_tbl_longer, !(plt_name %in% hazards))
+
+outreach$most_common_town <- stringr::str_to_upper(outreach$most_common_town)
+
+b <- ggplot(outreach) + 
+  geom_tile(aes(y = reorder(plt_name, value), 
+                x = most_common_town, fill = value),
+            color = 'white', linewidth = 0.05) + 
+  scale_fill_viridis_c(name = 'Median percent of\nwithin-document mentions') +
+  ylab("Outreach Method") + xlab("Town") +
+  theme(axis.text.x = element_text(angle = 25, 
+                                   vjust = 1, hjust = 1)) + 
+  ggtitle("b.")
+
+ggsave("outreach.png",plot  = b, width = 10.3, height = 3.02)
+
+library(patchwork)
+
+a/b + patchwork::plot_layout(guides = 'collect')
+
+ggsave("comb.png", width = 10.3, height = 3.02 * 2.2)
+
+#########
 
 plot_tbl2 <- combined_tbl %>%
   dplyr::group_by(is_ACRES_town) %>%
@@ -87,6 +140,8 @@ idx3 <- grep("q75_.*median", colnames(plot_tbl2), per = TRUE)
 plot_tbl2 <- plot_tbl2[,-unique(c(idx1, idx2, idx3))]
 
 write.csv(plot_tbl2, "supp_tab5_6_subregion.csv", row.names = FALSE)
+
+# heatmap
 
 
 
