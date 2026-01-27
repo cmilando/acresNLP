@@ -34,15 +34,21 @@ sTab_4 <- combined_tbl %>% dplyr::summarize(flood_n = length(which(flood_count >
                            extreme_precipitation_pct = length(which(extreme_precipitation_count > 0))/length(extreme_precipitation_count) * 100,
                            fire_n = length(which(fire_count > 0)),
                            fire_pct = length(which(fire_count > 0))/length(fire_count) * 100,
-                           lood_term_pct = sum(flood_count)/sum(total_words) * 100,
-                           storm_term_pct = sum(storm_count)/sum(total_words) * 100,
-                           heat_term_pct = sum(heat_count)/sum(total_words) * 100,
-                           air_pollution_term_pct = sum(air_pollution_count)/sum(total_words) * 100,
-                           indoor_air_quality_term_pct = sum(indoor_air_quality_count)/sum(total_words) * 100,
-                           chemical_hazards_term_pct = sum(chemical_hazards_count)/sum(total_words) * 100,
-                           extreme_precipitation_term_pct = sum(extreme_precipitation_count)/sum(total_words) * 100,
-                           fire_term_pct = sum(fire_count)/sum(total_words) * 100) %>% pivot_longer(cols = everything())
-  
+                           
+                           workshop_n = length(which(workshop_count > 0)),
+                           workshop_pct = length(which(workshop_count > 0))/length(workshop_count) * 100,
+                           mapping_n = length(which(mapping_count > 0)),
+                           mapping_pct = length(which(mapping_count > 0))/length(mapping_count) * 100,
+                           survey_n = length(which(survey_count > 0)),
+                           survey_pct = length(which(survey_count > 0))/length(survey_count) * 100,
+                           conversation_n = length(which(conversation_count > 0)),
+                           conversation_pct = length(which(conversation_count > 0))/length(conversation_count) * 100,
+                           community_meeting_n = length(which(community_meeting_count > 0)),
+                           community_meeting_pct = length(which(community_meeting_count > 0))/length(community_meeting_count) * 100,
+                           small_group_discussion_n = length(which(small_group_discussion_count > 0)),
+                           small_group_discussion_pct = length(which(small_group_discussion_count > 0))/length(small_group_discussion_count) * 100,
+                           inform_n = length(which(inform_count > 0)),
+                           inform_pct = length(which(inform_count > 0))/length(inform_count) * 100)   
 
 write.csv(sTab_4, "supp_tab4.csv", row.names = FALSE)
 
