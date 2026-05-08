@@ -2,14 +2,8 @@ library(tidyverse)
 library(ggpubr)
 library(lemon)
 
-setwd("C:/Users/ncesare/OneDrive - Boston University/ACRES")
+setwd("")
 combined_tbl <- read_tsv("combined_table_relevant_v10.tsv")
-
-# remove the winthrop unscannable
-# combined_tbl <- xx %>% filter(file_name != 'winthropurl35.json' & pass_checks3 == T)
-# 
-# View(combined_tbl %>%
-#   filter(most_common_town == 'chelsea'))
 
 MyRW_town <- read.table("MYRWA_towns.txt")
 myrw_town <- tolower(MyRW_town$V1)
