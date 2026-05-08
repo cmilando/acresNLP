@@ -9,24 +9,6 @@ library(gridExtra)
 library(tigris)
 library(leaflet)
 
-### NOTES
-
-# * STONEHAM HAS NO CLIMATE REPORTS
-# * NOT A LOT OF ADJACENCY IN HAZARDS
-#
-# * 
-# * allison: for both hazards and outreach, for some towns the totals are < 100%
-# * chad: expanding heat search terms and seeing if that changes things, manual search
-
-# Needs:
-# * Map
-# * table of the heatmap with %s and n
-
-# * REVERE AND LEXINGTON DON'T HAVE 100% in relevancy table
-# * WHY ISNT HEAT MORE ** SEARCH TERMS
-#
-# * WHAT ABOUT THE COMMUNITY CONCERNS
-
 # ----------------------------------------------------------------------------
 #### create dataframe of hazard counts and proportions by town ####
 
