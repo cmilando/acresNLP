@@ -17,21 +17,8 @@ dim(combined_table)
 data.frame(head(combined_table))
  
  # ----------------------------------------------------------------------------
-# get the new pdfs to 'INCLUDE'
 
-
-
-# ----------------------------------------------------------------------------
-# ma.url omitted
-
-## NC Notes: We're reading in combined_table_v9_final.tsv" for this file, right? 
-##           Finally, I noticed we were dropping Malden and Waltham in the code below. 
-##           There are NA values in the manual checks, which I think come from duplicate reports? I think we just want to remove EXCLUDE. 
-##           The modified code below for the creation of pass_checks3 seems to add 4 malden and 3 Waltham reports back in...
-##           Also, there are 21 GBA IC communities (I mis-counted earlier!). We'll have to update the flowchart.
-
-
-#`%!in%` <- function(x, y) !(x %in% y) # NC: Added function
+#`%!in%` <- function(x, y) !(x %in% y) 
 
 combined_table <- combined_table %>%
   mutate(pass_checks3 = (
@@ -75,8 +62,6 @@ length(r1)
 table(combined_table$pass_checks3[r1])
 combined_table$pass_checks3[r1] <- TRUE
 
-##
-### WHICH ONE IS NONE
 which(combined_table$most_common_town == 'None' & 
         combined_table$pass_checks3)
 
@@ -86,21 +71,6 @@ pass_checks <- combined_table %>%
 
 sum(pass_checks$n)
 
-# write_tsv(pass_checks, 'pass_checks_0220.tsv')
-
-# num_irrelevant <- combined_table %>% 
-#   group_by(town_name) %>% 
-#   summarize(
-#     total_pdfs = n(),
-#     total_relevant = sum(relevant),
-#     percent_relevant = total_relevant / n(),
-#     total_towns_match = sum(towns_match),
-#     percent_match = total_towns_match / n(),
-#     relevant_and_match = sum(relevant & towns_match)
-#     )
-# 
-# View(num_irrelevant)
-
 #only filter for relevant and matching
 
 # write_tsv(combined_table, 'combined_table_v8_final.tsv')
@@ -109,11 +79,7 @@ sum(pass_checks$n)
 
 ### make flowchart
 nrow(combined_table)
-# 27 Original from 
 
-
-
-##
 combined_table <- combined_table %>% filter(is_INNER_CORE == T)
 nrow(combined_table)
 
@@ -123,11 +89,6 @@ table(combined_table$duplicated)
 # in MA
 table(combined_table %>% 
         filter(duplicated == F) %>% select(is_MASS))
-
-# -- Already doing this --
-# table(combined_table %>% 
-#         filter(duplicated == F, is_MASS == T) %>% 
-#         select(is_INNER_CORE))
 
 # climate
 table(combined_table %>% 
@@ -161,13 +122,6 @@ combined_table_relevant <- combined_table %>%
   filter(pass_checks4)
 
 nrow(combined_table_relevant)
-
-#
-# combined_table %>%
-#   filter(duplicated == F, is_MASS == T, is_INNER_CORE == T,
-#          has_climate == 1, has_community == 1)
-
-
 dim(combined_table_relevant)
 
 write_tsv(combined_table_relevant, 'combined_table_relevant_v10.tsv')
@@ -214,8 +168,6 @@ hazard_by_town$mod_sum
 
 hazard_by_town <- rbind(hazard_by_town, hazard_by_town_blank)
 
-## LOOK AT REVERE AND LEXINGTON
-
 hazard_name_map = c(
   "air_pollution_avg" = 'Air Pollution',
   'chem_hazard_avg' = 'Chemical Hazards',
@@ -239,12 +191,6 @@ capitalizeFirstLetter <- function(textVector) {
   
   return(result)
 }
-
-# Example usage:
-capitalizeFirstLetter(c("convert_text to camel_case", "another_example_here", "hello world"))
-# Output: "Convert_text to camel_case" "Another_example_here" "Hello world"
-# Output: "convertTextToCamelCase" "anotherExampleHere" "helloWorld"
-
 
 hazard_by_town
 
@@ -277,31 +223,6 @@ ggsave(filename = 'hazplot_v6.png',
        height = 4.361111 * 0.8,
        dpi = 600)
 
-#this figure no longer looks good because there are too many towns
-# hazard_by_town %>%
-#   pivot_longer(cols = flood_avg:fire_avg) %>%
-#   ggplot(aes(x = name,
-#              y = value,
-#              fill = town_name)) +
-#   geom_col(position = "dodge")+
-#   stat_summary(geom = "errorbar", fun.data = mean_se, position = "dodge")
-#add sd bars
-#do same thing with outreach types
-
-
-
-# hazard_data <-  hazard_by_town %>% 
-#   gather(key = "hazard_type", value = "proportion", 
-#          flood_avg:fire_avg) %>% 
-#   mutate(id = row_number())
-#   
-
-# ----------------------------------------------------------------------------
-#90% or over for all towns
-# combined_table_relevant <- combined_table %>% 
-#   filter(towns_match & relevant)
-# 
-# colnames(combined_table_relevant)
 
 outreach_by_town <- combined_table_relevant %>% 
   group_by(most_common_town) %>% 
@@ -394,15 +315,6 @@ towns_to_include <- toupper(c("Burlington", "Lexington", "Belmont", "Watertown",
                      "Boston", "Everett", "Malden", "Melrose",
                      "Wakefield", "Chelsea", "Revere", "Winthrop", "Wilmington"))
 
-#adjust based on your computer 
-#(put this in the acresnlp folder - should not be in blackouts)
-ma_towns <- read_sf(paste0(my_dir, "towns_fixed.shp"))
-ACRES_towns_plot <- ma_towns %>% 
-  filter(TOWN20 %in% towns_to_include)
-# ACRES_towns_plot$centroid <- st_centroid(ACRES_towns_plot$geometry)
-# centroids_coords <- st_coordinates(ACRES_towns_plot$centroid)
-# ACRES_towns_plot <- ACRES_towns_plot %>%
-#   mutate(x = centroids_coords[,1], y = centroids_coords[,2])
 
 #make background blue to represent water
 ma_outline <- states(cb = T) %>% filter(NAME == "Massachusetts")
@@ -415,8 +327,7 @@ bbox_sf <- st_as_sfc(bbox)
 ma_outline_bbox <- st_crop(ma_outline_wgs84, bbox_sf)
 bbox_coords <- st_bbox(ma_outline_bbox)
 
-
-#ma_towns <- read_sf(paste0(my_dir, "towns_fixed.shp"))
+ma_towns <- read_sf(paste0(my_dir, "towns_fixed.shp"))
 
 
 
@@ -476,12 +387,6 @@ ACRES_outreach_towns_plot <- ACRES_towns_plot %>%
               mutate(most_common_town = toupper(most_common_town)) %>% 
               pivot_longer(cols = workshop_avg:inform_avg),
             by = join_by(TOWN20 == most_common_town))
-
-# ggplot(ACRES_outreach_towns_plot) +
-#   geom_sf(aes(fill = value)) +
-#   scale_fill_binned(type = 'viridis',
-#                     name = 'Percent\nof documents\nreferencing\nhazard X') + 
-#   facet_wrap(~name, nrow = 2)
 
 #outreach_name_map <-
 #ACRES_hazard_town_plot$outr_name_plot = outreach_name_map[ACRES_outreach_towns_plot$name]
