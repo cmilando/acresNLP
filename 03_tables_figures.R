@@ -2,8 +2,15 @@ library(tidyverse)
 library(ggpubr)
 library(lemon)
 
-setwd("")
+setwd("C:/Users/ncesare/OneDrive - Boston University/ACRES")
 combined_tbl <- read_tsv("combined_table_relevant_v10.tsv")
+
+
+# remove the winthrop unscannable
+# combined_tbl <- xx %>% filter(file_name != 'winthropurl35.json' & pass_checks3 == T)
+# 
+# View(combined_tbl %>%
+#   filter(most_common_town == 'chelsea'))
 
 MyRW_town <- read.table("MYRWA_towns.txt")
 myrw_town <- tolower(MyRW_town$V1)
@@ -13,36 +20,30 @@ combined_tbl <- combined_tbl  %>% mutate(is_ACRES_town = most_common_town %in% m
 #### Supplemental Table 4 ####
 
 sTab_4 <- combined_tbl %>% dplyr::summarize(flood_n = length(which(flood_count > 0)),
-                           flood_pct = length(which(flood_count > 0))/length(flood_count) * 100,
-                           storm_n = length(which(storm_count > 0)),
-                           storm_pct = length(which(storm_count > 0))/length(storm_count)* 100,
-                           heat_n = length(which(heat_count > 0)),
-                           heat_pct = length(which(heat_count > 0))/length(heat_count) * 100,
-                           air_pollution_n = length(which(air_pollution_count > 0)),
-                           air_pollution_pct = length(which(air_pollution_count > 0))/length(air_pollution_count) * 100,
-                           indoor_air_quality_n = length(which(indoor_air_quality_count > 0)),
-                           indoor_air_quality_pct = length(which(indoor_air_quality_count > 0))/length(indoor_air_quality_count) * 100,
-                           chemical_hazards_n = length(which(chemical_hazards_count > 0)),
-                           chemical_hazards_pct = length(which(chemical_hazards_count > 0))/length(chemical_hazards_count) * 100,
-                           extreme_precipitation_n = length(which(extreme_precipitation_count > 0)),
-                           extreme_precipitation_pct = length(which(extreme_precipitation_count > 0))/length(extreme_precipitation_count) * 100,
-                           fire_n = length(which(fire_count > 0)),
-                           fire_pct = length(which(fire_count > 0))/length(fire_count) * 100,
-                           
-                           workshop_n = length(which(workshop_count > 0)),
-                           workshop_pct = length(which(workshop_count > 0))/length(workshop_count) * 100,
-                           mapping_n = length(which(mapping_count > 0)),
-                           mapping_pct = length(which(mapping_count > 0))/length(mapping_count) * 100,
-                           survey_n = length(which(survey_count > 0)),
-                           survey_pct = length(which(survey_count > 0))/length(survey_count) * 100,
-                           conversation_n = length(which(conversation_count > 0)),
-                           conversation_pct = length(which(conversation_count > 0))/length(conversation_count) * 100,
-                           community_meeting_n = length(which(community_meeting_count > 0)),
-                           community_meeting_pct = length(which(community_meeting_count > 0))/length(community_meeting_count) * 100,
-                           small_group_discussion_n = length(which(small_group_discussion_count > 0)),
-                           small_group_discussion_pct = length(which(small_group_discussion_count > 0))/length(small_group_discussion_count) * 100,
-                           inform_n = length(which(inform_count > 0)),
-                           inform_pct = length(which(inform_count > 0))/length(inform_count) * 100)   
+                                            flood_pct = length(which(flood_count > 0))/length(flood_count) * 100,
+                                            storm_n = length(which(storm_count > 0)),
+                                            storm_pct = length(which(storm_count > 0))/length(storm_count)* 100,
+                                            heat_n = length(which(heat_count > 0)),
+                                            heat_pct = length(which(heat_count > 0))/length(heat_count) * 100,
+                                            air_pollution_n = length(which(air_pollution_count > 0)),
+                                            air_pollution_pct = length(which(air_pollution_count > 0))/length(air_pollution_count) * 100,
+                                            indoor_air_quality_n = length(which(indoor_air_quality_count > 0)),
+                                            indoor_air_quality_pct = length(which(indoor_air_quality_count > 0))/length(indoor_air_quality_count) * 100,
+                                            chemical_hazards_n = length(which(chemical_hazards_count > 0)),
+                                            chemical_hazards_pct = length(which(chemical_hazards_count > 0))/length(chemical_hazards_count) * 100,
+                                            extreme_precipitation_n = length(which(extreme_precipitation_count > 0)),
+                                            extreme_precipitation_pct = length(which(extreme_precipitation_count > 0))/length(extreme_precipitation_count) * 100,
+                                            fire_n = length(which(fire_count > 0)),
+                                            fire_pct = length(which(fire_count > 0))/length(fire_count) * 100,
+                                            lood_term_pct = sum(flood_count)/sum(total_words) * 100,
+                                            storm_term_pct = sum(storm_count)/sum(total_words) * 100,
+                                            heat_term_pct = sum(heat_count)/sum(total_words) * 100,
+                                            air_pollution_term_pct = sum(air_pollution_count)/sum(total_words) * 100,
+                                            indoor_air_quality_term_pct = sum(indoor_air_quality_count)/sum(total_words) * 100,
+                                            chemical_hazards_term_pct = sum(chemical_hazards_count)/sum(total_words) * 100,
+                                            extreme_precipitation_term_pct = sum(extreme_precipitation_count)/sum(total_words) * 100,
+                                            fire_term_pct = sum(fire_count)/sum(total_words) * 100) %>% pivot_longer(cols = everything())
+
 
 write.csv(sTab_4, "supp_tab4.csv", row.names = FALSE)
 
@@ -85,40 +86,77 @@ hazplot <- subset(plot_tbl_longer, plt_name %in% hazards)
 
 hazplot$most_common_town <- stringr::str_to_upper(hazplot$most_common_town)
 
+
+hazplot$plt_name2 <- factor(hazplot$plt_name, levels = c("chemical_hazards",
+                                                         "fire",
+                                                         "indoor_air_quality",
+                                                         "air_pollution",
+                                                         "heat",
+                                                         "extreme_precipitation",
+                                                         "storm",
+                                                         "flood"),
+                            labels = c("Chemical hazards",
+                                       "Fire",
+                                       "Indoor air quality",
+                                       "Air pollution",
+                                       "Heat",
+                                       "Extreme precipitation",
+                                       "Storm",
+                                       "Flood"))
+
+hazplot$most_common_town2 <- stringr::str_to_sentence(hazplot$most_common_town)
+
+
+
 a <- ggplot(hazplot) + 
-  geom_tile(aes(y = reorder(plt_name, value), 
-                x = most_common_town, fill = value),
+  geom_tile(aes(y = reorder(plt_name2, value), 
+                x = most_common_town2, fill = value),
             color = 'white', linewidth = 0.05) + 
   scale_fill_viridis_c(name = 'Median percent of\nwithin-document mentions') +
   ylab("Hazard") + xlab("Town") +
-  theme(axis.text.x = element_text(angle = 25, 
-                                   vjust = 1, hjust = 1)) + 
-  ggtitle("a.")
+  theme(axis.text.x = element_text(angle = 25,vjust = 1, hjust = 1)) 
+  #+ ggtitle("a.")
 
-ggsave("hazplot.png", plot = a, width = 10.3, height = 3.02)
+ggsave("hazplot.png", plot = a, width = 8.3, height = 3.02)
 
 ##
 outreach <- subset(plot_tbl_longer, !(plt_name %in% hazards))
 
-outreach$most_common_town <- stringr::str_to_upper(outreach$most_common_town)
+outreach$most_common_town2 <- stringr::str_to_sentence(outreach$most_common_town)
+
+outreach$plt_name2 <- factor(outreach$plt_name, levels = c("inform",
+                                                           "mapping",
+                                                           "small_group_discussion",
+                                                           "conversation",
+                                                           "community_meeting",
+                                                           "workshop",
+                                                           "survey"),
+                             labels = c("Inform",
+                                        "Mapping",
+                                        "Small group discussion",
+                                        "Conversation",
+                                        "Community meeting",
+                                        "Workshop",
+                                        "Survey"))
 
 b <- ggplot(outreach) + 
-  geom_tile(aes(y = reorder(plt_name, value), 
-                x = most_common_town, fill = value),
+  geom_tile(aes(y = reorder(plt_name2, value), 
+                x = most_common_town2, fill = value),
             color = 'white', linewidth = 0.05) + 
   scale_fill_viridis_c(name = 'Median percent of\nwithin-document mentions') +
   ylab("Outreach Method") + xlab("Town") +
   theme(axis.text.x = element_text(angle = 25, 
-                                   vjust = 1, hjust = 1)) + 
-  ggtitle("b.")
+                                   vjust = 1, hjust = 1)) 
+  #+ ggtitle("b.")
 
-ggsave("outreach.png",plot  = b, width = 10.3, height = 3.02)
+ggsave("outreach.png",plot  = b, width = 8.3, height = 3.02)
 
 library(patchwork)
 
 a/b + patchwork::plot_layout(guides = 'collect')
 
-ggsave("comb.png", width = 10.3, height = 3.02 * 2.2)
+scale_factor <- 0.75
+ggsave("comb.png", width = 10.3 * scale_factor, height = 3.02 * 2.2 * scale_factor)
 
 #########
 
@@ -219,8 +257,8 @@ x_labels <- c(
 )
 
 plot_tbl$is_hazard_fct <- ifelse(
-  plot_tbl$is_hazard, "a. Hazard terms",
-  "b. Outreach terms"
+  plot_tbl$is_hazard, "Hazard terms",
+  "Outreach terms"
 )
 
 plot_tbl$is_ACRES_town_fct <- ifelse(
@@ -238,11 +276,11 @@ plot_tbl %>%
                  y = median, color = is_ACRES_town_fct),
              position = position_dodge(width = 0.3)) +
   geom_errorbar(aes(x = reorder(cause, -median), 
-                 group = is_ACRES_town_fct,
-                 width = 0.25,
-                 ymin = q25, ymax = q75, 
-                 color = is_ACRES_town_fct),
-             position = position_dodge(width = 0.3)) +
+                    group = is_ACRES_town_fct,
+                    width = 0.25,
+                    ymin = q25, ymax = q75, 
+                    color = is_ACRES_town_fct),
+                position = position_dodge(width = 0.3)) +
   facet_rep_wrap(~is_hazard_fct, nrow = 2, scales = 'free_x') +
   scale_x_discrete(labels = x_labels) +
   xlab(NULL) + 
@@ -330,8 +368,8 @@ x_labels <- c(
 )
 
 plot_tbl$is_hazard_fct <- ifelse(
-  plot_tbl$is_hazard, "a. Hazard terms",
-  "b. Outreach terms"
+  plot_tbl$is_hazard, "Hazard terms",
+  "Outreach terms"
 )
 
 
@@ -344,13 +382,13 @@ plot_tbl %>%
   geom_point(aes(x = reorder(cause, -median), 
                  #group = is_ACRES_town_fct,
                  y = median), 
-                 #color = is_ACRES_town_fct),
+             #color = is_ACRES_town_fct),
              position = position_dodge(width = 0.3)) +
   geom_errorbar(aes(x = reorder(cause, -median), 
                     #group = is_ACRES_town_fct,
                     width = 0.25,
                     ymin = q25, ymax = q75), 
-                    #color = is_ACRES_town_fct),
+                #color = is_ACRES_town_fct),
                 position = position_dodge(width = 0.3)) +
   facet_rep_wrap(~is_hazard_fct, nrow = 2, scales = 'free_x') +
   scale_x_discrete(labels = x_labels) +
@@ -365,3 +403,44 @@ plot_tbl %>%
 ggsave("fig2_all.png", width = 7.5, height = 5)
 
 
+
+
+###### final combined file ###### 
+
+
+fig2_top <-plot_tbl %>%
+  ggplot(.) + theme_classic2() +
+  geom_point(aes(x = reorder(cause, -median), 
+                 #group = is_ACRES_town_fct,
+                 y = median), 
+             #color = is_ACRES_town_fct),
+             position = position_dodge(width = 0.3)) +
+  geom_errorbar(aes(x = reorder(cause, -median), 
+                    #group = is_ACRES_town_fct,
+                    width = 0.25,
+                    ymin = q25, ymax = q75), 
+                #color = is_ACRES_town_fct),
+                position = position_dodge(width = 0.3)) +
+  facet_rep_wrap(~is_hazard_fct, nrow = 2, scales = 'free_x') +
+  scale_x_discrete(labels = x_labels) +
+  xlab(NULL) + 
+  #scale_color_manual(name = 'Geography', 
+  #                   values = c('#d95f02', '#7570b3')) +
+  ylab('Percent of hazard terms by report \n(median and IQR across reports by group)') + 
+  theme(legend.position = 'bottom',
+        strip.background = element_blank(),
+        strip.text = element_text(hjust = 0, face = 'bold', size = 11))
+
+
+
+
+fig2_top/a/b + patchwork::plot_layout(guides = 'collect')
+
+
+(fig2_top + labs(tag = "A") + theme(plot.tag = element_text(size = 20, face = "bold")))/ 
+  ((a + labs(tag = "B") + theme(plot.tag = element_text(size = 20, face = "bold")))/ b + 
+     patchwork::plot_layout(guides = "collect", heights = c(1, 1))) +
+  patchwork::plot_layout(guides = "keep", heights = c(0.8, 1))
+
+scale_factor <- 1
+ggsave("comb_all.png", height = 8.3 * scale_factor, width = 10.3 * scale_factor)
